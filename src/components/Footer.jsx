@@ -1,4 +1,11 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
+  // Function to scroll to top
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="w-full bg-zinc-950 border-t border-zinc-800 mt-16">
       <div className="max-w-screen-xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -16,29 +23,19 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Navigation / Quick Links */}
-        <div className="text-center md:text-left">
-          <h3 className="font-mono text-blue-400 text-sm mb-3">Navigation</h3>
-          <nav className="flex flex-col space-y-2 text-sm font-mono">
-            <a href="#hero" className="text-zinc-400 hover:text-blue-400 transition" onClick={(e) => scrollToSection(e, "hero")}>Top</a>
-            <a href="#code" className="text-zinc-400 hover:text-blue-400 transition" onClick={(e) => scrollToSection(e, "code")}>Code</a>
-            <a href="#content" className="text-zinc-400 hover:text-blue-400 transition" onClick={(e) => scrollToSection(e, "content")}>Timeline</a>
-            <a href="#techstack" className="text-zinc-400 hover:text-blue-400 transition" onClick={(e) => scrollToSection(e, "techstack")}>Techstack</a>
-          </nav>
-        </div>
-
-        {/* Resources / Popular Footer Links */}
-        <div className="text-center md:text-left">
+       
+        {/* Resources */}
+        <div className="text-center md:text-right">
           <h3 className="font-mono text-blue-400 text-sm mb-3">Resources</h3>
           <ul className="space-y-2 text-sm font-mono">
-            <li><a href="#about" className="text-zinc-400 hover:text-blue-400 transition">About</a></li>
-            <li><a href="#projects" className="text-zinc-400 hover:text-blue-400 transition">Projects</a></li>
-            <li><a href="#contact" className="text-zinc-400 hover:text-blue-400 transition">Contact</a></li>
-            <li><a href="/privacy" className="text-zinc-400 hover:text-blue-400 transition">Privacy Policy</a></li>
+            <li><Link to="/about" className="text-zinc-400 hover:text-blue-400 transition">About</Link></li>
+            <li><Link to="/projects" className="text-zinc-400 hover:text-blue-400 transition">Projects</Link></li>
+            <li><Link to="/contact" className="text-zinc-400 hover:text-blue-400 transition">Contact</Link></li>
+            <li><Link to="/privacy" className="text-zinc-400 hover:text-blue-400 transition">Privacy Policy</Link></li>
           </ul>
         </div>
 
-        {/* Right - Social Icons with SVGs */}
+        {/* Social Icons */}
         <div className="text-center md:text-left">
           <h3 className="font-mono text-blue-400 text-sm mb-3">Connect</h3>
           <div className="flex justify-center md:justify-start space-x-5 text-zinc-400">
@@ -62,22 +59,32 @@ const Footer = () => {
             </a>
           </div>
         </div>
+         {/* Home & Back to Top Buttons */}
+        <div className="text-center md:text-left flex flex-col space-y-2">
+          <Link
+            to="/"
+            className="text-zinc-400 hover:text-blue-400 transition font-mono text-sm px-3 py-1 border border-blue-400 rounded text-center"
+          >
+            Go to Home
+          </Link>
+          <button
+            onClick={scrollToTop}
+            className="text-sm font-mono text-blue-400 hover:text-white border border-blue-400 px-3 py-1 rounded transition hover:bg-blue-400"
+          >
+            Back to Top
+          </button>
+        </div>
+
       </div>
 
       {/* Bottom - Copyright */}
-      <div className="text-center text-xs text-zinc-500 py-4 border-t border-zinc-800 font-mono">
-        © {new Date().getFullYear()} Amika Subasinghe • Built with ❤️ using React.
+      <div className="text-center py-4 border-t border-zinc-800 font-mono">
+        <div className="text-xs text-zinc-500">
+          © {new Date().getFullYear()} Amika Subasinghe • Built with ❤️ using React.
+        </div>
       </div>
     </footer>
   );
-};
-
-const scrollToSection = (e, id) => {
-  e.preventDefault();
-  const section = document.getElementById(id);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
 };
 
 export default Footer;

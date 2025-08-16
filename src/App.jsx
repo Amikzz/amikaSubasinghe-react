@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Components
 import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Content from "./components/Content";
 import Loader from "./components/Loader";
-import Techstack from "./components/Techstack";
-import Code from "./components/Code";
 import Footer from "./components/Footer";
+
+// Pages
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Blog from "./pages/Blog";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -15,23 +21,20 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  return (
-    <div className="relative">
-      {loading && <Loader />}
-      {!loading && (
-        <>
-          <Header />
-          <main className="w-full flex flex-col items-center justify-center bg-zinc-900 text-zinc-50">
-  <section id="hero" className="w-full"><Hero /></section>
-  <section id="code" className="w-full"><Code /></section>
-  <section id="content" className="w-full"><Content /></section>
-  <section id="techstack" className="w-full"><Techstack /></section>
-</main>
+if (loading) return <Loader />;
 
-          <Footer />
-        </>
-      )}
-    </div>
+  return (
+    <Router>
+      <Header /> {/* Fixed navbar across pages */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+      <Footer /> {/* Footer across all pages */}
+    </Router>
   );
 };
 
