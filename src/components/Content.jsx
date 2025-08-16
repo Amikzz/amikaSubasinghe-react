@@ -75,12 +75,19 @@ const Content = () => {
         {rocketLimits.bottom > rocketLimits.top && (
           <motion.div
             className="absolute left-1/2 w-12 h-12 transform -translate-x-1/2"
-            animate={{ y: [rocketLimits.top, rocketLimits.bottom, rocketLimits.top] }}
+            animate={{
+              y: [
+                rocketLimits.top + 10, // offset from top
+                rocketLimits.bottom - 48, // subtract rocket height (12*4px = 48px)
+                rocketLimits.top + 10,
+              ],
+            }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
             <Lottie animationData={rocketAnimation} loop />
           </motion.div>
         )}
+
 
         {/* Timeline items */}
         {timelineData.map((item, idx) => (
