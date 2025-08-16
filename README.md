@@ -1,12 +1,32 @@
-# React + Vite
+# 🌐 Amika Subasinghe – Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my **personal portfolio website**, built using **React** and **Vite**.  
+It showcases my projects, skills, and experiences as a Software Engineering undergraduate passionate about full-stack development.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+- ⚛️ [React](https://reactjs.org/) – Frontend library  
+- ⚡ [Vite](https://vitejs.dev/) – Fast build tool with HMR  
+- 🎨 [Tailwind CSS](https://tailwindcss.com/) – Styling and responsive design  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📖 Features
+
+- ✨ Modern UI with smooth animations  
+- 📱 Fully responsive design  
+- 🔗 Links to my projects and socials  
+- 📬 Contact section for collaboration  
+
+---
+
+## 📂 Project Setup
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/your-username/amikaSubasinghe-react.git
+cd amikaSubasinghe-react
+npm install
