@@ -22,12 +22,11 @@ const Hero = () => {
     }),
   };
 
-  // Fade out background accents
   const accentOpacity = Math.max(0, 0.1 - scrollY / 400);
 
-  // Prevent horizontal scrolling, but allow vertical scrolling
+  // Prevent horizontal scrolling
   useEffect(() => {
-    document.body.style.overflowX = "hidden"; // hide horizontal scroll
+    document.body.style.overflowX = "hidden";
     return () => {
       document.body.style.overflowX = "hidden";
     };
@@ -53,7 +52,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Right Side: Introduction */}
-      <div className="flex-1 text-center md:text-left text-zinc-50">
+      <div className="flex-1 w-full max-w-full text-center md:text-left text-zinc-50">
         <motion.h1
           className="text-3xl md:text-5xl font-bold mb-4"
           variants={textVariant}
@@ -83,7 +82,7 @@ const Hero = () => {
         </motion.h2>
 
         <motion.p
-          className="text-zinc-300 text-base md:text-lg max-w-md text-justify"
+          className="text-zinc-300 text-base md:text-lg max-w-md text-justify mx-auto md:mx-0"
           variants={textVariant}
           initial="hidden"
           animate="visible"
@@ -95,7 +94,7 @@ const Hero = () => {
         </motion.p>
 
         <motion.div
-          className="mt-8"
+          className="mt-8 flex justify-center md:justify-start"
           variants={textVariant}
           initial="hidden"
           animate="visible"
@@ -103,7 +102,7 @@ const Hero = () => {
         >
           <a
             href="#projects"
-            className="px-6 py-3 bg-cyan-500 text-zinc-900 font-semibold rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 shadow-lg hover:shadow-cyan-500/50"
+            className="px-6 py-3 bg-cyan-500 text-zinc-900 font-semibold rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 shadow-lg hover:shadow-cyan-500/50 w-full sm:w-auto text-center"
           >
             View Projects
           </a>

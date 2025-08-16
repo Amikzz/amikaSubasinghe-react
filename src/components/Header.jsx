@@ -43,17 +43,18 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Menu with True Glass Effect */}
+      {/* Mobile Menu sliding from Navbar */}
       <Transition
         show={isOpen}
         enter="transition ease-out duration-300 transform"
-        enterFrom="translate-y-[-100%] opacity-0"
-        enterTo="translate-y-0 opacity-100"
+        enterFrom="opacity-0 scale-y-0"
+        enterTo="opacity-100 scale-y-100"
         leave="transition ease-in duration-200 transform"
-        leaveFrom="translate-y-0 opacity-100"
-        leaveTo="translate-y-[-100%] opacity-0"
+        leaveFrom="opacity-100 scale-y-100"
+        leaveTo="opacity-0 scale-y-0"
+        className="origin-top"
       >
-        <div className="md:hidden absolute top-20 left-0 w-full bg-transparent backdrop-blur-lg rounded-b-xl p-6 flex flex-col gap-4 text-white font-medium">
+        <div className="md:hidden w-full bg-transparent backdrop-blur-lg rounded-b-xl flex flex-col gap-4 text-white font-medium px-6 py-4">
           <a href="#home" className="px-4 py-2 rounded-lg hover:bg-white/10 transition-colors duration-300" onClick={() => setIsOpen(false)}>Home</a>
           <a href="#about" className="px-4 py-2 rounded-lg hover:bg-white/10 transition-colors duration-300" onClick={() => setIsOpen(false)}>About</a>
           <a href="#projects" className="px-4 py-2 rounded-lg hover:bg-white/10 transition-colors duration-300" onClick={() => setIsOpen(false)}>Projects</a>
