@@ -149,9 +149,9 @@ const Contact = () => {
         <p className="text-zinc-400"><strong>Location:</strong> Colombo, Sri Lanka</p>
 
         <div className="flex justify-center space-x-6 mt-4 text-2xl text-cyan-400">
-          <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noreferrer"><FaLinkedin className="hover:scale-125 transition"/></a>
-          <a href="https://github.com/yourprofile" target="_blank" rel="noreferrer"><FaGithub className="hover:scale-125 transition"/></a>
-          <a href="https://twitter.com/yourprofile" target="_blank" rel="noreferrer"><FaTwitter className="hover:scale-125 transition"/></a>
+          <a href="https://linkedin.com/in/amika-subasinghe-a52b6a1a9" target="_blank" rel="noreferrer"><FaLinkedin className="hover:scale-125 transition"/></a>
+          <a href="https://github.com/Amikzz" target="_blank" rel="noreferrer"><FaGithub className="hover:scale-125 transition"/></a>
+          <a href="https://x.com/amikasubasinghe" target="_blank" rel="noreferrer"><FaTwitter className="hover:scale-125 transition"/></a>
         </div>
       </motion.div>
     
