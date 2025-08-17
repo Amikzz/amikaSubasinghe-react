@@ -6,7 +6,7 @@ const projects = [
     title: "SkillSwap Platform",
     description:
       "SkillSwap is a comprehensive skill-sharing platform built with Flutter for the frontend and Laravel for the backend. The system enables users to offer their skills and book sessions with others securely. Integrated with a third-party payment API, it ensures safe financial transactions and includes secure authentication, a booking system, and a responsive dashboard for users to track their engagements. The project demonstrates my ability to build a scalable, cross-platform application while leveraging modern frameworks and best practices in full-stack development.",
-    image: "/src/assets/skillswap.jpg",
+    image: "/assets/skillswap.jpg",
     tech: ["Flutter", "Laravel", "MySQL", "API Integration"],
     github: "https://github.com/Amikzz/skillswap",
     demo: "#",
@@ -16,7 +16,7 @@ const projects = [
     title: "Bus Management System",
     description:
       "The Bus Management System is a full-stack application developed to manage bus operations efficiently. Built using Laravel and Flutter, it handles bus schedules, live location tracking using Google Maps API, and ticket bookings for passengers. The system includes QR code-based ticket validation, a conductor panel for issuing tickets, and a safety alert feature for passengers. With this project, I implemented robust backend logic, secure database interactions, and a seamless cross-platform interface, demonstrating practical skills in building enterprise-grade transport solutions.",
-    image: "/src/assets/bus.jpg",
+    image: "/assets/bus.jpg",
     tech: ["Laravel", "Flutter", "Google Maps API"],
     github: "https://github.com/Amikzz/bus-system",
     demo: "#",
@@ -26,7 +26,7 @@ const projects = [
     title: "Stock Management System",
     description:
       "The Stock Management System is a desktop-based application designed to streamline inventory management for small and medium-sized businesses. Developed using C# and SQL Server, it provides full CRUD operations, advanced search filters, reporting capabilities, and role-based authentication for secure access. The system improves operational efficiency by automating stock updates, tracking inventory levels, and generating insightful reports, showcasing my ability to design reliable and maintainable software solutions in a Windows environment.",
-    image: "/src/assets/stock.jpeg",
+    image: "/assets/stock.jpeg",
     tech: ["C#", "SQL Server", "WinForms"],
     github: "https://github.com/Amikzz/stock-management",
     demo: "#",
@@ -36,7 +36,7 @@ const projects = [
     title: "Library Management System",
     description:
       "This Library Management System is a desktop application built in C# with SQL Server backend to manage the operations of a modern library efficiently. It supports full CRUD functionality for books and users, advanced search filters, automated report generation, and secure authentication. The system simplifies administrative tasks, optimizes resource allocation, and enhances user experience for both librarians and library members, reflecting my expertise in designing practical, user-centric software solutions.",
-    image: "/src/assets/library.jpg",
+    image: "/assets/library.jpg",
     tech: ["C#", "SQL Server", "WinForms"],
     github: "https://github.com/Amikzz/library-management",
     demo: "#",
@@ -46,7 +46,7 @@ const projects = [
     title: "Personal Portfolio",
     description:
       "My Personal Portfolio is a modern, fully responsive website built with React and Vite to showcase my projects, skills, and professional experience. The platform features smooth animations powered by Framer Motion, an optimized UI with Tailwind CSS, and seamless navigation. It highlights my development capabilities and demonstrates proficiency in frontend design, component-based architecture, and interactive UI experiences, providing visitors with an engaging overview of my work and technical expertise.",
-    image: "/src/assets/portfolio.jpg",
+    image: "/assets/portfolio.jpg",
     tech: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/Amikzz/personal-portfolio",
     demo: "https://amikasubasinghe.com",
@@ -56,7 +56,7 @@ const projects = [
     title: "Invoice Management System",
     description:
       "A customized invoice management system developed for Nisu Creations using Laravel and MySQL. It streamlines invoice and delivery note generation, tracks orders, and manages client interactions efficiently. The system provides dashboards and reports to monitor sales and financial transactions, ensuring operational transparency and improved business workflows. This enterprise-grade solution highlights my ability to deliver secure, scalable, and highly functional software tailored for client-specific needs.",
-    image: "/src/assets/invoice.jpg",
+    image: "/assets/invoice.jpg",
     tech: ["Laravel", "MySQL", "Blade", "Tailwind CSS"],
     github: null,
     demo: null,
@@ -66,7 +66,7 @@ const projects = [
     title: "Vehicle Management System",
     description:
       "A comprehensive vehicle management system developed for Rangiri Holdings using Laravel and MySQL. It manages service and maintenance records, monitors expenses, and provides interactive dashboards and reporting features for informed decision-making. This enterprise-level project showcases my skills in building robust business systems with secure database handling, user role management, and dynamic visualizations to improve operational efficiency.",
-    image: "/src/assets/vehicle.jpg",
+    image: "/assets/vehicle.jpg",
     tech: ["Laravel", "MySQL", "Blade", "Tailwind CSS", "Chart.js"],
     github: null,
     demo: null,
@@ -76,7 +76,7 @@ const projects = [
     title: "Rangiri Aqua Website",
     description:
       "A modern, responsive company website designed for Rangiri Aqua using HTML, CSS, and JavaScript. The site features smooth animations, an intuitive user interface, and a clean layout to showcase company products and services effectively. This project demonstrates my ability to deliver high-quality frontend solutions that combine design aesthetics with usability, providing an engaging user experience.",
-    image: "/src/assets/rangiri.jpg",
+    image: "/assets/rangiri.jpg",
     tech: ["HTML", "CSS", "JavaScript"],
     github: null,
     demo: null,
@@ -86,7 +86,7 @@ const projects = [
     title: "Stretctec Production Management System",
     description:
       "An enterprise-grade system developed for Stretctec, a leading apparel raw material manufacturer. Built with Laravel and MySQL, it manages the entire production line and sample development process. The system streamlines customer inquiries, sample approvals, order tracking, and production workflows while providing dashboards and reporting for operational efficiency. This is the largest hands-on project I have developed, showcasing my ability to build scalable, real-world business solutions.",
-    image: "/src/assets/production.jpg",
+    image: "/assets/production.jpg",
     tech: ["Laravel", "MySQL", "Blade", "Tailwind CSS", "Chart.js"],
     github: null,
     demo: null,
