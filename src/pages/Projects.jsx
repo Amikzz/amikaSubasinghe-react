@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { useState } from "react";
 
 const projects = [
   {
@@ -94,30 +95,10 @@ const projects = [
   },
 ];
 
-const Projects = () => {
+const ProjectCard = ({ project, index }) => {
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <main className="w-full min-h-screen bg-zinc-900 text-zinc-50 flex flex-col items-center justify-start pt-32 px-6 md:px-20 relative">
-      <motion.h1
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-5xl md:text-6xl font-bold text-cyan-400 mb-6 text-center"
-      >
-        My Projects
-      </motion.h1>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-        className="text-zinc-400 text-center mb-12 max-w-3xl"
-      >
-        Here are some of the projects I’ve worked on recently. Some are personal
-        projects, while others are licensed enterprise solutions developed for companies.
-      </motion.p>
-
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full px-6 md:px-12 lg:px-20">
-  {projects.map((project, index) => (
     <motion.div
       key={index}
       initial={{ opacity: 0, y: 30 }}
@@ -126,11 +107,22 @@ const Projects = () => {
       whileHover={{ scale: 1.03 }}
       className="bg-zinc-800 rounded-2xl shadow-lg overflow-hidden flex flex-col w-full"
     >
-      <img
-        src={project.image}
-        alt={project.title}
-        className="w-full h-64 object-cover"
-      />
+      {/* Image wrapper with fade-in */}
+      <div className="relative w-full h-64 bg-zinc-700">
+        <motion.img
+          src={project.image}
+          alt={project.title}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: loaded ? 1 : 0, scale: loaded ? 1 : 1.05 }}
+          transition={{ duration: 0.8 }}
+          className="w-full h-full object-cover"
+          onLoad={() => setLoaded(true)}
+        />
+        {/* Optional: Skeleton placeholder */}
+        {!loaded && (
+          <div className="absolute inset-0 bg-zinc-600 animate-pulse"></div>
+        )}
+      </div>
 
       <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-xl font-semibold text-cyan-400 mb-2">
@@ -184,9 +176,36 @@ const Projects = () => {
         )}
       </div>
     </motion.div>
-  ))}
-</div>
+  );
+};
 
+const Projects = () => {
+  return (
+    <main className="w-full min-h-screen bg-zinc-900 text-zinc-50 flex flex-col items-center justify-start pt-32 px-6 md:px-20 relative">
+      <motion.h1
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-5xl md:text-6xl font-bold text-cyan-400 mb-6 text-center"
+      >
+        My Projects
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        className="text-zinc-400 text-center mb-12 max-w-3xl"
+      >
+        Here are some of the projects I’ve worked on recently. Some are personal
+        projects, while others are licensed enterprise solutions developed for companies.
+      </motion.p>
+
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full px-6 md:px-12 lg:px-20">
+        {projects.map((project, index) => (
+          <ProjectCard key={index} project={project} index={index} />
+        ))}
+      </div>
     </main>
   );
 };

@@ -12,51 +12,62 @@ const About = () => {
     show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
   const [isGameOpen, setIsGameOpen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
 
   return (
   <main className="w-full min-h-screen bg-zinc-900 text-zinc-50 flex flex-col items-center justify-start pt-40 px-6 md:px-20 relative">
-      
-      {/* Header Section */}
-      <motion.div
-        className="flex flex-col md:flex-row items-center md:items-start max-w-6xl w-full mb-16 gap-10"
-        initial="hidden"
-        animate="show"
-        variants={fadeInUp}
-      >
+    <motion.div
+      className="flex flex-col md:flex-row items-center md:items-start max-w-6xl w-full mb-16 gap-10"
+      initial="hidden"
+      animate="show"
+      variants={fadeInUp} // your fade-in variant
+    >
+      {/* Image Container: reserve space to prevent layout jump */}
+      <div className="relative w-48 h-48 md:w-60 md:h-60 flex-shrink-0">
+        {/* Skeleton placeholder */}
+        {!loaded && (
+          <div className="absolute inset-0 bg-zinc-700 rounded-full animate-pulse"></div>
+        )}
+
         <motion.img
           src={profilePic}
           alt="Amika Subasinghe"
           className="w-48 h-48 md:w-60 md:h-60 rounded-full object-cover border-4 border-cyan-400 shadow-2xl"
-          whileHover={{ scale: 1.05 }}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: loaded ? 1 : 0, scale: loaded ? 1 : 1.05 }}
+          transition={{ duration: 0.8 }}
+          onLoad={() => setLoaded(true)}
+          whileHover={{ scale: 1.08 }}
         />
+      </div>
 
-        <div className="flex flex-col text-center md:text-left space-y-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-cyan-400">
-            Amika Indusara Lelwala Subasinghe
-          </h1>
+      {/* Text Content */}
+      <div className="flex flex-col text-center md:text-left space-y-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-cyan-400">
+          Amika Indusara Lelwala Subasinghe
+        </h1>
 
-          <ul className="text-lg leading-relaxed text-zinc-300 max-w-3xl space-y-2">
-            <li>💻 Full-stack developer with hands-on experience in C#, Laravel, Flutter, and React.</li>
-            <li>🚀 Passionate about building scalable applications and innovative digital solutions.</li>
-            <li>🎯 Thrives in problem-solving, team collaboration, and continuous learning.</li>
-            <li>🌍 Based in Colombo, Sri Lanka, aiming to make a global impact through technology.</li>
-          </ul>
+        <ul className="text-lg leading-relaxed text-zinc-300 max-w-3xl space-y-2">
+          <li>💻 Full-stack developer with hands-on experience in C#, Laravel, Flutter, and React.</li>
+          <li>🚀 Passionate about building scalable applications and innovative digital solutions.</li>
+          <li>🎯 Thrives in problem-solving, team collaboration, and continuous learning.</li>
+          <li>🌍 Based in Colombo, Sri Lanka, aiming to make a global impact through technology.</li>
+        </ul>
 
-          {/* Integrated Game Button */}
-          <div className="mt-4">
-            <button
-              className="bg-gradient-to-r from-cyan-600 to-blue-500 text-white px-6 py-3 rounded-xl shadow-lg font-mono text-sm flex items-center gap-2 transition-all hover:scale-105 hover:from-cyan-500 hover:to-blue-600"
-              onClick={() => setIsGameOpen(true)}
-            >
-              <span className="text-green-400">{`>`}</span>
-              <span>Challenge Yourself</span>
-              <span className="text-green-400">{`_`}</span>
-            </button>
-          </div>
-
+        {/* Game Button */}
+        <div className="mt-4">
+          <button
+            className="bg-gradient-to-r from-cyan-600 to-blue-500 text-white px-6 py-3 rounded-xl shadow-lg font-mono text-sm flex items-center gap-2 transition-all hover:scale-105 hover:from-cyan-500 hover:to-blue-600"
+            onClick={() => setIsGameOpen(true)}
+          >
+            <span className="text-green-400">{`>`}</span>
+            <span>Challenge Yourself</span>
+            <span className="text-green-400">{`_`}</span>
+          </button>
         </div>
-      </motion.div>
+      </div>
+    </motion.div>
 
       {/* Game Modal */}
       <Game isOpen={isGameOpen} onClose={() => setIsGameOpen(false)} />
