@@ -2,9 +2,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaLinkedin, FaGithub, FaTwitter, FaDownload } from "react-icons/fa";
-import profilePic from "/src/assets/profile.jpg"; // replace with your profile image path
-import cvFile from "/src/assets/Amika Indusara Lelwala Subasinghe.pdf"; // place your CV in assets
-import Game from "/src/components/Game"; // Import the Game component
+import profilePic from "/assets/profile.jpg"; // replace with your profile image path
+import cvFile from "/assets/Amika Indusara Lelwala Subasinghe.pdf"; // place your CV in assets
+import Game from "../components/Game"; // Import the Game component
 
 const About = () => {
   const fadeInUp = {
