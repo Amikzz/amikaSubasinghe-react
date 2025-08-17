@@ -48,6 +48,50 @@ const Contact = () => {
     );
   };
 
+  // Updated FAQs
+  const faqs = [
+    {
+      question: "How can I collaborate with you?",
+      answer: "You can reach me through this contact form or via my social links."
+    },
+    {
+      question: "Do you accept freelance projects?",
+      answer: "Yes! Please send project details and I will get back to you promptly."
+    },
+    {
+      question: "What technologies do you specialize in?",
+      answer: "I specialize in full-stack development using Laravel, Flutter, C#, and modern frontend frameworks like React and Tailwind CSS."
+    },
+    {
+      question: "What type of projects do you usually work on?",
+      answer: "I work on a variety of projects ranging from web applications, mobile apps, enterprise solutions, to personal portfolio websites."
+    },
+    {
+      question: "Do you contribute to open-source?",
+      answer: "Yes, I enjoy contributing to open-source projects and sharing knowledge with the developer community."
+    },
+    {
+      question: "Are you open to internships or collaborations?",
+      answer: "Absolutely! I’m always open to learning opportunities, internships, and meaningful collaborations."
+    },
+    {
+      question: "How do you stay updated with technology trends?",
+      answer: "I regularly follow tech blogs, watch tutorials, participate in developer communities, and experiment with new technologies."
+    },
+    {
+      question: "What sets you apart as a software engineer?",
+      answer: "I combine strong technical skills with practical project experience and a passion for building scalable, user-friendly solutions."
+    },
+    {
+      question: "What are your hobbies?",
+      answer: "Coding is one of my hobbies itself. Apart from that, I love to play cricket, watch movies, and travel."
+    },
+    {
+      question: "How can someone get in touch with you for professional inquiries?",
+      answer: "The best way is through the contact form on my website or via my LinkedIn and GitHub profiles."
+    }
+  ];
+
   return (
     <main className="w-full min-h-screen bg-zinc-900 text-zinc-50 flex flex-col items-center justify-start pt-32 px-6 md:px-20 relative">
 
@@ -154,26 +198,12 @@ const Contact = () => {
           <a href="https://x.com/amikasubasinghe" target="_blank" rel="noreferrer"><FaTwitter className="hover:scale-125 transition"/></a>
         </div>
       </motion.div>
-    
-      
+
       {/* FAQ Section */}
       <motion.div className="mt-16 max-w-2xl mx-auto space-y-4">
         <h2 className="text-2xl font-semibold text-cyan-400 mb-8 text-center">FAQs</h2>
 
-        {[{
-          question: "How can I collaborate with you?",
-          answer: "You can reach me through this contact form or via my social links."
-        }, {
-          question: "Do you accept freelance projects?",
-          answer: "Yes! Please send project details and I will get back to you promptly."
-        }, {
-          question: "What technologies do you specialize in?",
-          answer: "I specialize in full-stack development using Laravel, Flutter, C#, and modern frontend frameworks."
-        }, {
-          question: "What are your Hobbies?",
-          answer: "Coding is one of my hobies itself as well. Apart from that I love to play cricket, watch movies, and travel."
-        }        
-        ].map((faq, index) => {
+        {faqs.map((faq, index) => {
           const [open, setOpen] = useState(false);
 
           return (
@@ -196,7 +226,6 @@ const Contact = () => {
                 </motion.span>
               </motion.button>
 
-              {/* Smooth Animated Collapse */}
               <motion.div
                 initial={false}
                 animate={{ maxHeight: open ? 200 : 0, opacity: open ? 1 : 0 }}
