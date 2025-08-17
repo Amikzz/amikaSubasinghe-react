@@ -37,7 +37,7 @@ const Header = () => {
         <nav className="hidden md:flex flex-1 justify-center gap-10 text-white font-medium">
           <NavLink to="/" className={desktopLinkClasses}>Home</NavLink>
           <NavLink to="/projects" className={desktopLinkClasses}>Projects</NavLink>
-          <NavLink to="/blog" className={desktopLinkClasses}>Blog</NavLink>
+          <NavLink to="/codeplayground" className={desktopLinkClasses}>Playground</NavLink>
           <NavLink to="/about" className={desktopLinkClasses}>About</NavLink>
         </nav>
 
@@ -82,7 +82,7 @@ const Header = () => {
         <div className="md:hidden w-full bg-transparent backdrop-blur-lg rounded-b-xl flex flex-col gap-4 text-white font-medium px-6 py-4">
           <NavLink to="/" className={linkClasses} onClick={() => { setIsOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Home</NavLink>
           <NavLink to="/projects" className={linkClasses} onClick={() => setIsOpen(false)}>Projects</NavLink>
-          <NavLink to="/blog" className={linkClasses} onClick={() => setIsOpen(false)}>Blog</NavLink>
+          <NavLink to="/codeplayground" className={linkClasses} onClick={() => setIsOpen(false)}>Playground</NavLink>
           <NavLink to="/about" className={linkClasses} onClick={() => setIsOpen(false)}>About</NavLink>
           <NavLink
             to="/contact"

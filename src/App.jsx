@@ -10,10 +10,10 @@ import ScrollToTop from "./components/ScrollToTop";
 // Pages
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Blog from "./pages/Blog";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
+import CodePlayground from "./pages/Codeplayground";
 
 // Wrapper to handle location-based logic for Footer
 const AppWrapper = () => {
@@ -26,7 +26,7 @@ const AppWrapper = () => {
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/about" element={<About />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/codeplayground" element={<CodePlayground />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<Privacy />} />
       </Routes>
