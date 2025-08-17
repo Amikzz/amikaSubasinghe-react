@@ -101,7 +101,7 @@ const Hero = () => {
           custom={4}
         >
           <a
-            href="#projects"
+            href="/projects"
             className="px-6 py-3 bg-cyan-500 text-zinc-900 font-semibold rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 shadow-lg hover:shadow-cyan-500/50 w-full sm:w-auto text-center"
           >
             View Projects
