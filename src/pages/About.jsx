@@ -49,16 +49,16 @@ const About = () => {
 
           <ul className="text-lg leading-relaxed text-zinc-300 max-w-3xl space-y-2">
             <li>
-              💻 Full-stack developer with hands-on experience in C#, Laravel,
-              React and More...
+              🎯 Thrives in problem-solving, team collaboration, and continuous
+              learning.
             </li>
             <li>
               🚀 Passionate about building scalable applications and innovative
               digital solutions.
             </li>
             <li>
-              🎯 Thrives in problem-solving, team collaboration, and continuous
-              learning.
+              💻 Full-stack developer with hands-on experience in C#, Laravel,
+              React and More...
             </li>
             <li>
               🌍 Based in Colombo, Sri Lanka, aiming to make a global impact
@@ -402,7 +402,8 @@ const About = () => {
                 Stretchtec Integrated Production Management System
               </span>
               <span className="text-zinc-400 text-sm">
-                Laravel + MySQL which is a Full Stack app handling e2e production Management
+                Laravel + MySQL which is a Full Stack app handling e2e
+                production Management
               </span>
             </li>
             <li className="flex flex-col gap-1">
@@ -426,7 +427,7 @@ const About = () => {
                 Vehicle Management System
               </span>
               <span className="text-zinc-400 text-sm">
-                Vehicle fleet management system made using Laravel and MySQL. 
+                Vehicle fleet management system made using Laravel and MySQL.
               </span>
             </li>
             <li className="flex flex-col gap-1">
@@ -481,6 +482,28 @@ const About = () => {
                 Streamlining your work with Microsoft Copilot
               </span>
               <span className="text-zinc-400 text-sm">LinkedIn</span>
+            </li>
+            <li className="flex flex-col gap-1">
+              <span className="font-semibold text-white">
+                Generative AI: The Evolution of Thoughtful Online Search
+              </span>
+              <span className="text-zinc-400 text-sm">LinkedIn</span>
+            </li>
+            <li className="flex flex-col gap-1">
+              <span className="font-semibold text-white">
+                Foundations of Project Management
+              </span>
+              <span className="text-zinc-400 text-sm">
+                University of Moratuwa
+              </span>
+            </li>
+            <li className="flex flex-col gap-1">
+              <span className="font-semibold text-white">
+                Introduction to Software Quality Assurance
+              </span>
+              <span className="text-zinc-400 text-sm">
+                University of Moratuwa
+              </span>
             </li>
             <li className="flex flex-col gap-1">
               <span className="font-semibold text-white">Spoken English</span>
