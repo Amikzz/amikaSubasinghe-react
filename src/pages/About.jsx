@@ -339,10 +339,10 @@ const About = () => {
               <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                 React
               </span>
-              <span className="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+              <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                 Node.js
               </span>
-              <span className="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+              <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                 Tailwind CSS
               </span>
             </li>
@@ -371,13 +371,13 @@ const About = () => {
               <span className="font-semibold text-white w-full">
                 Testing & Databases:
               </span>
-              <span className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+              <span className="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                 Cypress
               </span>
-              <span className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+              <span className="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                 SQL
               </span>
-              <span className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+              <span className="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                 QuickBooks
               </span>
               <span className="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">
@@ -399,6 +399,14 @@ const About = () => {
           <ul className="space-y-4 text-zinc-300">
             <li className="flex flex-col gap-1">
               <span className="font-semibold text-white">
+                Stretchtec Integrated Production Management System
+              </span>
+              <span className="text-zinc-400 text-sm">
+                Laravel + MySQL which is a Full Stack app handling e2e production Management
+              </span>
+            </li>
+            <li className="flex flex-col gap-1">
+              <span className="font-semibold text-white">
                 Bus Management System
               </span>
               <span className="text-zinc-400 text-sm">
@@ -415,10 +423,10 @@ const About = () => {
             </li>
             <li className="flex flex-col gap-1">
               <span className="font-semibold text-white">
-                Menu Management System
+                Vehicle Management System
               </span>
               <span className="text-zinc-400 text-sm">
-                Automated menu planning, reduced time from 1 day to minutes.
+                Vehicle fleet management system made using Laravel and MySQL. 
               </span>
             </li>
             <li className="flex flex-col gap-1">
@@ -434,7 +442,7 @@ const About = () => {
                 Portfolio Website
               </span>
               <span className="text-zinc-400 text-sm">
-                Built with HTML, CSS, JS showcasing frontend expertise.
+                Built with React with user interactivity.
               </span>
             </li>
           </ul>
