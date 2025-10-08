@@ -125,7 +125,7 @@ const About = () => {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
             <div>
               <h3 className="text-lg font-bold text-white">
-                Junior Software devloper and System Analyst
+                Junior Software developer and System Analyst
               </h3>
               <p className="text-cyan-400 font-medium">
                 Rangiri Holdings | 2025 - Present
