@@ -98,10 +98,35 @@ const About = () => {
         className="bg-zinc-800 p-6 rounded-2xl shadow-xl border-l-4 border-cyan-400"
       >
         <h2 className="text-xl font-semibold text-cyan-400 mb-6">Professional Experience</h2>
-        
+
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
-            <h3 className="text-lg font-bold text-white">Software Management Trainee</h3>
+            <h3 className="text-lg font-bold text-white">Junior Software devloper and System Analyst</h3>
+            <p className="text-cyan-400 font-medium">Rangiri Holdings | 2025 - Present</p>
+          </div>
+          <span className="mt-2 md:mt-0 text-sm bg-cyan-500 text-white px-3 py-1 rounded-full font-medium shadow-sm">
+            Full-Stack Development
+          </span>
+        </div>
+
+        <ul className="list-disc list-inside space-y-2 text-zinc-300">
+          <p className="text-zinc-300 leading-relaxed mb-4">
+            In my current role, I lead large-scale projects that enhance operational efficiency and drive digital transformation. I’ve developed systems for production, machinery, and IT infrastructure management, implemented an HR solution using OrangeHRM, and conducted business analyses to identify and address inefficiencies. 
+            These initiatives have allowed me to combine technical expertise with strategic analysis to deliver innovative, impactful organizational improvements.
+          </p>
+        </ul>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          <span className="bg-zinc-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-medium">C#</span>
+          <span className="bg-zinc-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-medium">C++</span>
+          <span className="bg-zinc-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-medium">Laravel</span>
+          <span className="bg-zinc-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-medium">React</span>
+          <span className="bg-zinc-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-medium">Flutter</span>
+        </div>
+        
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 mt-5">
+          <div>
+            <h3 className="text-lg font-bold text-white">Software Development and Management Trainee</h3>
             <p className="text-cyan-400 font-medium">Rangiri Holdings | 2024 - 2025</p>
           </div>
           <span className="mt-2 md:mt-0 text-sm bg-cyan-500 text-white px-3 py-1 rounded-full font-medium shadow-sm">
@@ -110,22 +135,15 @@ const About = () => {
         </div>
 
         <ul className="list-disc list-inside space-y-2 text-zinc-300">
-          <li className="flex items-start gap-2">
-            <span className="text-cyan-400 mt-1">•</span>
-            <p>Implemented 3 custom software solutions improving efficiency by 20%.</p>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-cyan-400 mt-1">•</span>
-            <p>Ensured 99% uptime of ERP systems and optimized system performance.</p>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-cyan-400 mt-1">•</span>
-            <p>Resolved 95% of IT issues within SLA timelines, ensuring smooth operations.</p>
-          </li>
+          <p className="text-zinc-300 leading-relaxed mb-4">
+            During my internship, I gained practical experience in system development and analysis, contributing to projects that improved operational efficiency and supported digital transformation. I developed systems for invoicing and vehicle management, and optimized existing platforms like QuickBooks and Brylix ERP. These 
+            experiences strengthened my technical, analytical, and problem-solving skills in creating scalable software solutions.
+          </p>
         </ul>
 
         <div className="mt-4 flex flex-wrap gap-2">
           <span className="bg-zinc-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-medium">C#</span>
+          <span className="bg-zinc-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-medium">C++</span>
           <span className="bg-zinc-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-medium">Laravel</span>
           <span className="bg-zinc-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-medium">React</span>
           <span className="bg-zinc-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-medium">Flutter</span>
