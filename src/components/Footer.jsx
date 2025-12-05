@@ -51,7 +51,7 @@ const Footer = () => {
       <div className="flex-grow flex flex-col items-center justify-center relative z-10 w-full">
         {/* Intro Text */}
         <h2 className="text-lg md:text-2xl font-syne font-bold uppercase tracking-[0.2em] text-zinc-500 mb-6 opacity-80 select-none">
-          Let's Create
+          Work the Problem
         </h2>
 
         {/* Robot Container - Floating slightly above or intertwined */}
