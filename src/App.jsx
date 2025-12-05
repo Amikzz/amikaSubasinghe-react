@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 // Components
 import Header from "./components/Header";
@@ -13,7 +18,9 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
+
 import CodePlayground from "./pages/Codeplayground";
+import PageTransition from "./components/PageTransition";
 
 // Wrapper to handle location-based logic for Footer
 const AppWrapper = () => {
@@ -22,6 +29,7 @@ const AppWrapper = () => {
   return (
     <>
       <Header /> {/* Fixed navbar across pages */}
+      <PageTransition />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
