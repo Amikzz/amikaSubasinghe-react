@@ -25,16 +25,12 @@ const Marquee = () => {
           animate="animate"
         >
           <span className="flex items-center gap-10">
-            FULL-STACK DEVELOPER <span className="text-4xl">✦</span> UI & UX
-            DESIGNER <span className="text-4xl">✦</span>
+            FULL-STACK DEVELOPER <span className="text-4xl">✦</span> SOFTWARE
+            ENGINEER <span className="text-4xl">✦</span>
           </span>
           <span className="flex items-center gap-10">
-            FULL-STACK DEVELOPER <span className="text-4xl">✦</span> UI & UX
-            DESIGNER <span className="text-4xl">✦</span>
-          </span>
-          <span className="flex items-center gap-10">
-            FULL-STACK DEVELOPER <span className="text-4xl">✦</span> UI & UX
-            DESIGNER <span className="text-4xl">✦</span>
+            AI ENGINEER <span className="text-4xl">✦</span> SOFTWARE ARCHITECT{" "}
+            <span className="text-4xl">✦</span>
           </span>
         </motion.div>
       </div>
