@@ -3,6 +3,7 @@ import { FaLayerGroup, FaDesktop, FaServer, FaCloud } from "react-icons/fa";
 import Hero from "../components/Hero";
 import Marquee from "../components/Marquee";
 import Content from "../components/Content";
+import Badges from "../components/Badges";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -108,6 +109,9 @@ const Home = () => {
 
       {/* Experience / Timeline */}
       <Content />
+
+      {/* Badges Section */}
+      <Badges />
     </main>
   );
 };
