@@ -76,6 +76,23 @@ const AnimatedText = ({ text, className, variants = letterAnimation }) => (
   </motion.h1>
 );
 
+// --- Interactive Letter Component ---
+const InteractiveLetter = ({ char, variants, hoverColor = "#3b82f6" }) => (
+  <motion.span
+    variants={variants}
+    whileHover={{
+      scale: 1.2,
+      y: -10,
+      rotate: Math.random() * 10 - 5,
+      color: hoverColor,
+      transition: { duration: 0.2 },
+    }}
+    style={{ display: "inline-block", cursor: "default" }}
+  >
+    {char === " " ? "\u00A0" : char}
+  </motion.span>
+);
+
 // --- Extracted SocialLinks Component to Isolate Mouse Logic ---
 const SocialLinks = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -168,72 +185,111 @@ const Hero = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col justify-center items-center z-50">
-        <div className="pb-2">
+      <div className="flex flex-col justify-center items-center z-50 mix-blend-difference">
+        <div className="pb-4">
           <AnimatedText
-            text="Hi! i’m Amika"
+            text="Hi! I’m Amika"
             variants={letterAnimationFade}
-            className="font-syne text-[1.2rem] xs:text-[1.5rem] sm:text-[1.6rem] md:text-[1.65rem] lg:text-[1.6rem]
-               text-center mb-1 text-white leading-[1.3] flex justify-center will-change-transform"
+            className="font-syne text-xl md:text-2xl lg:text-3xl text-zinc-400 tracking-widest uppercase mb-4"
           />
         </div>
 
-        <div className="overflow-hidden pb-3">
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: {},
-              show: {
-                transition: { staggerChildren: 0.05, delayChildren: 0.8 }, // Delayed start for second line
-              },
-            }}
-            className="font-syne text-[2.3rem] xs:text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5.4rem] text-center text-white leading-[1.15] flex justify-center flex-wrap"
-          >
-            {"Software Engineer".split("").map((char, index) => (
-              <motion.span
-                key={index}
-                variants={letterAnimation}
-                style={{
-                  display: "inline-block",
-                  transformStyle: "preserve-3d",
-                }}
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </motion.div>
-        </div>
+        <div className="flex flex-col items-center leading-none">
+          {/* Line 1: SOFTWARE */}
+          <div className="overflow-hidden">
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={{
+                hidden: {},
+                show: {
+                  transition: { staggerChildren: 0.05, delayChildren: 0.8 },
+                },
+              }}
+              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-white tracking-tighter"
+            >
+              {"SOFTWARE".split("").map((char, index) => (
+                <InteractiveLetter
+                  key={index}
+                  char={char}
+                  variants={letterAnimation}
+                />
+              ))}
+            </motion.div>
+          </div>
 
-        <div className="overflow-hidden pb-3">
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: {},
-              show: {
-                transition: { staggerChildren: 0.05, delayChildren: 1.5 }, // Delayed start for third line
-              },
-            }}
-            className="font-syne text-[2.3rem] xs:text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5.4rem] text-center text-white leading-[1.15] flex justify-center flex-wrap"
-          >
-            {"Full-stack Developer.".split("").map((char, index) => (
-              <motion.span
-                key={index}
-                variants={letterAnimation}
-                style={{
-                  display: "inline-block",
-                  transformStyle: "preserve-3d",
-                }}
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </motion.div>
+          {/* Line 2: ENGINEER */}
+          <div className="overflow-hidden -mt-2 md:-mt-6">
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={{
+                hidden: {},
+                show: {
+                  transition: { staggerChildren: 0.05, delayChildren: 1.2 },
+                },
+              }}
+              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-zinc-500 tracking-tighter hover:text-white transition-colors duration-500"
+            >
+              {"ENGINEER".split("").map((char, index) => (
+                <InteractiveLetter
+                  key={index}
+                  char={char}
+                  variants={letterAnimation}
+                />
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Line 3: Description */}
+          <div className="overflow-hidden mt-8 md:mt-12">
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={{
+                hidden: {},
+                show: {
+                  transition: { staggerChildren: 0.1, delayChildren: 2 },
+                },
+              }}
+              className="flex flex-col md:flex-row items-center justify-center font-syne text-sm md:text-xl text-zinc-400 tracking-wide gap-y-4 md:gap-y-0"
+            >
+              {["FULL-STACK DEVELOPER", "AI ENTHUSIAST", "CREATIVE CODER"].map(
+                (role, i, arr) => (
+                  <React.Fragment key={i}>
+                    <motion.div
+                      className="flex flex-wrap justify-center gap-x-1"
+                      variants={{
+                        hidden: {},
+                        show: {
+                          transition: { staggerChildren: 0.03 },
+                        },
+                      }}
+                    >
+                      {role.split("").map((char, index) => (
+                        <InteractiveLetter
+                          key={index}
+                          char={char}
+                          variants={letterAnimationFade}
+                          hoverColor="#ffffff"
+                        />
+                      ))}
+                    </motion.div>
+                    {i < arr.length - 1 && (
+                      <motion.span
+                        variants={letterAnimationFade}
+                        className="hidden md:inline-block mx-4 text-zinc-400"
+                      >
+                        •
+                      </motion.span>
+                    )}
+                  </React.Fragment>
+                )
+              )}
+            </motion.div>
+          </div>
         </div>
       </div>
-
-      {/* Vertical Name */}
       <div className="absolute hidden lg:block -rotate-90 top-[40%] -right-[6.5%] transform -translate-y-1/2 text-white font-syne tracking-wider pr-5">
         <span>AMIKA SUBASINGHE</span>
       </div>
