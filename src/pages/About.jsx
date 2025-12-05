@@ -126,7 +126,7 @@ const About = () => {
                 >
                   I'm{" "}
                   <span className="text-white font-semibold">
-                    Amika Indusara
+                    Amika Subasinghe
                   </span>
                   , a full-stack developer & AI enthusiast based in Sri Lanka.
                 </motion.p>
@@ -285,7 +285,7 @@ const About = () => {
         </div>
 
         {/* TECH STACK */}
-        <div className="mb-24">
+        <div className="mb-24 relative z-10 bg-zinc-900/40 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/5">
           <h2 className="text-3xl font-bold mb-12 text-center font-cabinetGrotesk text-white/40 uppercase tracking-widest">
             Technical Toolkit
           </h2>

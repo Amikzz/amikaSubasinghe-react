@@ -102,8 +102,8 @@ const SecureCodePlayground = () => {
   };
 
   return (
-    <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col pt-32 pb-20 relative overflow-hidden font-syne">
-      <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 z-10">
+    <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col pt-32 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden font-syne">
+      <div className="max-w-[1400px] mx-auto w-full z-10">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

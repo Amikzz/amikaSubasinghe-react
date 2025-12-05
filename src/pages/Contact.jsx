@@ -94,25 +94,21 @@ const Contact = () => {
   ];
 
   return (
-    <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col items-center justify-start pt-32 px-6 md:px-20 pb-20 relative overflow-hidden font-syne">
-      {/* Background Elements */}
-      {/* Background Elements - Removed for clean dark theme matching Projects page */}
-
-      <div className="max-w-6xl w-full z-10 flex flex-col gap-16">
+    <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col items-center justify-start pt-32 px-6 md:px-12 lg:px-24 pb-20 relative overflow-hidden font-syne">
+      <div className="max-w-[1400px] w-full z-10 flex flex-col gap-16">
         {/* Top: Title & Intro */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto"
+          className="w-full mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight font-cabinetGrotesk">
-            Let's{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-main to-white">
-              Connect
-            </span>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-8 tracking-tighter leading-[0.9] font-cabinetGrotesk">
+            Let's <br />
+            <span className="text-zinc-600">Connect.</span>
           </h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">
+          <div className="w-full h-[1px] bg-zinc-800 mt-12 mb-8" />
+          <p className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl">
             Have a project in mind or just want to chat? I'm always open to new
             opportunities and collaborations.
           </p>
@@ -126,7 +122,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="bg-[#1a1a1a] p-8 rounded-3xl space-y-6 border border-white/5 h-full"
+            className="bg-zinc-900/40 backdrop-blur-md p-8 md:p-12 rounded-3xl space-y-6 border border-white/5 h-full relative z-10"
           >
             <div className="space-y-2">
               <label
@@ -214,7 +210,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="bg-[#1a1a1a] p-8 rounded-3xl space-y-8 border border-white/5 h-full flex flex-col"
+            className="bg-zinc-900/40 backdrop-blur-md p-8 rounded-3xl space-y-8 border border-white/5 h-full flex flex-col relative z-10"
           >
             <div>
               <h3 className="text-xl font-bold text-white mb-2 font-syne">
