@@ -254,7 +254,7 @@ const Hero = () => {
               }}
               className="flex flex-col md:flex-row items-center justify-center font-syne text-sm md:text-xl text-zinc-400 tracking-wide gap-y-4 md:gap-y-0"
             >
-              {["FULL-STACK DEVELOPER", "AI ENTHUSIAST", "CREATIVE CODER"].map(
+              {["FULL-STACK DEVELOPER", "CREATIVE CODER", "AI ENTHUSIAST"].map(
                 (role, i, arr) => (
                   <React.Fragment key={i}>
                     <motion.div
