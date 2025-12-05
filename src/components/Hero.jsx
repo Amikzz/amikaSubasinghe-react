@@ -196,7 +196,7 @@ const Hero = () => {
 
         <div className="flex flex-col items-center leading-none">
           {/* Line 1: SOFTWARE */}
-          <div className="overflow-hidden">
+          <div className="p-4">
             <motion.div
               initial="hidden"
               animate="show"
@@ -219,7 +219,7 @@ const Hero = () => {
           </div>
 
           {/* Line 2: ENGINEER */}
-          <div className="overflow-hidden -mt-2 md:-mt-6">
+          <div className="-mt-10 md:-mt-14 p-4">
             <motion.div
               initial="hidden"
               animate="show"
