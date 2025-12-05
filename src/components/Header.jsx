@@ -83,7 +83,10 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 p-4 md:p-8 pt-[1.5rem] md:pt-[3rem] font-syne mix-blend-difference">
+    <header
+      className="fixed top-0 left-0 w-full z-50 p-4 md:p-8 pt-[1.5rem] md:pt-[3rem] font-syne 
+             bg-black md:bg-transparent mix-blend-normal md:mix-blend-difference"
+    >
       <div className="flex justify-between items-center w-full">
         {/* Logo */}
         <NavLink to="/" className="z-50 mix-blend-difference">
