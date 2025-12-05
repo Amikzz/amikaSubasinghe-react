@@ -104,10 +104,7 @@ const SecureCodePlayground = () => {
   return (
     <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col items-center pt-32 px-6 md:px-12 lg:px-20 pb-20 relative overflow-hidden font-syne">
       {/* Background Elements */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-violet-900/10 rounded-full blur-[120px]" />
-      </div>
+      {/* Background Elements - Removed for clean dark theme matching Projects page */}
 
       <div className="max-w-7xl w-full z-10">
         <motion.div
@@ -115,8 +112,9 @@ const SecureCodePlayground = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 flex items-center justify-center gap-3 font-cabinetGrotesk">
-            <FaCode className="text-main" /> Code{" "}
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 font-cabinetGrotesk leading-tight inline-flex items-center justify-center gap-3">
+            <FaCode className="text-main" style={{ verticalAlign: "middle" }} />
+            <span>Code</span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-main to-white">
               Playground
             </span>

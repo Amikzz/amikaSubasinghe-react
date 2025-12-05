@@ -52,7 +52,7 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-3xl md:text-5xl lg:text-7xl font-bold font-cabinetGrotesk leading-tight mb-10"
           >
-            I'm Amika — a Full Stack Developer crafting fast, scalable, and
+            I'm Amika - a Full Stack Developer crafting fast, scalable, and
             immersive digital experiences.
           </motion.h2>
           <Link to="/about">
