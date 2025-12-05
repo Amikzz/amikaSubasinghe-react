@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
-import bgVideo from "../assets/background.gif";
+import bgVideo from "../assets/background.mp4";
 
 // --- Variants Defined Outside Component ---
 const container = {
@@ -159,12 +159,16 @@ const SocialLinks = () => {
 const Hero = () => {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden z-20">
-      {/* Background GIF */}
-      <img
-        src={bgVideo}
-        alt="Background Animation"
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
         className="absolute top-0 left-0 w-full h-full object-cover -z-20"
-      />
+      >
+        <source src={bgVideo} type="video/mp4" />
+      </video>
 
       {/* Dark Overlay */}
       <div className="absolute top-0 left-0 w-full h-full bg-black/80 -z-10"></div>
