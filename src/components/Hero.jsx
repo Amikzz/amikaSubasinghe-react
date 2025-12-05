@@ -3,6 +3,7 @@ import { Typewriter } from "react-simple-typewriter";
 import Lottie from "lottie-react";
 import codingAnimation from "../assets/coding.json";
 import { motion } from "framer-motion";
+import { RiArrowDownLine } from "react-icons/ri";
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -18,108 +19,133 @@ const Hero = () => {
     visible: (i = 1) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.3, duration: 0.6, ease: "easeOut" },
+      transition: { delay: i * 0.2, duration: 0.8, ease: "easeOut" },
     }),
   };
 
-  const accentOpacity = Math.max(0, 0.1 - scrollY / 400);
-
-  // Prevent horizontal scrolling
-  useEffect(() => {
-    document.body.style.overflowX = "hidden";
-    return () => {
-      document.body.style.overflowX = "hidden";
-    };
-  }, []);
-
   return (
-    <section className="w-full min-h-screen bg-zinc-900 flex flex-col md:flex-row items-center justify-center px-6 md:px-20 pt-24 md:pt-0 relative overflow-hidden">
-      
-      {/* Left Side: Lottie Animation */}
-      <motion.div
-        className="flex-1 flex items-center justify-center mb-10 md:mb-0"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <div className="w-72 md:w-96 lg:w-[28rem] xl:w-[32rem] h-72 md:h-96 lg:h-[28rem] xl:h-[32rem] relative rounded-3xl overflow-hidden">
-          <Lottie
-            animationData={codingAnimation}
-            loop={true}
-            className="w-full h-full"
-          />
-        </div>
-      </motion.div>
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-zinc-950">
+      {/* Background Gradients */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/20 rounded-full blur-[120px] animate-pulse-slow" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-violet-600/20 rounded-full blur-[120px] animate-pulse-slow" />
+      </div>
 
-      {/* Right Side: Introduction */}
-      <div className="flex-1 w-full max-w-full text-center md:text-left text-zinc-50">
-        <motion.h1
-          className="text-3xl md:text-5xl font-bold mb-4"
-          variants={textVariant}
-          initial="hidden"
-          animate="visible"
-          custom={1}
-        >
-          Hi, I&apos;m Amika
-        </motion.h1>
-
-        <motion.h2
-          className="text-xl md:text-2xl font-medium text-cyan-400 mb-6 min-h-[2.5rem]"
-          variants={textVariant}
-          initial="hidden"
-          animate="visible"
-          custom={2}
-        >
-          <Typewriter
-            words={["Software Engineer", "Full Stack Developer", "Tech Enthusiast"]}
-            loop={0}
-            cursor
-            cursorStyle="|"
-            typeSpeed={70}
-            deleteSpeed={50}
-            delaySpeed={2000}
-          />
-        </motion.h2>
-
-        <motion.p
-          className="text-zinc-300 text-base md:text-lg max-w-md text-justify mx-auto md:mx-0"
-          variants={textVariant}
-          initial="hidden"
-          animate="visible"
-          custom={3}
-        >
-          A full-stack developer with a passion for crafting efficient, interactive, and scalable applications. 
-          From backend systems in Laravel and C# to dynamic frontends in Flutter and React, I merge technical skill with creativity to bring ideas to life. 
-          Explore my projects to see how I transform concepts into real-world solutions.
-        </motion.p>
-
-        <motion.div
-          className="mt-8 flex justify-center md:justify-start"
-          variants={textVariant}
-          initial="hidden"
-          animate="visible"
-          custom={4}
-        >
-          <a
-            href="/projects"
-            className="px-6 py-3 bg-cyan-500 text-zinc-900 font-semibold rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 shadow-lg hover:shadow-cyan-500/50 w-full sm:w-auto text-center"
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 flex flex-col-reverse md:flex-row items-center justify-between relative z-10">
+        {/* Left Side: Introduction */}
+        <div className="flex-1 text-center md:text-left mt-12 md:mt-0">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-1.5 mb-6 rounded-full border border-zinc-800 bg-zinc-900/50 backdrop-blur-sm"
           >
-            View Projects
-          </a>
+            <span className="text-zinc-400 text-sm font-medium tracking-wide">
+              Welcome to my portfolio
+            </span>
+          </motion.div>
+
+          <motion.h1
+            className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6"
+            variants={textVariant}
+            initial="hidden"
+            animate="visible"
+            custom={1}
+          >
+            Hi, I&apos;m{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">
+              Amika
+            </span>
+          </motion.h1>
+
+          <motion.h2
+            className="text-xl md:text-2xl font-medium text-zinc-400 mb-8 h-8"
+            variants={textVariant}
+            initial="hidden"
+            animate="visible"
+            custom={2}
+          >
+            I am a{" "}
+            <span className="text-zinc-200">
+              <Typewriter
+                words={[
+                  "Software Engineer",
+                  "Full Stack Developer",
+                  "Tech Enthusiast",
+                ]}
+                loop={0}
+                cursor
+                cursorStyle="_"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={2000}
+              />
+            </span>
+          </motion.h2>
+
+          <motion.p
+            className="text-zinc-400 text-base md:text-lg max-w-xl mx-auto md:mx-0 leading-relaxed mb-10"
+            variants={textVariant}
+            initial="hidden"
+            animate="visible"
+            custom={3}
+          >
+            Crafting efficient, interactive, and scalable applications. From
+            backend systems to dynamic frontends, I merge technical skill with
+            creativity to bring ideas to life.
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start"
+            variants={textVariant}
+            initial="hidden"
+            animate="visible"
+            custom={4}
+          >
+            <a
+              href="/projects"
+              className="px-8 py-3.5 bg-white text-zinc-950 font-semibold rounded-full hover:bg-zinc-200 transition-colors shadow-lg shadow-white/10 w-full sm:w-auto text-center"
+            >
+              View Projects
+            </a>
+            <a
+              href="/contact"
+              className="px-8 py-3.5 bg-zinc-900 text-white font-semibold rounded-full border border-zinc-800 hover:bg-zinc-800 transition-colors w-full sm:w-auto text-center"
+            >
+              Contact Me
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Right Side: Lottie Animation */}
+        <motion.div
+          className="flex-1 flex items-center justify-center md:justify-end relative"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <div className="relative w-full max-w-md lg:max-w-lg aspect-square">
+            {/* Abstract background shape behind animation */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-violet-500/10 rounded-full blur-3xl" />
+            <Lottie
+              animationData={codingAnimation}
+              loop={true}
+              className="w-full h-full relative z-10 drop-shadow-2xl"
+            />
+          </div>
         </motion.div>
       </div>
 
-      {/* Background Accents */}
-      <div className="hidden md:block absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div
-          className="absolute -top-32 -left-32 w-[700px] h-[700px] bg-cyan-500 rounded-full blur-[200px] animate-pulse-slow"
-          style={{ opacity: accentOpacity }}
-        />
-        <div
-          className="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-pink-500 rounded-full blur-[200px] animate-pulse-slow"
-          style={{ opacity: accentOpacity }}
-        />
-      </div>
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-zinc-500 flex flex-col items-center gap-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{ delay: 1.5, duration: 2, repeat: Infinity }}
+      >
+        <span className="text-xs uppercase tracking-widest">Scroll</span>
+        <RiArrowDownLine size={20} />
+      </motion.div>
     </section>
   );
 };

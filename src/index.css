@@ -1,11 +1,75 @@
 @import "tailwindcss";
 
+:root {
+  /* Modern Dark Theme Palette */
+  --color-bg: #09090b; /* Zinc 950 */
+  --color-surface: #18181b; /* Zinc 900 */
+  --color-surface-highlight: #27272a; /* Zinc 800 */
+  --color-primary: #fafafa; /* Zinc 50 */
+  --color-secondary: #a1a1aa; /* Zinc 400 */
+  --color-accent: #3b82f6; /* Blue 500 - can be changed to user preference */
+
+  /* Glassmorphism */
+  --glass-bg: rgba(24, 24, 27, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --color-background: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+}
+
 /* Base */
 html {
   scroll-behavior: smooth;
+  background-color: var(--color-bg);
 }
 
 body {
-  @apply bg-zinc-900 text-zinc-50 h-[200vh];
-  font-family: 'Inter', sans-serif;
+  @apply bg-zinc-950 text-zinc-50 antialiased selection:bg-white/20;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Utilities */
+@utility glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+@utility glass-hover {
+  @apply transition-all duration-300;
+  &:hover {
+    background: rgba(39, 39, 42, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@utility text-gradient {
+  background: linear-gradient(to right, #fff, #a1a1aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-highlight);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
 }

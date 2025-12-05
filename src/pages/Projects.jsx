@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaLock } from "react-icons/fa";
 import { useState } from "react";
 
 const projects = [
   {
     title: "SkillSwap Platform",
     description:
-      "SkillSwap is a comprehensive skill-sharing platform built with Flutter for the frontend and Laravel for the backend. The system enables users to offer their skills and book sessions with others securely. Integrated with a third-party payment API, it ensures safe financial transactions and includes secure authentication, a booking system, and a responsive dashboard for users to track their engagements. The project demonstrates my ability to build a scalable, cross-platform application while leveraging modern frameworks and best practices in full-stack development.",
+      "SkillSwap is a comprehensive skill-sharing platform built with Flutter for the frontend and Laravel for the backend. The system enables users to offer their skills and book sessions with others securely. Integrated with a third-party payment API, it ensures safe financial transactions and includes secure authentication, a booking system, and a responsive dashboard.",
     image: "/assets/skillswap.jpg",
     tech: ["Flutter", "Laravel", "MySQL", "API Integration"],
     github: "https://github.com/Amikzz/project_skillswap.git",
@@ -16,7 +16,7 @@ const projects = [
   {
     title: "Bus Management System",
     description:
-      "The Bus Management System is a full-stack application developed to manage bus operations efficiently. Built using Laravel and Flutter, it handles bus schedules, live location tracking using Google Maps API, and ticket bookings for passengers. The system includes QR code-based ticket validation, a conductor panel for issuing tickets, and a safety alert feature for passengers. With this project, I implemented robust backend logic, secure database interactions, and a seamless cross-platform interface, demonstrating practical skills in building enterprise-grade transport solutions.",
+      "The Bus Management System is a full-stack application developed to manage bus operations efficiently. Built using Laravel and Flutter, it handles bus schedules, live location tracking using Google Maps API, and ticket bookings for passengers. The system includes QR code-based ticket validation and a conductor panel.",
     image: "/assets/bus.jpg",
     tech: ["Laravel", "Flutter", "Google Maps API"],
     github: "https://github.com/Amikzz/rideeasyback.git",
@@ -26,7 +26,7 @@ const projects = [
   {
     title: "Stock Management System",
     description:
-      "The Stock Management System is a desktop-based application designed to streamline inventory management for small and medium-sized businesses. Developed using C# and SQL Server, it provides full CRUD operations, advanced search filters, reporting capabilities, and role-based authentication for secure access. The system improves operational efficiency by automating stock updates, tracking inventory levels, and generating insightful reports, showcasing my ability to design reliable and maintainable software solutions in a Windows environment.",
+      "The Stock Management System is a desktop-based application designed to streamline inventory management for small and medium-sized businesses. Developed using C# and SQL Server, it provides full CRUD operations, advanced search filters, reporting capabilities, and role-based authentication for secure access.",
     image: "/assets/stock.jpeg",
     tech: ["C#", "SQL Server", "WinForms"],
     github: "https://github.com/Amikzz/Stock-Management-System.git",
@@ -36,7 +36,7 @@ const projects = [
   {
     title: "Library Management System",
     description:
-      "This Library Management System is a desktop application built in C# with SQL Server backend to manage the operations of a modern library efficiently. It supports full CRUD functionality for books and users, advanced search filters, automated report generation, and secure authentication. The system simplifies administrative tasks, optimizes resource allocation, and enhances user experience for both librarians and library members, reflecting my expertise in designing practical, user-centric software solutions.",
+      "This Library Management System is a desktop application built in C# with SQL Server backend to manage the operations of a modern library efficiently. It supports full CRUD functionality for books and users, advanced search filters, automated report generation, and secure authentication.",
     image: "/assets/library.jpg",
     tech: ["C#", "SQL Server", "WinForms"],
     github: "https://github.com/Amikzz/Library-Mananagement-System.git",
@@ -46,7 +46,7 @@ const projects = [
   {
     title: "Personal Portfolio",
     description:
-      "My Personal Portfolio is a modern, fully responsive website built with React and Vite to showcase my projects, skills, and professional experience. The platform features smooth animations powered by Framer Motion, an optimized UI with Tailwind CSS, and seamless navigation. It highlights my development capabilities and demonstrates proficiency in frontend design, component-based architecture, and interactive UI experiences, providing visitors with an engaging overview of my work and technical expertise.",
+      "My Personal Portfolio is a modern, fully responsive website built with React and Vite to showcase my projects, skills, and professional experience. The platform features smooth animations powered by Framer Motion, an optimized UI with Tailwind CSS, and seamless navigation.",
     image: "/assets/portfolio.jpg",
     tech: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/Amikzz/amikaSubasinghe-react.git",
@@ -56,7 +56,7 @@ const projects = [
   {
     title: "Invoice Management System",
     description:
-      "A customized invoice management system developed for Nisu Creations using Laravel and MySQL. It streamlines invoice and delivery note generation, tracks orders, and manages client interactions efficiently. The system provides dashboards and reports to monitor sales and financial transactions, ensuring operational transparency and improved business workflows. This enterprise-grade solution highlights my ability to deliver secure, scalable, and highly functional software tailored for client-specific needs.",
+      "A customized invoice management system developed for Nisu Creations using Laravel and MySQL. It streamlines invoice and delivery note generation, tracks orders, and manages client interactions efficiently. The system provides dashboards and reports to monitor sales and financial transactions.",
     image: "/assets/invoice.jpg",
     tech: ["Laravel", "MySQL", "Blade", "Tailwind CSS"],
     github: null,
@@ -66,7 +66,7 @@ const projects = [
   {
     title: "Vehicle Management System",
     description:
-      "A comprehensive vehicle management system developed for Rangiri Holdings using Laravel and MySQL. It manages service and maintenance records, monitors expenses, and provides interactive dashboards and reporting features for informed decision-making. This enterprise-level project showcases my skills in building robust business systems with secure database handling, user role management, and dynamic visualizations to improve operational efficiency.",
+      "A comprehensive vehicle management system developed for Rangiri Holdings using Laravel and MySQL. It manages service and maintenance records, monitors expenses, and provides interactive dashboards and reporting features for informed decision-making.",
     image: "/assets/vehicle.jpg",
     tech: ["Laravel", "MySQL", "Blade", "Tailwind CSS", "Chart.js"],
     github: null,
@@ -76,7 +76,7 @@ const projects = [
   {
     title: "Rangiri Aqua Website",
     description:
-      "A modern, responsive company website designed for Rangiri Aqua using HTML, CSS, and JavaScript. The site features smooth animations, an intuitive user interface, and a clean layout to showcase company products and services effectively. This project demonstrates my ability to deliver high-quality frontend solutions that combine design aesthetics with usability, providing an engaging user experience.",
+      "A modern, responsive company website designed for Rangiri Aqua using HTML, CSS, and JavaScript. The site features smooth animations, an intuitive user interface, and a clean layout to showcase company products and services effectively.",
     image: "/assets/rangiri.jpg",
     tech: ["HTML", "CSS", "JavaScript"],
     github: null,
@@ -86,7 +86,7 @@ const projects = [
   {
     title: "Stretctec Production Management System",
     description:
-      "An enterprise-grade system developed for Stretctec, a leading apparel raw material manufacturer. Built with Laravel and MySQL, it manages the entire production line and sample development process. The system streamlines customer inquiries, sample approvals, order tracking, and production workflows while providing dashboards and reporting for operational efficiency. This is the largest hands-on project I have developed, showcasing my ability to build scalable, real-world business solutions.",
+      "An enterprise-grade system developed for Stretctec, a leading apparel raw material manufacturer. Built with Laravel and MySQL, it manages the entire production line and sample development process. The system streamlines customer inquiries, sample approvals, order tracking, and production workflows.",
     image: "/assets/production.jpg",
     tech: ["Laravel", "MySQL", "Blade", "Tailwind CSS", "Chart.js"],
     github: null,
@@ -103,77 +103,92 @@ const ProjectCard = ({ project, index }) => {
       key={index}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.2, duration: 0.6 }}
-      whileHover={{ scale: 1.03 }}
-      className="bg-zinc-800 rounded-2xl shadow-lg overflow-hidden flex flex-col w-full"
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      whileHover={{ y: -10 }}
+      className="glass rounded-3xl overflow-hidden flex flex-col w-full group border border-white/5 hover:border-white/10 transition-all duration-300"
     >
-      {/* Image wrapper with fade-in */}
-      <div className="relative w-full h-64 bg-zinc-700">
+      {/* Image wrapper */}
+      <div className="relative w-full h-56 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-zinc-800 animate-pulse"
+          style={{ display: loaded ? "none" : "block" }}
+        />
         <motion.img
           src={project.image}
           alt={project.title}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: loaded ? 1 : 0, scale: loaded ? 1 : 1.05 }}
-          transition={{ duration: 0.8 }}
-          className="w-full h-full object-cover"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.5 }}
+          className="w-full h-full object-cover transition-transform duration-500"
           onLoad={() => setLoaded(true)}
         />
-        {/* Optional: Skeleton placeholder */}
-        {!loaded && (
-          <div className="absolute inset-0 bg-zinc-600 animate-pulse"></div>
-        )}
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent opacity-60" />
 
-      <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl font-semibold text-cyan-400 mb-2">
-          {project.title}
-        </h3>
-        <p className="text-zinc-400 text-sm mb-4 flex-grow">
-          {project.description}
-        </p>
-
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tech.map((t, i) => (
+        {/* Tech Stack Overlay */}
+        <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
+          {project.tech.slice(0, 3).map((t, i) => (
             <span
               key={i}
-              className={`${
-                project.licensed
-                  ? "bg-zinc-700 text-gray-400"
-                  : "bg-zinc-700 text-cyan-300"
-              } text-xs px-3 py-1 rounded-full`}
+              className="bg-black/50 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-full border border-white/10"
             >
               {t}
             </span>
           ))}
+          {project.tech.length > 3 && (
+            <span className="bg-black/50 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-full border border-white/10">
+              +{project.tech.length - 3}
+            </span>
+          )}
+        </div>
+      </div>
+
+      <div className="p-6 flex flex-col flex-grow relative">
+        <div className="flex justify-between items-start mb-3">
+          <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+            {project.title}
+          </h3>
+          {project.licensed && (
+            <div
+              className="bg-amber-500/10 text-amber-500 p-1.5 rounded-lg"
+              title="Licensed Project"
+            >
+              <FaLock size={12} />
+            </div>
+          )}
         </div>
 
+        <p className="text-zinc-400 text-sm mb-6 flex-grow leading-relaxed line-clamp-3">
+          {project.description}
+        </p>
+
         {/* Action Buttons */}
-        {!project.licensed && (
-          <div className="flex space-x-4 mt-auto">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 bg-zinc-700 hover:bg-zinc-600 px-4 py-2 rounded-lg text-sm"
-            >
-              <FaGithub /> Code
-            </a>
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 bg-cyan-400 text-zinc-900 hover:bg-cyan-500 px-4 py-2 rounded-lg text-sm font-medium"
-            >
-              <FaExternalLinkAlt /> Docs
-            </a>
-          </div>
-        )}
-        {project.licensed && (
-          <div className="mt-auto text-zinc-400 italic text-sm">
-            Licensed Project – Code & Docs Restricted
-          </div>
-        )}
+        <div className="mt-auto pt-4 border-t border-white/5 flex gap-3">
+          {!project.licensed ? (
+            <>
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white py-2.5 rounded-xl text-sm font-medium transition-colors"
+              >
+                <FaGithub /> Code
+              </a>
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 bg-white text-zinc-950 hover:bg-zinc-200 py-2.5 rounded-xl text-sm font-bold transition-colors"
+              >
+                <FaExternalLinkAlt size={12} /> Live Demo
+              </a>
+            </>
+          ) : (
+            <div className="w-full py-2.5 text-center text-zinc-500 text-xs font-medium bg-zinc-900/50 rounded-xl border border-zinc-800/50">
+              Enterprise Project • Private Codebase
+            </div>
+          )}
+        </div>
       </div>
     </motion.div>
   );
@@ -181,30 +196,43 @@ const ProjectCard = ({ project, index }) => {
 
 const Projects = () => {
   return (
-    <main className="w-full min-h-screen bg-zinc-900 text-zinc-50 flex flex-col items-center justify-start pt-32 px-6 md:px-20 relative">
-      <motion.h1
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-5xl md:text-6xl font-bold text-cyan-400 mb-6 text-center"
-      >
-        My Projects
-      </motion.h1>
+    <main className="w-full min-h-screen bg-zinc-950 text-zinc-50 flex flex-col items-center justify-start pt-32 px-6 md:px-12 lg:px-20 pb-20 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-violet-900/10 rounded-full blur-[120px]" />
+      </div>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-        className="text-zinc-400 text-center mb-12 max-w-3xl"
-      >
-        Here are some of the projects I’ve worked on recently. Some are personal
-        projects, while others are licensed enterprise solutions developed for companies.
-      </motion.p>
+      <div className="max-w-7xl w-full z-10">
+        <div className="text-center mb-16">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight"
+          >
+            Featured{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">
+              Projects
+            </span>
+          </motion.h1>
 
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full px-6 md:px-12 lg:px-20">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} index={index} />
-        ))}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed"
+          >
+            A collection of my work ranging from personal experiments to
+            enterprise-grade solutions.
+          </motion.p>
+        </div>
+
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <ProjectCard key={index} project={project} index={index} />
+          ))}
+        </div>
       </div>
     </main>
   );
