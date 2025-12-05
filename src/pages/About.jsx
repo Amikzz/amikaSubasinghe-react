@@ -57,10 +57,7 @@ const About = () => {
   return (
     <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col pt-32 pb-20 relative overflow-hidden font-syne">
       {/* Background Ambience */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-main/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px]" />
-      </div>
+      {/* Background Ambience Removed */}
 
       {/* Content Container - Hero */}
       <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 z-10">
