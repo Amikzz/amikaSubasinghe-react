@@ -16,188 +16,284 @@ const About = () => {
   const [isGameOpen, setIsGameOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
+  // Animation Variants
+  const textRevealVariants = {
+    hidden: { y: "100%", opacity: 0 },
+    visible: {
+      y: "0%",
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
       },
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const marqueeVariants = {
+    animate: {
+      x: [0, -1000],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 20,
+          ease: "linear",
+        },
+      },
+    },
   };
 
   return (
-    <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col items-center justify-start pt-32 px-6 md:px-20 pb-20 relative overflow-hidden font-syne">
-      <motion.div
-        className="max-w-7xl w-full z-10"
-        variants={containerVariants}
-        initial="hidden"
-        animate="show"
-      >
-        {/* Header Section */}
+    <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col pt-32 pb-20 relative overflow-hidden font-syne">
+      {/* Background Ambience */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-main/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px]" />
+      </div>
+
+      {/* Content Container - Hero */}
+      <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 z-10">
+        {/* HERO SECTION */}
         <motion.div
-          variants={itemVariants}
-          className="flex flex-col md:flex-row items-center md:items-start gap-10 mb-16"
+          className="flex flex-col mb-24"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
         >
-          {/* Profile Image */}
-          <div className="relative group">
-            <div className="absolute inset-0 bg-main/20 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
-            <motion.img
-              src={profilePic}
-              alt="Amika Subasinghe"
-              className="relative w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-2 border-zinc-700 shadow-2xl transition-all duration-500"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              onLoad={() => setLoaded(true)}
-            />
+          {/* Huge Title */}
+          <div className="overflow-hidden mb-8">
+            <motion.h1
+              className="text-[12vw] leading-[0.85] font-bold tracking-tighter text-white font-cabinetGrotesk uppercase"
+              variants={textRevealVariants}
+            >
+              About Me
+            </motion.h1>
           </div>
 
-          {/* Intro Text */}
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight font-cabinetGrotesk">
-              Amika Indusara
-            </h1>
-            <p className="text-xl text-zinc-400 mb-6 font-light">
-              Software Engineering Undergraduate & Full Stack Developer
-            </p>
+          {/* Intro Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-8">
+            {/* Left: Profile Image & Actions */}
+            <div className="lg:col-span-4 flex flex-col gap-6">
+              <motion.div
+                className="relative aspect-square w-full max-w-sm rounded-2xl overflow-hidden group"
+                variants={textRevealVariants}
+              >
+                <motion.img
+                  src={profilePic}
+                  alt="Amika Subasinghe"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  onLoad={() => setLoaded(true)}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+              </motion.div>
 
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              <a
-                href={cvFile}
-                download
-                className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-main transition-colors shadow-lg shadow-white/5"
+              <motion.div
+                className="flex flex-wrap gap-4"
+                variants={textRevealVariants}
               >
-                <FaDownload size={14} /> Download CV
-              </a>
-              <button
-                onClick={() => setIsGameOpen(true)}
-                className="flex items-center gap-2 px-6 py-3 bg-[#1a1a1a] text-white border border-zinc-800 rounded-full font-medium hover:bg-zinc-800 transition-colors"
-              >
-                <FaGamepad size={16} className="text-main" /> Play Minigame
-              </button>
+                <a
+                  href={cvFile}
+                  download
+                  className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-white text-black rounded-lg font-bold hover:bg-main transition-colors"
+                >
+                  <FaDownload size={14} /> Download CV
+                </a>
+                <button
+                  onClick={() => setIsGameOpen(true)}
+                  className="flex-none flex items-center justify-center w-14 h-14 bg-[#1a1a1a] text-main border border-zinc-800 rounded-lg hover:border-main transition-colors"
+                >
+                  <FaGamepad size={20} />
+                </button>
+              </motion.div>
+            </div>
+
+            {/* Right: Text Content */}
+            <div className="lg:col-span-8 flex flex-col justify-end">
+              <div className="overflow-hidden">
+                <motion.p
+                  className="text-3xl md:text-5xl font-light text-zinc-300 leading-[1.1] mb-12"
+                  variants={textRevealVariants}
+                >
+                  I'm{" "}
+                  <span className="text-white font-semibold">
+                    Amika Indusara
+                  </span>
+                  , a full-stack developer & AI enthusiast based in Sri Lanka.
+                </motion.p>
+              </div>
+
+              <div className="overflow-hidden">
+                <motion.div
+                  variants={textRevealVariants}
+                  className="space-y-6 text-zinc-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl"
+                >
+                  <p>
+                    Currently an undergraduate at Staffordshire University, I
+                    blend technical expertise with creative design to build
+                    immersive web experiences.
+                  </p>
+                  <p>
+                    My journey involves mastering everything from React &
+                    Node.js to API interactions. My passion is in Backend
+                    Development. I strongly believe in creating software that
+                    not only functions perfectly but feels alive.
+                  </p>
+                </motion.div>
+              </div>
             </div>
           </div>
         </motion.div>
+      </div>
 
-        {/* Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Profile Card */}
-          <motion.div
-            variants={itemVariants}
-            className="bg-[#1a1a1a] p-8 rounded-3xl md:col-span-2 border border-white/5"
-          >
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2 font-syne">
-              <span className="w-2 h-8 bg-main rounded-full" /> About Me
-            </h2>
-            <p className="text-zinc-400 leading-relaxed text-lg">
-              I’m a passionate Software Engineering undergraduate from Colombo,
-              Sri Lanka, with a strong foundation in full-stack development. I
-              thrive in collaborative environments, constantly learning and
-              applying new technologies to build efficient, user-friendly, and
-              impactful solutions. My long-term goal is to become a professional
-              software engineer and eventually start my own company.
-            </p>
-          </motion.div>
+      {/* MARQUEE SECTION - Full Width */}
+      <div className="w-full overflow-hidden py-12 border-y border-white/5 bg-black/20 backdrop-blur-sm mb-24 z-10 relative">
+        <motion.div
+          className="flex whitespace-nowrap"
+          variants={marqueeVariants}
+          animate="animate"
+        >
+          {[...Array(4)].map((_, i) => (
+            <span
+              key={i}
+              className="text-6xl md:text-8xl font-bold text-transparent px-8 font-cabinetGrotesk"
+              style={{ WebkitTextStroke: "1px #333" }}
+            >
+              FULL-STACK DEV <span className="text-main mx-4">•</span> UI/UX
+              DESIGN <span className="text-main mx-4">•</span> CREATIVE CODER{" "}
+              <span className="text-main mx-4">•</span>
+            </span>
+          ))}
+        </motion.div>
+      </div>
 
-          {/* Experience */}
+      {/* Content Container - Experience & Tech */}
+      <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 z-10">
+        {/* EXPERIENCE & EDUCATION LIST */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+          {/* Experience Column */}
           <motion.div
-            variants={itemVariants}
-            className="bg-[#1a1a1a] p-8 rounded-3xl border border-white/5"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 font-syne">
-              <span className="w-2 h-8 bg-main rounded-full" /> Experience
+            <h2 className="text-3xl font-bold mb-8 flex items-center gap-3 font-cabinetGrotesk">
+              <span className="w-3 h-3 bg-main rounded-full" /> Experience
             </h2>
-            <div className="space-y-8">
-              <div className="relative pl-6 border-l border-zinc-800">
-                <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-main" />
-                <h3 className="text-lg font-bold text-white">
-                  Junior Software Developer
-                </h3>
-                <p className="text-main text-sm mb-2">
-                  Rangiri Holdings | 2025 - Present
-                </p>
-                <p className="text-zinc-400 text-sm">
-                  Leading large-scale projects enhancing operational efficiency
-                  using Laravel, React, and C#.
-                </p>
+
+            <div className="space-y-0">
+              {/* Item 1 */}
+              <div className="group border-t border-zinc-800 py-6 hover:bg-zinc-900/30 transition-colors px-2">
+                <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-2">
+                  <h3 className="text-xl font-bold text-white group-hover:text-main transition-colors">
+                    Junior Software Developer
+                  </h3>
+                  <span className="text-sm font-mono text-zinc-500">
+                    2025 - Present
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <p className="text-zinc-400">Rangiri Holdings</p>
+                  <span className="text-xs border border-zinc-800 px-2 py-1 rounded text-zinc-500">
+                    React / Laravel
+                  </span>
+                </div>
               </div>
-              <div className="relative pl-6 border-l border-zinc-800">
-                <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-zinc-600" />
-                <h3 className="text-lg font-bold text-white">
-                  Trainee Developer
-                </h3>
-                <p className="text-zinc-400 text-sm mb-2">
-                  Rangiri Holdings | 2024 - 2025
-                </p>
-                <p className="text-zinc-400 text-sm">
-                  Developed invoicing and vehicle management systems, optimizing
-                  ERP platforms.
-                </p>
+
+              {/* Item 2 */}
+              <div className="group border-t border-zinc-800 py-6 hover:bg-zinc-900/30 transition-colors px-2">
+                <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-2">
+                  <h3 className="text-xl font-bold text-white group-hover:text-main transition-colors">
+                    Trainee Developer
+                  </h3>
+                  <span className="text-sm font-mono text-zinc-500">
+                    2024 - 2025
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <p className="text-zinc-400">Rangiri Holdings</p>
+                  <span className="text-xs border border-zinc-800 px-2 py-1 rounded text-zinc-500">
+                    ERP Systems
+                  </span>
+                </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Education */}
+          {/* Education Column */}
           <motion.div
-            variants={itemVariants}
-            className="bg-[#1a1a1a] p-8 rounded-3xl border border-white/5"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 font-syne">
-              <span className="w-2 h-8 bg-white rounded-full" /> Education
+            <h2 className="text-3xl font-bold mb-8 flex items-center gap-3 font-cabinetGrotesk">
+              <span className="w-3 h-3 bg-white rounded-full" /> Education
             </h2>
-            <div className="space-y-6">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="font-bold text-white">
+
+            <div className="space-y-0">
+              {/* Item 1 */}
+              <div className="group border-t border-zinc-800 py-6 hover:bg-zinc-900/30 transition-colors px-2">
+                <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-2">
+                  <h3 className="text-xl font-bold text-white group-hover:text-white transition-colors">
                     BEng. Software Engineering
                   </h3>
-                  <p className="text-zinc-500 text-sm">
-                    Staffordshire University
-                  </p>
+                  <span className="text-sm font-mono text-zinc-500">
+                    2023 - Present
+                  </span>
                 </div>
-                <span className="text-xs font-mono text-zinc-600 bg-zinc-900 px-2 py-1 rounded">
-                  2023-Present
-                </span>
+                <p className="text-zinc-400">Staffordshire University</p>
               </div>
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="font-bold text-white">
+
+              {/* Item 2 */}
+              <div className="group border-t border-zinc-800 py-6 hover:bg-zinc-900/30 transition-colors px-2">
+                <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-2">
+                  <h3 className="text-xl font-bold text-white group-hover:text-white transition-colors">
                     Trainee Full Stack Dev
                   </h3>
-                  <p className="text-zinc-500 text-sm">
-                    University of Moratuwa
-                  </p>
+                  <span className="text-sm font-mono text-zinc-500">
+                    2025 - Present
+                  </span>
                 </div>
-                <span className="text-xs font-mono text-zinc-600 bg-zinc-900 px-2 py-1 rounded">
-                  2025-Present
-                </span>
+                <p className="text-zinc-400">University of Moratuwa</p>
               </div>
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="font-bold text-white">CIMA Professional</h3>
-                  <p className="text-zinc-500 text-sm">CIMA</p>
+
+              {/* Item 3 */}
+              <div className="group border-t border-zinc-800 py-6 hover:bg-zinc-900/30 transition-colors px-2">
+                <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-2">
+                  <h3 className="text-xl font-bold text-white group-hover:text-white transition-colors">
+                    CIMA Professional
+                  </h3>
+                  <span className="text-sm font-mono text-zinc-500">
+                    2023 - Present
+                  </span>
                 </div>
-                <span className="text-xs font-mono text-zinc-600 bg-zinc-900 px-2 py-1 rounded">
-                  2023-Present
-                </span>
+                <p className="text-zinc-400">CIMA</p>
               </div>
             </div>
           </motion.div>
-
-          {/* Skills - Replaced with Techstack Component */}
-          <div className="md:col-span-2">
-            <Techstack />
-          </div>
         </div>
-      </motion.div>
 
-      {/* Game Modal */}
+        {/* TECH STACK */}
+        <div className="mb-24">
+          <h2 className="text-3xl font-bold mb-12 text-center font-cabinetGrotesk text-white/40 uppercase tracking-widest">
+            Technical Toolkit
+          </h2>
+          <Techstack />
+        </div>
+      </div>
+
       <Game isOpen={isGameOpen} onClose={() => setIsGameOpen(false)} />
     </main>
   );
