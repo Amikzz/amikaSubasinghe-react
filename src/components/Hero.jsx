@@ -1,80 +1,145 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
 import bgVideo from "../assets/background.mp4";
 
-const Hero = () => {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.2,
-      },
+// --- Variants Defined Outside Component ---
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.2,
     },
+  },
+};
+
+const letterAnimation = {
+  hidden: {
+    y: 40,
+    opacity: 0,
+    filter: "blur(10px)",
+    rotateX: 90,
+  },
+  show: {
+    y: 0,
+    opacity: 1,
+    filter: "blur(0px)",
+    rotateX: 0,
+    transition: {
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+    },
+  },
+};
+
+const letterAnimationFade = {
+  hidden: {
+    y: 0,
+    opacity: 0,
+    filter: "blur(10px)",
+    rotateX: 0,
+  },
+  show: {
+    y: 0,
+    opacity: 1,
+    filter: "blur(0px)",
+    rotateX: 0,
+    transition: {
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+    },
+  },
+};
+
+// --- Extracted AnimatedText Component ---
+const AnimatedText = ({ text, className, variants = letterAnimation }) => (
+  <motion.h1
+    variants={container}
+    initial="hidden"
+    animate="show"
+    className={className}
+    style={{ perspective: "1000px" }} // Perspective for 3D effect
+  >
+    {text.split("").map((char, index) => (
+      <motion.span
+        key={index}
+        variants={variants}
+        style={{ display: "inline-block", transformStyle: "preserve-3d" }}
+      >
+        {char === " " ? "\u00A0" : char}
+      </motion.span>
+    ))}
+  </motion.h1>
+);
+
+// --- Extracted SocialLinks Component to Isolate Mouse Logic ---
+const SocialLinks = () => {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMove = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMove);
+    return () => window.removeEventListener("mousemove", handleMove);
+  }, []);
+
+  const getWiggleStyle = (ref) => {
+    if (!ref.current) return {};
+
+    const rect = ref.current.getBoundingClientRect();
+    const iconX = rect.left + rect.width / 2;
+    const iconY = rect.top + rect.height / 2;
+
+    const dx = mousePos.x - iconX;
+    const dy = mousePos.y - iconY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    const maxDistance = 120; // wiggle radius
+    if (distance > maxDistance) return {};
+
+    const intensity = (maxDistance - distance) / maxDistance; // 0 → 1
+
+    return {
+      transform: `
+      rotate(${Math.sin(distance) * 10 * intensity}deg)
+      translateY(${Math.cos(distance) * 4 * intensity}px)
+      scale(${1 + intensity * 0.15})
+    `,
+      transition: "transform 0.12s ease-out",
+    };
   };
 
-  const letterAnimation = {
-    hidden: {
-      y: 40,
-      opacity: 0,
-      filter: "blur(10px)",
-      rotateX: 90,
-    },
-    show: {
-      y: 0,
-      opacity: 1,
-      filter: "blur(0px)",
-      rotateX: 0,
-      transition: {
-        type: "spring",
-        damping: 20,
-        stiffness: 100,
-      },
-    },
-  };
+  return (
+    <div className="flex z-50 w-full flex-col gap-6 lg:gap-5 xl:gap-8">
+      {[
+        { icon: <FaLinkedin />, href: "#" },
+        { icon: <FaWhatsapp />, href: "#" },
+        { icon: <FaGithub />, href: "#" },
+      ].map((item, idx) => {
+        const ref = useRef(null);
 
-  const letterAnimationFade = {
-    hidden: {
-      y: 0,
-      opacity: 0,
-      filter: "blur(10px)",
-      rotateX: 0,
-    },
-    show: {
-      y: 0,
-      opacity: 1,
-      filter: "blur(0px)",
-      rotateX: 0,
-      transition: {
-        type: "spring",
-        damping: 20,
-        stiffness: 100,
-      },
-    },
-  };
-
-  const AnimatedText = ({ text, className, variants = letterAnimation }) => (
-    <motion.h1
-      variants={container}
-      initial="hidden"
-      animate="show"
-      className={className}
-      style={{ perspective: "1000px" }} // Perspective for 3D effect
-    >
-      {text.split("").map((char, index) => (
-        <motion.span
-          key={index}
-          variants={variants}
-          style={{ display: "inline-block", transformStyle: "preserve-3d" }}
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
-    </motion.h1>
+        return (
+          <a
+            key={idx}
+            ref={ref}
+            href={item.href}
+            style={getWiggleStyle(ref)}
+            className="text-white hover:text-main transition-colors text-2xl"
+          >
+            {item.icon}
+          </a>
+        );
+      })}
+    </div>
   );
+};
 
+const Hero = () => {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden z-20">
       {/* Video Background */}
@@ -97,35 +162,19 @@ const Hero = () => {
           <div className="absolute bottom-0 right-[50%] transform translate-x-[50%] h-[.3rem] bg-black rounded-[50%] w-[.3rem]"></div>
           <div className="absolute top-0 right-[50%] transform translate-x-[50%] h-[.3rem] bg-black rounded-[50%] w-[.3rem]"></div>
         </div>
-        <div className="flex z-50 w-full flex-col gap-6 lg:gap-5 xl:gap-8">
-          <a
-            href="#"
-            className="text-white hover:text-main transition-colors text-2xl"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="#"
-            className="text-white hover:text-main transition-colors text-2xl"
-          >
-            <FaWhatsapp />
-          </a>
-          <a
-            href="#"
-            className="text-white hover:text-main transition-colors text-2xl"
-          >
-            <FaGithub />
-          </a>
-        </div>
+
+        {/* Dancing Social Links Component */}
+        <SocialLinks />
       </div>
 
       {/* Main Content */}
       <div className="flex flex-col justify-center items-center z-50">
-        <div className="overflow-hidden pb-2">
+        <div className="pb-2">
           <AnimatedText
             text="Hi! i’m Amika"
             variants={letterAnimationFade}
-            className="font-syne text-[1.2rem] xs:text-[1.5rem] sm:text-[1.6rem] md:text-[1.65rem] lg:text-[1.6rem] text-center mb-1 text-white leading-[1.3] flex justify-center" // added flex justify-center for proper centering
+            className="font-syne text-[1.2rem] xs:text-[1.5rem] sm:text-[1.6rem] md:text-[1.65rem] lg:text-[1.6rem]
+               text-center mb-1 text-white leading-[1.3] flex justify-center will-change-transform"
           />
         </div>
 
