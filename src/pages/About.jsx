@@ -10,6 +10,7 @@ import {
 import profilePic from "/assets/profile.jpg";
 import cvFile from "/assets/Amika Indusara Lelwala Subasinghe.pdf";
 import Game from "../components/Game";
+import ScrollPath from "../components/ScrollPath";
 import Techstack from "../components/Techstack";
 
 const About = () => {
@@ -57,10 +58,11 @@ const About = () => {
   return (
     <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col pt-32 pb-20 relative overflow-hidden font-syne">
       {/* Background Ambience */}
+      <ScrollPath strokeColor="#3b82f6" />
       {/* Background Ambience Removed */}
 
       {/* Content Container - Hero */}
-      <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 z-10">
+      <div className="relative max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 z-10">
         {/* HERO SECTION */}
         <motion.div
           className="flex flex-col mb-24"
@@ -175,7 +177,7 @@ const About = () => {
       </div>
 
       {/* Content Container - Experience & Tech */}
-      <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 z-10">
+      <div className="relative max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 z-10">
         {/* EXPERIENCE & EDUCATION LIST */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
           {/* Experience Column */}
