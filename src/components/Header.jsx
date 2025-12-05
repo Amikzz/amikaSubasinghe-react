@@ -43,20 +43,22 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 p-4 md:p-8 pt-[1.5rem] md:pt-[3rem] font-syne">
+    <header className="fixed top-0 left-0 w-full z-50 p-4 md:p-8 pt-[1.5rem] md:pt-[3rem] font-syne mix-blend-difference">
       <div className="flex justify-between items-center w-full">
         {/* Logo */}
-        <NavLink to="/" className="z-50 text-white mix-blend-difference">
+        <NavLink to="/" className="z-50 mix-blend-difference">
           <img
-            src="/icon.png" // Assuming icon.png exists, otherwise use text
+            src="/icon.png"
             alt="Logo"
-            className="w-[1.7rem] lg:w-[1.9rem] cursor-pointer invert"
+            className="w-[1.7rem] lg:w-[1.9rem] cursor-pointer mix-blend-difference"
             onError={(e) => {
               e.target.style.display = "none";
               e.target.nextSibling.style.display = "block";
             }}
           />
-          <span className="hidden text-white font-bold text-xl">A.</span>
+          <span className="hidden font-bold text-xl mix-blend-difference">
+            A.
+          </span>
         </NavLink>
 
         {/* Desktop Nav */}
@@ -65,7 +67,7 @@ const Header = () => {
             <NavLink
               key={link.path}
               to={link.path}
-              className="text-lg text-white font-medium overflow-hidden"
+              className="text-lg font-medium overflow-hidden text-white mix-blend-difference"
             >
               <RotatedText text={link.name} />
             </NavLink>
@@ -73,14 +75,17 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden z-50 mix-blend-difference">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
+        <div className="md:hidden z-50">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 text-white mix-blend-difference"
+          >
             {isOpen ? "Close" : "Menu"}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -88,13 +93,13 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 bg-[#111111] z-40 flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 bg-[#111] z-40 flex flex-col items-center justify-center gap-8"
           >
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
-                className="text-4xl font-righteous text-white"
+                className="text-4xl font-righteous text-white mix-blend-difference"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
