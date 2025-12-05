@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { RiMenu4Line, RiCloseLine } from "react-icons/ri";
+import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
+import musicFile from "../assets/backgroundmusic.mp3";
 
 const RotatedText = ({ text }) => {
   return (
@@ -34,6 +36,44 @@ const Header = () => {
     setIsOpen(false);
   }, [location]);
 
+  // --- Audio Logic ---
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    audioRef.current = new Audio(musicFile);
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.5;
+
+    const playPromise = audioRef.current.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => setIsPlaying(true))
+        .catch((error) => {
+          console.log("Autoplay blocked", error);
+          setIsPlaying(false);
+        });
+    }
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
@@ -62,7 +102,7 @@ const Header = () => {
         </NavLink>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-end gap-10 justify-end w-full mix-blend-difference">
+        <div className="hidden md:flex items-center gap-8 justify-end w-full mix-blend-difference">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
@@ -72,13 +112,30 @@ const Header = () => {
               <RotatedText text={link.name} />
             </NavLink>
           ))}
+
+          {/* Music Toggle (Desktop) */}
+          <button
+            onClick={togglePlay}
+            className="ml-4 text-white hover:text-main transition-colors mix-blend-difference opacity-80 hover:opacity-100"
+            title={isPlaying ? "Mute" : "Unmute"}
+          >
+            {isPlaying ? <FaVolumeUp size={20} /> : <FaVolumeMute size={20} />}
+          </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden z-50">
+        {/* Mobile Controls (Menu + Music) */}
+        <div className="md:hidden z-50 flex items-center gap-6">
+          {/* Music Toggle (Mobile) */}
+          <button
+            onClick={togglePlay}
+            className="text-white mix-blend-difference"
+          >
+            {isPlaying ? <FaVolumeUp size={20} /> : <FaVolumeMute size={20} />}
+          </button>
+
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 text-white mix-blend-difference"
+            className="text-white mix-blend-difference"
           >
             {isOpen ? "Close" : "Menu"}
           </button>

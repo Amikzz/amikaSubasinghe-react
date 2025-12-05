@@ -21,7 +21,6 @@ import Privacy from "./pages/Privacy";
 
 import CodePlayground from "./pages/Codeplayground";
 import PageTransition from "./components/PageTransition";
-import BackgroundMusic from "./components/BackgroundMusic";
 
 // Wrapper to handle location-based logic for Footer
 const AppWrapper = () => {
@@ -58,7 +57,6 @@ const App = () => {
   return (
     <Router>
       <ScrollToTop />
-      <BackgroundMusic />
       <AppWrapper />
     </Router>
   );
