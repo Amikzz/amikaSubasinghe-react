@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
+import bgVideo from "../assets/background.mp4";
 
 const Hero = () => {
   const container = {
@@ -76,6 +77,20 @@ const Hero = () => {
 
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden z-20">
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover -z-20"
+      >
+        <source src={bgVideo} type="video/mp4" />
+      </video>
+
+      {/* Dark Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black/80 -z-10"></div>
+
       {/* Social Links & Lines */}
       <div className="z-50 flex-col flex lg:h-[80vh] h-[85vh] px-5 lg:px-9 pt-[5rem] lg:-mt-3 xl:mt-10 py-5 lg:py-10 items-center left-0 top-0 absolute justify-end lg:justify-between">
         <div className="hidden lg:block lg:mb-14 h-[40vh] w-[1px] bg-gray-700 relative">
