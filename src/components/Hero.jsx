@@ -35,32 +35,34 @@ const Hero = () => {
 
       {/* Main Content */}
       <div className="flex flex-col justify-center items-center z-50">
-        <div className="overflow-hidden">
+        <div className="overflow-hidden pb-2">
           <motion.h1
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-            className="font-syne text-[1.2rem] xs:text-[1.5rem] sm:text-[1.6rem] md:text-[1.65rem] lg:text-[1.6rem] text-center mb-1 text-white"
+            className="font-syne text-[1.2rem] xs:text-[1.5rem] sm:text-[1.6rem] md:text-[1.65rem] lg:text-[1.6rem] text-center mb-1 text-white leading-[1.3]"
           >
             Hi! i’m Amika
           </motion.h1>
         </div>
-        <div className="overflow-hidden">
+
+        <div className="overflow-hidden pb-3">
           <motion.h1
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
-            className="font-syne text-[2.3rem] xs:text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5.4rem] text-center text-white leading-none"
+            className="font-syne text-[2.3rem] xs:text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5.4rem] text-center text-white leading-[1.15]"
           >
             Software Engineer
           </motion.h1>
         </div>
-        <div className="overflow-hidden">
+
+        <div className="overflow-hidden pb-3">
           <motion.h1
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
-            className="font-syne text-[2.3rem] xs:text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5.4rem] text-center text-white leading-none"
+            className="font-syne text-[2.3rem] xs:text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5.4rem] text-center text-white leading-[1.15]"
           >
             Full-stack Developer.
           </motion.h1>
@@ -72,15 +74,26 @@ const Hero = () => {
         <span>AMIKA SUBASINGHE</span>
       </div>
 
-      {/* Scroll Down */}
-      <motion.h1
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="letter-spacing-[1em] font-syne lg:text-2xl text-xl cursor-default absolute z-[100] bottom-[10%] text-white"
+        className="absolute bottom-[10%] z-[100] flex flex-col items-center text-white"
       >
-        scroll down
-      </motion.h1>
+        {/* Small label */}
+        <span className="font-syne text-sm lg:text-base mb-3 tracking-[0.2em]">
+          scroll
+        </span>
+
+        {/* Mouse icon */}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity }}
+          className="h-10 w-6 border-2 border-white rounded-full flex items-start justify-center p-1"
+        >
+          <div className="h-2 w-1 bg-white rounded-full"></div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
