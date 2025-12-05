@@ -101,130 +101,90 @@ const ProjectCard = ({ project, index }) => {
   return (
     <motion.div
       key={index}
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      whileHover={{ y: -10 }}
-      className="bg-[#1a1a1a] rounded-3xl overflow-hidden flex flex-col w-full group border border-white/5 hover:border-main/50 transition-all duration-300"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, delay: index * 0.1 }}
+      className="group w-full mb-12 sm:mb-0"
     >
-      {/* Image wrapper */}
-      <div className="relative w-full h-56 overflow-hidden">
+      {/* Semantic/Text Header - Placed above image for 'editorial' feel */}
+      <div className="mb-6 flex flex-col gap-1">
+        <h3 className="text-3xl md:text-4xl font-medium text-white group-hover:text-main transition-colors duration-300 font-syne">
+          {project.title}
+        </h3>
+        <p className="text-zinc-500 text-sm md:text-base font-light tracking-wide uppercase font-syne">
+          {project.tech.slice(0, 3).join(" • ")}
+        </p>
+      </div>
+
+      {/* Image Container - Minimalist, no borders */}
+      <a
+        href={project.demo || project.github || "#"}
+        target={project.demo || project.github ? "_blank" : "_self"}
+        rel="noreferrer"
+        className={`block relative w-full aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer bg-zinc-900 ${
+          !project.demo && !project.github ? "cursor-default" : ""
+        }`}
+      >
         <div
-          className="absolute inset-0 bg-zinc-800 animate-pulse"
+          className="absolute inset-0 bg-zinc-800 animate-pulse z-10"
           style={{ display: loaded ? "none" : "block" }}
         />
         <motion.img
           src={project.image}
           alt={project.title}
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.5 }}
-          className="w-full h-full object-cover transition-transform duration-500"
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           onLoad={() => setLoaded(true)}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] to-transparent opacity-60" />
 
-        {/* Tech Stack Overlay */}
-        <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
-          {project.tech.slice(0, 3).map((t, i) => (
-            <span
-              key={i}
-              className="bg-black/50 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-full border border-white/10"
-            >
-              {t}
-            </span>
-          ))}
-          {project.tech.length > 3 && (
-            <span className="bg-black/50 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-full border border-white/10">
-              +{project.tech.length - 3}
-            </span>
-          )}
-        </div>
-      </div>
+        {/* Subtle overlay for better text contrast if we needed text inside, but here just for depth */}
+        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
 
-      <div className="p-6 flex flex-col flex-grow relative">
-        <div className="flex justify-between items-start mb-3">
-          <h3 className="text-xl font-bold text-white group-hover:text-main transition-colors font-syne">
-            {project.title}
-          </h3>
-          {project.licensed && (
-            <div
-              className="bg-amber-500/10 text-amber-500 p-1.5 rounded-lg"
-              title="Licensed Project"
-            >
-              <FaLock size={12} />
+        {/* Hover Action Overlay */}
+        {(project.demo || project.github) && (
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
+            <div className="bg-white text-black px-6 py-3 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 flex items-center gap-2 font-syne">
+              View Project <FaExternalLinkAlt size={12} />
             </div>
-          )}
-        </div>
-
-        <p className="text-zinc-400 text-sm mb-6 flex-grow leading-relaxed line-clamp-3">
-          {project.description}
-        </p>
-
-        {/* Action Buttons */}
-        <div className="mt-auto pt-4 border-t border-white/5 flex gap-3">
-          {!project.licensed ? (
-            <>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white py-2.5 rounded-xl text-sm font-medium transition-colors"
-              >
-                <FaGithub /> Code
-              </a>
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 bg-white text-zinc-950 hover:bg-main hover:text-black py-2.5 rounded-xl text-sm font-bold transition-colors"
-              >
-                <FaExternalLinkAlt size={12} /> Live Demo
-              </a>
-            </>
-          ) : (
-            <div className="w-full py-2.5 text-center text-zinc-500 text-xs font-medium bg-zinc-900/50 rounded-xl border border-zinc-800/50">
-              Enterprise Project • Private Codebase
-            </div>
-          )}
-        </div>
-      </div>
+          </div>
+        )}
+      </a>
     </motion.div>
   );
 };
 
 const Projects = () => {
   return (
-    <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col items-center justify-start pt-32 px-6 md:px-12 lg:px-20 pb-20 relative overflow-hidden font-syne">
-      <div className="max-w-7xl w-full z-10">
-        <div className="text-center mb-16">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight"
-          >
-            Featured{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-main to-white">
-              Projects
-            </span>
-          </motion.h1>
+    <main className="w-full min-h-screen bg-[#111111] text-white pt-32 px-6 md:px-12 lg:px-24 pb-20 relative overflow-hidden font-syne">
+      {/* Large Minimal Header */}
+      <div className="max-w-[1400px] mx-auto w-full z-10 mb-20 lg:mb-32">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-8 tracking-tighter leading-[0.9] font-syne">
+            Featured <br />
+            <span className="text-zinc-600">Projects.</span>
+          </h1>
+          <div className="w-full h-[1px] bg-zinc-800 mt-12" />
+          <div className="flex justify-between items-start mt-6 text-zinc-400 text-sm md:text-base font-light">
+            <p>Selected Works (2023-2025)</p>
+            <p className="hidden md:block">Scroll to explore</p>
+          </div>
+        </motion.div>
+      </div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed"
-          >
-            A collection of my work ranging from personal experiments to
-            enterprise-grade solutions.
-          </motion.p>
-        </div>
-
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* 2-Column Grid Layout */}
+      <div className="max-w-[1400px] mx-auto w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 md:gap-y-32">
           {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+            <div
+              key={index}
+              className={`${index % 2 === 1 ? "md:mt-32" : ""}`} // Stagger effect like the reference often has
+            >
+              <ProjectCard project={project} index={index} />
+            </div>
           ))}
         </div>
       </div>

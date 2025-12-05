@@ -98,32 +98,35 @@ const Contact = () => {
       {/* Background Elements */}
       {/* Background Elements - Removed for clean dark theme matching Projects page */}
 
-      <div className="max-w-6xl w-full z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-        {/* Left Side: Info & Form */}
-        <div className="flex flex-col">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight font-cabinetGrotesk">
-              Let's{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-main to-white">
-                Connect
-              </span>
-            </h1>
-            <p className="text-zinc-400 text-lg mb-10 leading-relaxed">
-              Have a project in mind or just want to chat? I'm always open to
-              new opportunities and collaborations.
-            </p>
-          </motion.div>
+      <div className="max-w-6xl w-full z-10 flex flex-col gap-16">
+        {/* Top: Title & Intro */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight font-cabinetGrotesk">
+            Let's{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-main to-white">
+              Connect
+            </span>
+          </h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">
+            Have a project in mind or just want to chat? I'm always open to new
+            opportunities and collaborations.
+          </p>
+        </motion.div>
 
+        {/* Middle: Form & Info Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Contact Form */}
           <motion.form
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="bg-[#1a1a1a] p-8 rounded-3xl space-y-6 border border-white/5"
+            className="bg-[#1a1a1a] p-8 rounded-3xl space-y-6 border border-white/5 h-full"
           >
             <div className="space-y-2">
               <label
@@ -205,143 +208,148 @@ const Contact = () => {
               )}
             </button>
           </motion.form>
-        </div>
 
-        {/* Right Side: Contact Info & FAQs */}
-        <div className="flex flex-col space-y-10">
-          {/* Contact Details */}
+          {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="bg-[#1a1a1a] p-8 rounded-3xl space-y-6 border border-white/5"
+            className="bg-[#1a1a1a] p-8 rounded-3xl space-y-8 border border-white/5 h-full flex flex-col"
           >
-            <h3 className="text-xl font-bold text-white mb-4 font-syne">
-              Contact Information
-            </h3>
+            <div>
+              <h3 className="text-xl font-bold text-white mb-2 font-syne">
+                Contact Information
+              </h3>
+              <p className="text-zinc-400 text-sm">
+                Feel free to reach out through any of these channels.
+              </p>
+            </div>
 
-            <div className="flex items-center gap-4 text-zinc-300">
-              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-main">
-                <FaEnvelope />
+            <div className="space-y-6 flex-grow">
+              <div className="flex items-center gap-4 text-zinc-300">
+                <div className="w-12 h-12 rounded-2xl bg-zinc-900 flex items-center justify-center text-main border border-zinc-800">
+                  <FaEnvelope size={20} />
+                </div>
+                <div>
+                  <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">
+                    Email
+                  </p>
+                  <a
+                    href="mailto:amikasubasinghe@gmail.com"
+                    className="hover:text-white transition-colors text-lg"
+                  >
+                    amikasubasinghe@gmail.com
+                  </a>
+                </div>
               </div>
-              <div>
-                <p className="text-xs text-zinc-500 uppercase tracking-wider">
-                  Email
-                </p>
-                <a
-                  href="mailto:amikasubasinghe@gmail.com"
-                  className="hover:text-white transition-colors"
-                >
-                  amikasubasinghe@gmail.com
-                </a>
+
+              <div className="flex items-center gap-4 text-zinc-300">
+                <div className="w-12 h-12 rounded-2xl bg-zinc-900 flex items-center justify-center text-main border border-zinc-800">
+                  <FaPhone size={20} />
+                </div>
+                <div>
+                  <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">
+                    Phone
+                  </p>
+                  <a
+                    href="tel:+94787564524"
+                    className="hover:text-white transition-colors text-lg"
+                  >
+                    +94 78 756 4524
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 text-zinc-300">
+                <div className="w-12 h-12 rounded-2xl bg-zinc-900 flex items-center justify-center text-main border border-zinc-800">
+                  <FaMapMarkerAlt size={20} />
+                </div>
+                <div>
+                  <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">
+                    Location
+                  </p>
+                  <p className="text-lg">Colombo, Sri Lanka</p>
+                </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 text-zinc-300">
-              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-main">
-                <FaPhone />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-500 uppercase tracking-wider">
-                  Phone
-                </p>
-                <a
-                  href="tel:+94787564524"
-                  className="hover:text-white transition-colors"
-                >
-                  +94 78 756 4524
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 text-zinc-300">
-              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-main">
-                <FaMapMarkerAlt />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-500 uppercase tracking-wider">
-                  Location
-                </p>
-                <p>Colombo, Sri Lanka</p>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-zinc-800 flex gap-4">
+            <div className="pt-8 border-t border-zinc-800 flex gap-4">
               <a
                 href="https://linkedin.com/in/amika-subasinghe-a52b6a1a9"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-blue-600 hover:text-white transition-all"
+                className="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all"
               >
-                <FaLinkedin size={18} />
+                <FaLinkedin size={20} />
               </a>
               <a
                 href="https://github.com/Amikzz"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-700 hover:text-white transition-all"
+                className="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-700 hover:text-white hover:border-zinc-600 transition-all"
               >
-                <FaGithub size={18} />
+                <FaGithub size={20} />
               </a>
               <a
                 href="https://x.com/amikasubasinghe"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-black hover:text-white transition-all"
+                className="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-black hover:text-white hover:border-zinc-800 transition-all"
               >
-                <FaTwitter size={18} />
+                <FaTwitter size={20} />
               </a>
             </div>
           </motion.div>
-
-          {/* FAQs */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-          >
-            <h3 className="text-xl font-bold text-white mb-6 font-syne">
-              Frequently Asked Questions
-            </h3>
-            <div className="space-y-4">
-              {faqs.map((faq, index) => {
-                const [open, setOpen] = useState(false);
-                return (
-                  <motion.div
-                    key={index}
-                    className="bg-[#1a1a1a] rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-main/50 transition-colors"
-                    onClick={() => setOpen(!open)}
-                  >
-                    <div className="flex justify-between items-center px-6 py-4">
-                      <span className="font-medium text-zinc-200">
-                        {faq.question}
-                      </span>
-                      <span
-                        className={`text-main text-xl transition-transform duration-300 ${
-                          open ? "rotate-45" : ""
-                        }`}
-                      >
-                        +
-                      </span>
-                    </div>
-                    <AnimatePresence>
-                      {open && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="px-6 pb-4 text-zinc-400 text-sm leading-relaxed"
-                        >
-                          {faq.answer}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </motion.div>
         </div>
+
+        {/* Bottom: FAQs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="max-w-3xl mx-auto w-full pt-10"
+        >
+          <h3 className="text-2xl font-bold text-white mb-8 font-syne text-center">
+            Frequently Asked Questions
+          </h3>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => {
+              const [open, setOpen] = useState(false);
+              return (
+                <motion.div
+                  key={index}
+                  className="bg-[#1a1a1a] rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-main/50 transition-colors"
+                  onClick={() => setOpen(!open)}
+                >
+                  <div className="flex justify-between items-center px-6 py-4">
+                    <span className="font-medium text-zinc-200">
+                      {faq.question}
+                    </span>
+                    <span
+                      className={`text-main text-xl transition-transform duration-300 ${
+                        open ? "rotate-45" : ""
+                      }`}
+                    >
+                      +
+                    </span>
+                  </div>
+                  <AnimatePresence>
+                    {open && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="px-6 pb-4 text-zinc-400 text-sm leading-relaxed"
+                      >
+                        {faq.answer}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
       </div>
 
       {/* Success Popup */}
