@@ -3,20 +3,31 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { RiMenu4Line, RiCloseLine } from "react-icons/ri";
 
+const RotatedText = ({ text }) => {
+  return (
+    <div className="relative overflow-hidden cursor-pointer group">
+      <div className="flex transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+        {text.split("").map((char, i) => (
+          <span key={i} className="inline-block whitespace-pre">
+            {char}
+          </span>
+        ))}
+      </div>
+      <div className="absolute top-0 left-0 flex transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] translate-y-full group-hover:translate-y-0">
+        {text.split("").map((char, i) => (
+          <span key={i} className="inline-block whitespace-pre">
+            {char}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-
-  // Handle scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -25,123 +36,70 @@ const Header = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
     { name: "Projects", path: "/projects" },
     { name: "Playground", path: "/codeplayground" },
-    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
   ];
 
-  const handleLogoClick = (e) => {
-    e.preventDefault();
-    navigate("/");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "py-2" : "py-4"
-      }`}
-    >
-      <div
-        className={`mx-4 md:mx-10 rounded-2xl px-6 py-3 flex items-center justify-between transition-all duration-300 ${
-          scrolled || isOpen ? "glass shadow-lg" : "bg-transparent"
-        }`}
-      >
+    <header className="fixed top-0 left-0 w-full z-50 p-4 md:p-8 pt-[1.5rem] md:pt-[3rem] font-syne">
+      <div className="flex justify-between items-center w-full">
         {/* Logo */}
-        <NavLink
-          to="/"
-          onClick={handleLogoClick}
-          className="flex items-center gap-2 group"
-        >
-          <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center group-hover:border-zinc-500 transition-colors">
-            <img
-              src="/icon.png"
-              alt="Logo"
-              className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500"
-            />
-          </div>
-          <span className="font-bold text-lg tracking-tight hidden sm:block text-zinc-100 group-hover:text-white transition-colors">
-            Amika<span className="text-zinc-500">.dev</span>
-          </span>
+        <NavLink to="/" className="z-50 text-white mix-blend-difference">
+          <img
+            src="/icon.png" // Assuming icon.png exists, otherwise use text
+            alt="Logo"
+            className="w-[1.7rem] lg:w-[1.9rem] cursor-pointer invert"
+            onError={(e) => {
+              e.target.style.display = "none";
+              e.target.nextSibling.style.display = "block";
+            }}
+          />
+          <span className="hidden text-white font-bold text-xl">A.</span>
         </NavLink>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-1 bg-zinc-800/50 p-1 rounded-full border border-white/5 backdrop-blur-md">
+        <div className="hidden md:flex items-end gap-10 justify-end w-full mix-blend-difference">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
               to={link.path}
-              className={({ isActive }) =>
-                `relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  isActive
-                    ? "text-white bg-zinc-700/80 shadow-sm"
-                    : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-                }`
-              }
+              className="text-lg text-white font-medium overflow-hidden"
             >
-              {link.name}
+              <RotatedText text={link.name} />
             </NavLink>
           ))}
-        </nav>
-
-        {/* Desktop Contact Button */}
-        <div className="hidden md:block">
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              `px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 border ${
-                isActive
-                  ? "bg-zinc-100 text-zinc-900 border-zinc-100 shadow-[0_0_15px_rgba(255,255,255,0.3)]"
-                  : "bg-zinc-900 text-zinc-300 border-zinc-700 hover:border-zinc-500 hover:text-white hover:bg-zinc-800"
-              }`
-            }
-          >
-            Let's Talk
-          </NavLink>
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-zinc-300 hover:text-white transition-colors"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <RiCloseLine size={24} /> : <RiMenu4Line size={24} />}
-        </button>
+        <div className="md:hidden z-50 mix-blend-difference">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
+            {isOpen ? "Close" : "Menu"}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="absolute top-20 left-4 right-4 p-4 rounded-2xl glass border border-zinc-800 shadow-2xl md:hidden flex flex-col gap-2 overflow-hidden"
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 bg-[#111111] z-40 flex flex-col items-center justify-center gap-8"
           >
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
-                className={({ isActive }) =>
-                  `px-4 py-3 rounded-xl text-base font-medium transition-all ${
-                    isActive
-                      ? "bg-zinc-800 text-white"
-                      : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-                  }`
-                }
+                className="text-4xl font-righteous text-white"
+                onClick={() => setIsOpen(false)}
               >
                 {link.name}
               </NavLink>
             ))}
-            <div className="h-px bg-zinc-800 my-2" />
-            <NavLink
-              to="/contact"
-              className="px-4 py-3 rounded-xl text-base font-semibold bg-zinc-100 text-zinc-900 text-center hover:bg-white transition-colors"
-            >
-              Let's Talk
-            </NavLink>
           </motion.div>
         )}
       </AnimatePresence>

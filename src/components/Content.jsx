@@ -1,104 +1,148 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Lottie from "lottie-react";
 import rocketAnimation from "../assets/rocket.json";
 
 const timelineData = [
-  { year: "2020", title: "Completed Ordinary Level Exams" },
-  { year: "2022", title: "Completed NCUK Program" },
-  { year: "2023", title: "Started BEng in Software Engineering at APIIT" },
-  { year: "2024", title: "Software Engineering Intern at Rangiri Holdings" },
-  { year: "2025", title: "Software Developer & Analyst at Rangiri Holdings" },
+  {
+    year: "2020",
+    title: "Completed Ordinary Level Exams",
+    description:
+      "Achieved 9 A passes, laying a strong foundation for my academic journey.",
+  },
+  {
+    year: "2022",
+    title: "Completed NCUK Program",
+    description:
+      "Successfully completed the International Foundation Year with distinction.",
+  },
+  {
+    year: "2023",
+    title: "Started BEng in Software Engineering",
+    description:
+      "Enrolled at APIIT to pursue my passion for software development.",
+  },
+  {
+    year: "2024",
+    title: "Software Engineering Intern",
+    description:
+      "Joined Rangiri Holdings, gaining hands-on experience in full-stack development.",
+  },
+  {
+    year: "2025",
+    title: "Software Developer & Analyst",
+    description:
+      "Promoted to a full-time role, leading key projects and system optimizations.",
+  },
 ];
 
-const TimelineItem = ({ year, title, isRight, refProp }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
-
-  if (inView) controls.start("visible");
-
-  const variants = {
-    hidden: { opacity: 0, x: isRight ? 50 : -50 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
+const TimelineItem = ({ item, index, isRight }) => {
+  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
 
   return (
     <motion.div
-      ref={(el) => {
-        ref(el); // Intersection observer
-        if (refProp) refProp.current = el; // Store reference for rocket limits
-      }}
-      initial="hidden"
-      animate={controls}
-      variants={variants}
-      className={`mb-16 flex items-start w-full ${isRight ? "justify-end" : "justify-start"}`}
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`relative flex items-center justify-between w-full mb-24 ${
+        isRight ? "flex-row-reverse" : "flex-row"
+      }`}
     >
-      <div className={`w-1/2 px-4 ${isRight ? "text-left" : "text-right"}`}>
-        <p className="text-cyan-400 font-semibold text-lg mb-2">{year}</p>
-        <p className="text-white font-medium text-base md:text-lg">{title}</p>
+      {/* Content Card */}
+      <div className={`w-5/12 ${isRight ? "text-right" : "text-left"}`}>
+        <div className="relative group">
+          <div className="absolute inset-0 bg-main/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="relative bg-[#1a1a1a] p-8 rounded-2xl border border-white/5 hover:border-main/30 transition-all duration-300">
+            <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-main to-white mb-4 block font-cabinetGrotesk">
+              {item.year}
+            </span>
+            <h3 className="text-xl font-bold text-white mb-3 font-syne group-hover:text-main transition-colors">
+              {item.title}
+            </h3>
+            <p className="text-zinc-400 text-sm leading-relaxed font-syne">
+              {item.description}
+            </p>
+          </div>
+        </div>
       </div>
+
+      {/* Center Dot - The "Cut" Point */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+        <div className="w-4 h-4 bg-[#111111] border-2 border-main rounded-full z-20 relative">
+          <div className="absolute inset-0 bg-main blur-md opacity-50" />
+        </div>
+        {/* Horizontal Line "Cutting" the timeline */}
+        <div
+          className={`absolute top-1/2 -translate-y-1/2 h-[2px] bg-main/20 w-24 z-10 ${
+            isRight ? "-left-12" : "-right-12"
+          }`}
+        />
+      </div>
+
+      {/* Empty Space for alignment */}
+      <div className="w-5/12" />
     </motion.div>
   );
 };
 
 const Content = () => {
-  const timelineRef = useRef(null);
-  const firstItemRef = useRef(null);
-  const lastItemRef = useRef(null);
-  const [rocketLimits, setRocketLimits] = useState({ top: 0, bottom: 0 });
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
 
-  useEffect(() => {
-    const calculateLimits = () => {
-      if (firstItemRef.current && lastItemRef.current && timelineRef.current) {
-        const top = firstItemRef.current.offsetTop;
-        const bottom = lastItemRef.current.offsetTop;
-        setRocketLimits({ top, bottom });
-      }
-    };
-    calculateLimits();
-    window.addEventListener("resize", calculateLimits);
-    return () => window.removeEventListener("resize", calculateLimits);
-  }, []);
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="w-full bg-zinc-900 text-zinc-50 py-15 px-6 md:px-12 relative">
-      <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center text-white">
-        My Journey
-      </h2>
+    <section className="w-full bg-[#111111] text-white py-32 px-6 md:px-12 relative overflow-hidden font-syne">
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-900/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-violet-900/5 rounded-full blur-[120px]" />
+      </div>
 
-      <div ref={timelineRef} className="relative max-w-5xl mx-auto">
-        {/* Center line */}
-        <div className="absolute left-1/2 top-0 h-full w-1 bg-cyan-500 transform -translate-x-1/2" />
+      <div className="max-w-6xl mx-auto relative z-10" ref={containerRef}>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-32"
+        >
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 font-cabinetGrotesk">
+            My{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-main to-white">
+              Journey
+            </span>
+          </h2>
+          <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
+            A timeline of my academic and professional milestones.
+          </p>
+        </motion.div>
 
-        {/* Rocket moving only between first and last timeline items */}
-        {rocketLimits.bottom > rocketLimits.top && (
-          <motion.div
-            className="absolute left-1/2 w-12 h-12 transform -translate-x-1/2"
-            animate={{
-              y: [
-                rocketLimits.top + 10, // offset from top
-                rocketLimits.bottom - 48, // subtract rocket height (12*4px = 48px)
-                rocketLimits.top + 10,
-              ],
-            }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Lottie animationData={rocketAnimation} loop />
-          </motion.div>
-        )}
+        <div className="relative">
+          {/* Center Line - The "Highlighter" */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-zinc-800 transform -translate-x-1/2">
+            <motion.div
+              className="w-full bg-main shadow-[0_0_20px_rgba(212,245,52,0.5)]"
+              style={{ height: "100%", scaleY, transformOrigin: "top" }}
+            />
+          </div>
 
-
-        {/* Timeline items */}
-        {timelineData.map((item, idx) => (
-          <TimelineItem
-            key={idx}
-            year={item.year}
-            title={item.title}
-            isRight={idx % 2 === 0}
-            refProp={idx === 0 ? firstItemRef : idx === timelineData.length - 1 ? lastItemRef : null}
-          />
-        ))}
+          {/* Timeline Items */}
+          <div className="space-y-32 py-10">
+            {timelineData.map((item, index) => (
+              <TimelineItem
+                key={index}
+                item={item}
+                index={index}
+                isRight={index % 2 !== 0}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

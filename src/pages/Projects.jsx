@@ -105,7 +105,7 @@ const ProjectCard = ({ project, index }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       whileHover={{ y: -10 }}
-      className="glass rounded-3xl overflow-hidden flex flex-col w-full group border border-white/5 hover:border-white/10 transition-all duration-300"
+      className="bg-[#1a1a1a] rounded-3xl overflow-hidden flex flex-col w-full group border border-white/5 hover:border-main/50 transition-all duration-300"
     >
       {/* Image wrapper */}
       <div className="relative w-full h-56 overflow-hidden">
@@ -123,7 +123,7 @@ const ProjectCard = ({ project, index }) => {
           className="w-full h-full object-cover transition-transform duration-500"
           onLoad={() => setLoaded(true)}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] to-transparent opacity-60" />
 
         {/* Tech Stack Overlay */}
         <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
@@ -145,7 +145,7 @@ const ProjectCard = ({ project, index }) => {
 
       <div className="p-6 flex flex-col flex-grow relative">
         <div className="flex justify-between items-start mb-3">
-          <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+          <h3 className="text-xl font-bold text-white group-hover:text-main transition-colors font-syne">
             {project.title}
           </h3>
           {project.licensed && (
@@ -178,7 +178,7 @@ const ProjectCard = ({ project, index }) => {
                 href={project.demo}
                 target="_blank"
                 rel="noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 bg-white text-zinc-950 hover:bg-zinc-200 py-2.5 rounded-xl text-sm font-bold transition-colors"
+                className="flex-1 flex items-center justify-center gap-2 bg-white text-zinc-950 hover:bg-main hover:text-black py-2.5 rounded-xl text-sm font-bold transition-colors"
               >
                 <FaExternalLinkAlt size={12} /> Live Demo
               </a>
@@ -196,13 +196,7 @@ const ProjectCard = ({ project, index }) => {
 
 const Projects = () => {
   return (
-    <main className="w-full min-h-screen bg-zinc-950 text-zinc-50 flex flex-col items-center justify-start pt-32 px-6 md:px-12 lg:px-20 pb-20 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-violet-900/10 rounded-full blur-[120px]" />
-      </div>
-
+    <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col items-center justify-start pt-32 px-6 md:px-12 lg:px-20 pb-20 relative overflow-hidden font-syne">
       <div className="max-w-7xl w-full z-10">
         <div className="text-center mb-16">
           <motion.h1
@@ -212,7 +206,7 @@ const Projects = () => {
             className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight"
           >
             Featured{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-main to-white">
               Projects
             </span>
           </motion.h1>

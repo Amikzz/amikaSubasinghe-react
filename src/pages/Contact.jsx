@@ -94,7 +94,7 @@ const Contact = () => {
   ];
 
   return (
-    <main className="w-full min-h-screen bg-zinc-950 text-zinc-50 flex flex-col items-center justify-start pt-32 px-6 md:px-20 pb-20 relative overflow-hidden">
+    <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col items-center justify-start pt-32 px-6 md:px-20 pb-20 relative overflow-hidden font-syne">
       {/* Background Elements */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px]" />
@@ -109,9 +109,9 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight font-cabinetGrotesk">
               Let's{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-main to-white">
                 Connect
               </span>
             </h1>
@@ -126,7 +126,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="glass p-8 rounded-3xl space-y-6"
+            className="bg-[#1a1a1a] p-8 rounded-3xl space-y-6 border border-white/5"
           >
             <div className="space-y-2">
               <label
@@ -143,7 +143,7 @@ const Contact = () => {
                 placeholder="John Doe"
                 className={`w-full bg-zinc-900/50 border ${
                   errors.name ? "border-red-500/50" : "border-zinc-700"
-                } rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all`}
+                } rounded-xl px-4 py-3 text-white focus:outline-none focus:border-main focus:ring-1 focus:ring-main transition-all`}
               />
               {errors.name && (
                 <span className="text-red-400 text-xs">{errors.name}</span>
@@ -165,7 +165,7 @@ const Contact = () => {
                 placeholder="john@example.com"
                 className={`w-full bg-zinc-900/50 border ${
                   errors.email ? "border-red-500/50" : "border-zinc-700"
-                } rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all`}
+                } rounded-xl px-4 py-3 text-white focus:outline-none focus:border-main focus:ring-1 focus:ring-main transition-all`}
               />
               {errors.email && (
                 <span className="text-red-400 text-xs">{errors.email}</span>
@@ -187,7 +187,7 @@ const Contact = () => {
                 rows={5}
                 className={`w-full bg-zinc-900/50 border ${
                   errors.message ? "border-red-500/50" : "border-zinc-700"
-                } rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none`}
+                } rounded-xl px-4 py-3 text-white focus:outline-none focus:border-main focus:ring-1 focus:ring-main transition-all resize-none`}
               />
               {errors.message && (
                 <span className="text-red-400 text-xs">{errors.message}</span>
@@ -197,10 +197,10 @@ const Contact = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 text-white font-semibold py-3.5 rounded-xl transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
+              className="w-full bg-white hover:bg-main text-black font-semibold py-3.5 rounded-xl transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-white/5"
             >
               {loading ? (
-                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
               ) : (
                 <>
                   Send Message <FaPaperPlane size={14} />
@@ -217,14 +217,14 @@ const Contact = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="glass p-8 rounded-3xl space-y-6"
+            className="bg-[#1a1a1a] p-8 rounded-3xl space-y-6 border border-white/5"
           >
-            <h3 className="text-xl font-bold text-white mb-4">
+            <h3 className="text-xl font-bold text-white mb-4 font-syne">
               Contact Information
             </h3>
 
             <div className="flex items-center gap-4 text-zinc-300">
-              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-blue-400">
+              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-main">
                 <FaEnvelope />
               </div>
               <div>
@@ -241,7 +241,7 @@ const Contact = () => {
             </div>
 
             <div className="flex items-center gap-4 text-zinc-300">
-              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-blue-400">
+              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-main">
                 <FaPhone />
               </div>
               <div>
@@ -258,7 +258,7 @@ const Contact = () => {
             </div>
 
             <div className="flex items-center gap-4 text-zinc-300">
-              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-blue-400">
+              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-main">
                 <FaMapMarkerAlt />
               </div>
               <div>
@@ -303,7 +303,7 @@ const Contact = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
-            <h3 className="text-xl font-bold text-white mb-6">
+            <h3 className="text-xl font-bold text-white mb-6 font-syne">
               Frequently Asked Questions
             </h3>
             <div className="space-y-4">
@@ -312,7 +312,7 @@ const Contact = () => {
                 return (
                   <motion.div
                     key={index}
-                    className="glass rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-white/10 transition-colors"
+                    className="bg-[#1a1a1a] rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-main/50 transition-colors"
                     onClick={() => setOpen(!open)}
                   >
                     <div className="flex justify-between items-center px-6 py-4">
@@ -320,7 +320,7 @@ const Contact = () => {
                         {faq.question}
                       </span>
                       <span
-                        className={`text-blue-400 text-xl transition-transform duration-300 ${
+                        className={`text-main text-xl transition-transform duration-300 ${
                           open ? "rotate-45" : ""
                         }`}
                       >

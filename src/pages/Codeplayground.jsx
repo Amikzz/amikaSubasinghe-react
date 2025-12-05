@@ -1,22 +1,36 @@
-// SecureCodePlayground.jsx
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaPlay,
+  FaCode,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaChevronDown,
+  FaChevronUp,
+  FaTerminal,
+  FaLightbulb,
+} from "react-icons/fa";
 
 const defaultCode = {
-  html: "<h1>Hello World!</h1>",
-  css: "h1 { color: cyan; text-align: center; font-family: monospace; }",
-  js: "console.log('Hello World!');"
+  html: "<h1>Hello World!</h1>\n<p>Welcome to my playground.</p>",
+  css: "body {\n  font-family: 'Syne', sans-serif;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 100vh;\n  background: #111111;\n  color: #fff;\n}\n\nh1 {\n  color: #d4f534;\n  font-size: 3rem;\n}",
+  js: "console.log('Hello from the console!');\n\n// Try changing the text color\ndocument.querySelector('h1').style.color = '#d4f534';",
 };
 
 const escapeHTML = (str) =>
-  str.replace(/[&<>"'`]/g, (match) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-    "`": "&#96;"
-  }[match]));
+  str.replace(
+    /[&<>"'`]/g,
+    (match) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+        "`": "&#96;",
+      }[match])
+  );
 
 const SecureCodePlayground = () => {
   const [html, setHtml] = useState(defaultCode.html);
@@ -24,11 +38,17 @@ const SecureCodePlayground = () => {
   const [js, setJs] = useState(defaultCode.js);
   const [srcDoc, setSrcDoc] = useState("");
   const [consoleOutput, setConsoleOutput] = useState([]);
-  const [expanded, setExpanded] = useState({ HTML: false, CSS: false, JavaScript: false });
-  const [showTips, setShowTips] = useState(false);
+  const [expanded, setExpanded] = useState({
+    HTML: true,
+    CSS: false,
+    JavaScript: false,
+  });
+  const [isRunning, setIsRunning] = useState(false);
 
   const runCode = () => {
+    setIsRunning(true);
     setConsoleOutput([]);
+
     const combinedHTML = `
       <html>
         <head>
@@ -67,198 +87,236 @@ const SecureCodePlayground = () => {
     const worker = new Worker(URL.createObjectURL(blob));
     worker.onmessage = (e) => {
       const sanitizedMessage = escapeHTML(e.data.message);
-      setConsoleOutput(prev => [...prev, { type: e.data.type, message: sanitizedMessage }]);
+      setConsoleOutput((prev) => [
+        ...prev,
+        { type: e.data.type, message: sanitizedMessage },
+      ]);
     };
     worker.postMessage({ code: js, timeout: 2000 });
+
+    setTimeout(() => setIsRunning(false), 500);
+  };
+
+  const toggleExpand = (type) => {
+    setExpanded((prev) => ({ ...prev, [type]: !prev[type] }));
   };
 
   return (
-    <main className="w-full min-h-screen bg-zinc-900 text-zinc-50 flex flex-col items-center pt-32 px-6 md:px-20">
-      <motion.h1
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-5xl md:text-6xl font-bold text-cyan-400 mb-4 text-center"
-      >
-        Secure Code Playground
-      </motion.h1>
+    <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col items-center pt-32 px-6 md:px-12 lg:px-20 pb-20 relative overflow-hidden font-syne">
+      {/* Background Elements */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-violet-900/10 rounded-full blur-[120px]" />
+      </div>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-        className="text-zinc-400 text-center mb-12 max-w-3xl"
-      >
-        Write HTML, CSS, and JavaScript safely. Click <span className="text-cyan-400 font-semibold">Run</span> to see live result and console output.
-      </motion.p>
+      <div className="max-w-7xl w-full z-10">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 flex items-center justify-center gap-3 font-cabinetGrotesk">
+            <FaCode className="text-main" /> Code{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-main to-white">
+              Playground
+            </span>
+          </h1>
+          <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
+            A secure environment to experiment with HTML, CSS, and JavaScript.
+          </p>
+        </motion.div>
 
-      {/* Editors */}
-      <motion.div
-        className="flex flex-col md:flex-row gap-6 w-full"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: {},
-          visible: {
-            transition: { staggerChildren: 0.15 }
-          }
-        }}
-      >
-        {["HTML", "CSS", "JavaScript"].map((type, index) => {
-          const codeMap = { HTML: html, CSS: css, JavaScript: js };
-          const setterMap = { HTML: setHtml, CSS: setCss, JavaScript: setJs };
-          const isExpanded = expanded[type];
-          return (
-            <motion.div
-              key={type}
-              className="flex-1 flex flex-col"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-              }}
-            >
-              <div className="flex justify-between items-center mb-1">
-                <label className="text-cyan-400 font-medium">{type}</label>
+        {/* Editor Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          {/* Editors Column */}
+          <div className="space-y-4">
+            {[
+              {
+                type: "HTML",
+                icon: <FaHtml5 className="text-orange-500" />,
+                code: html,
+                setCode: setHtml,
+                color: "orange",
+              },
+              {
+                type: "CSS",
+                icon: <FaCss3Alt className="text-blue-500" />,
+                code: css,
+                setCode: setCss,
+                color: "blue",
+              },
+              {
+                type: "JavaScript",
+                icon: <FaJs className="text-yellow-400" />,
+                code: js,
+                setCode: setJs,
+                color: "yellow",
+              },
+            ].map(({ type, icon, code, setCode, color }) => (
+              <motion.div
+                key={type}
+                layout
+                className={`bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/5 ${
+                  expanded[type] ? "ring-1 ring-main/30" : ""
+                }`}
+              >
                 <button
-                  onClick={() => setExpanded(prev => ({ ...prev, [type]: !prev[type] }))}
-                  className="text-sm text-zinc-400 hover:text-cyan-400"
+                  onClick={() => toggleExpand(type)}
+                  className="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors"
                 >
-                  {isExpanded ? "Collapse" : "Expand"}
+                  <div className="flex items-center gap-3">
+                    {icon}
+                    <span className="font-mono font-bold text-sm">{type}</span>
+                  </div>
+                  {expanded[type] ? (
+                    <FaChevronUp className="text-zinc-500" />
+                  ) : (
+                    <FaChevronDown className="text-zinc-500" />
+                  )}
                 </button>
-              </div>
 
-              <div className="relative bg-zinc-900 rounded-xl shadow-inner border border-zinc-700 overflow-auto">
-                <div className="absolute left-0 top-0 bottom-0 w-8 pr-2 text-zinc-500 select-none font-mono text-sm flex flex-col items-end py-2 overflow-hidden">
-                  {Array.from({ length: codeMap[type].split("\n").length }, (_, i) => (
-                    <span key={i}>{i + 1}</span>
-                  ))}
+                <AnimatePresence>
+                  {expanded[type] && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="relative"
+                    >
+                      <div className="absolute left-0 top-0 bottom-0 w-10 bg-zinc-900/50 border-r border-white/5 flex flex-col items-end py-4 pr-2 text-zinc-600 font-mono text-xs select-none">
+                        {code.split("\n").map((_, i) => (
+                          <div key={i} className="leading-6">
+                            {i + 1}
+                          </div>
+                        ))}
+                      </div>
+                      <textarea
+                        value={code}
+                        onChange={(e) => setCode(e.target.value)}
+                        className="w-full h-64 bg-zinc-900/30 text-zinc-300 font-mono text-sm p-4 pl-12 resize-y outline-none leading-6 focus:bg-zinc-900/50 transition-colors"
+                        spellCheck="false"
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+
+            <motion.button
+              onClick={runCode}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full py-4 bg-white hover:bg-main text-black rounded-xl font-bold shadow-lg shadow-white/5 flex items-center justify-center gap-2 transition-all"
+            >
+              {isRunning ? (
+                <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+              ) : (
+                <>
+                  <FaPlay size={14} /> Run Code
+                </>
+              )}
+            </motion.button>
+          </div>
+
+          {/* Output Column */}
+          <div className="flex flex-col gap-4 h-full">
+            {/* Preview */}
+            <div className="flex-1 bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/5 flex flex-col min-h-[400px]">
+              <div className="p-3 bg-white/5 border-b border-white/5 flex items-center gap-2">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
+                  <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
                 </div>
-                <textarea
-                  value={codeMap[type]}
-                  onChange={(e) => setterMap[type](e.target.value)}
-                  className="bg-zinc-900 text-zinc-50 font-mono text-sm p-2 pl-10 resize-none w-full outline-none focus:ring-2 focus:ring-cyan-400 rounded-xl"
-                  style={{ height: isExpanded ? "600px" : "192px" }}
-                />
+                <span className="text-xs text-zinc-500 font-mono ml-2">
+                  preview.html
+                </span>
               </div>
-            </motion.div>
-          );
-        })}
-      </motion.div>
+              <iframe
+                srcDoc={srcDoc}
+                title="Live Output"
+                sandbox="allow-scripts"
+                className="w-full flex-1 bg-white"
+              />
+            </div>
 
-      {/* Run Button */}
-      <motion.button
-        onClick={runCode}
-        className="mt-6 bg-zinc-900 border border-zinc-700 text-cyan-400 font-mono px-6 py-3 rounded-xl shadow-inner hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
-        whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(6, 182, 212, 0.7)" }}
-        whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0, transition: { delay: 0.6, duration: 0.6 } }}
-      >
-        <span className="text-cyan-400">▶</span> Run
-      </motion.button>
-
-      {/* Output Section */}
-      <motion.div
-        className="mt-6 flex flex-col md:flex-row gap-6 w-full"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: {},
-          visible: { transition: { staggerChildren: 0.15 } }
-        }}
-      >
-        <motion.div
-          className="flex-1 h-96 border-2 border-zinc-700 rounded-xl overflow-hidden shadow-lg"
-          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-        >
-          <iframe
-            srcDoc={srcDoc}
-            title="Live Output"
-            sandbox="allow-scripts"
-            frameBorder="0"
-            className="w-full h-full bg-zinc-900"
-          />
-        </motion.div>
-
-        <motion.div
-          className="flex-1 max-w-full md:max-w-md bg-zinc-800 rounded-xl p-4 shadow-lg overflow-y-auto h-96 font-mono text-sm"
-          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-        >
-          <h3 className="text-cyan-400 mb-2 font-medium">Console Output:</h3>
-          {consoleOutput.length === 0 ? (
-            <p className="text-zinc-400">No logs yet. Run your code!</p>
-          ) : (
-            <pre className="whitespace-pre-wrap">
-              {consoleOutput.map((entry, idx) => (
-                <div key={idx} className={entry.type === "error" ? "text-red-500" : "text-zinc-50"}>
-                  {entry.message}
-                </div>
-              ))}
-            </pre>
-          )}
-        </motion.div>
-      </motion.div>
-
-      {/* Tips & Tricks */}
-      <motion.div
-        className="w-full mt-8 bg-zinc-800 rounded-xl p-8 shadow-lg text-zinc-50"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0, transition: { delay: 0.8, duration: 0.8 } }}
-      >
-        <h2 className="text-cyan-400 text-2xl md:text-3xl font-semibold mb-6 text-center">
-          Tips & Tricks
-        </h2>
-
-        <div className="space-y-6 text-zinc-300 text-base md:text-lg leading-relaxed">
-          <section>
-            <h3 className="text-cyan-400 font-medium text-lg md:text-xl mb-2">HTML Tips</h3>
-            <ul className="list-disc ml-6 space-y-1">
-              <li>Use semantic tags like <code>&lt;header&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code>.</li>
-              <li>Keep your HTML structure clean and properly nested.</li>
-              <li>Use <code>id</code> and <code>class</code> thoughtfully for styling and JS targeting.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h3 className="text-cyan-400 font-medium text-lg md:text-xl mb-2">CSS Tips</h3>
-            <ul className="list-disc ml-6 space-y-1">
-              <li>Use Flexbox and Grid for layout instead of floats.</li>
-              <li>Keep reusable styles in classes rather than inline styles.</li>
-              <li>Use CSS variables for consistent colors, spacing, and typography.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h3 className="text-cyan-400 font-medium text-lg md:text-xl mb-2">JavaScript Tips</h3>
-            <ul className="list-disc ml-6 space-y-1">
-              <li>Use <code>const</code> and <code>let</code> instead of <code>var</code>.</li>
-              <li>Keep functions small, reusable, and modular.</li>
-              <li>Use <code>console.log</code> to debug and inspect values step by step.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h3 className="text-cyan-400 font-medium text-lg md:text-xl mb-2">Popular Frontend Frameworks</h3>
-            <ul className="list-disc ml-6 space-y-1">
-              <li>React – component-based UI, widely used for SPA development.</li>
-              <li>Vue.js – simple syntax with reactive bindings and component support.</li>
-              <li>Angular – complete TypeScript-based framework for enterprise apps.</li>
-              <li>Svelte – compiler-based, minimal runtime, very fast.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h3 className="text-cyan-400 font-medium text-lg md:text-xl mb-2">Code Editor Usage Tips</h3>
-            <ul className="list-disc ml-6 space-y-1">
-              <li>Line numbers help navigate and debug efficiently.</li>
-              <li>Expand the editor for longer code snippets.</li>
-              <li>Run your JS code frequently to check for errors early.</li>
-              <li>Use consistent indentation for readability.</li>
-            </ul>
-          </section>
+            {/* Console */}
+            <div className="h-48 bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/5 flex flex-col">
+              <div className="p-3 bg-zinc-900 border-b border-white/5 flex items-center gap-2">
+                <FaTerminal className="text-zinc-500" size={12} />
+                <span className="text-xs text-zinc-500 font-mono">Console</span>
+              </div>
+              <div className="flex-1 p-4 overflow-y-auto font-mono text-xs space-y-1 bg-zinc-950/50">
+                {consoleOutput.length === 0 ? (
+                  <span className="text-zinc-600 italic">
+                    // Console output will appear here...
+                  </span>
+                ) : (
+                  consoleOutput.map((log, i) => (
+                    <div
+                      key={i}
+                      className={`flex gap-2 ${
+                        log.type === "error" ? "text-red-400" : "text-zinc-300"
+                      }`}
+                    >
+                      <span className="text-zinc-600 select-none">&gt;</span>
+                      <span>{log.message}</span>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-      </motion.div>
 
+        {/* Tips Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-[#1a1a1a] rounded-2xl p-8 border border-white/5"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <FaLightbulb className="text-main text-xl" />
+            <h2 className="text-xl font-bold text-white font-syne">
+              Quick Tips
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="space-y-2">
+              <h3 className="text-blue-400 font-medium text-sm uppercase tracking-wider">
+                HTML
+              </h3>
+              <ul className="text-zinc-400 text-sm space-y-1 list-disc list-inside">
+                <li>Use semantic tags</li>
+                <li>Keep structure clean</li>
+                <li>Properly nest elements</li>
+              </ul>
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-violet-400 font-medium text-sm uppercase tracking-wider">
+                CSS
+              </h3>
+              <ul className="text-zinc-400 text-sm space-y-1 list-disc list-inside">
+                <li>Use Flexbox & Grid</li>
+                <li>Avoid inline styles</li>
+                <li>Use CSS variables</li>
+              </ul>
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-yellow-400 font-medium text-sm uppercase tracking-wider">
+                JavaScript
+              </h3>
+              <ul className="text-zinc-400 text-sm space-y-1 list-disc list-inside">
+                <li>Use const & let</li>
+                <li>Keep functions pure</li>
+                <li>Debug with console</li>
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </main>
   );
 };

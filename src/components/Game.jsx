@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaTimes, FaTrophy, FaRedo, FaLightbulb } from "react-icons/fa";
 
 const challenges = [
   {
@@ -7,22 +8,28 @@ const challenges = [
     snippet: ["console.log(typeof NaN);"],
     options: ["'number'", "'NaN'", "'undefined'", "'object'"],
     correctIdx: 0,
-    hint: "NaN is considered a numeric type in JavaScript."
+    hint: "NaN is considered a numeric type in JavaScript.",
   },
   {
-    question: "Which method creates a new array with all elements that pass a test?",
+    question:
+      "Which method creates a new array with all elements that pass a test?",
     snippet: [],
     options: ["map()", "filter()", "reduce()", "forEach()"],
     correctIdx: 1,
-    hint: "It returns only the elements that satisfy the condition."
+    hint: "It returns only the elements that satisfy the condition.",
   },
   {
     question: "Predict the output of this snippet:",
-    snippet: ["let a = [1,2];", "let b = [...a];", "b.push(3);", "console.log(a.length, b.length);"],
+    snippet: [
+      "let a = [1,2];",
+      "let b = [...a];",
+      "b.push(3);",
+      "console.log(a.length, b.length);",
+    ],
     options: ["2 3", "3 3", "2 2", "Error"],
     correctIdx: 0,
-    hint: "Spread operator creates a shallow copy; original array remains unchanged."
-  }
+    hint: "Spread operator creates a shallow copy; original array remains unchanged.",
+  },
 ];
 
 const Game = ({ isOpen, onClose }) => {
@@ -54,7 +61,7 @@ const Game = ({ isOpen, onClose }) => {
       setTimeout(() => {
         setShowHint(false);
         handleNext(false);
-      }, 2000); // Wait 2 seconds so user can read hint
+      }, 2000);
     }
   };
 
@@ -79,120 +86,188 @@ const Game = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 bg-black/70 flex justify-center items-center z-50"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex justify-center items-center z-50 p-4 font-syne"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="bg-zinc-900 p-6 rounded-2xl w-11/12 md:w-1/2 text-zinc-50 shadow-xl relative"
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0.8 }}
+            className="bg-[#1a1a1a] w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl border border-white/10"
+            initial={{ scale: 0.9, y: 20 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.9, y: 20 }}
+            transition={{ type: "spring", bounce: 0.4 }}
           >
-            {/* Modern Close Button */}
-            <button
-              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-zinc-800 hover:bg-cyan-500 text-cyan-400 hover:text-white shadow-md transition-all duration-300"
-              onClick={onClose}
-            >
-              ✕
-            </button>
-
-            {!finished ? (
-              <>
-                {/* Score & Timer */}
-                <div className="flex justify-between mb-4 items-center">
-                  <p className="text-lg font-mono">Score: {score}</p>
-                  <div className="w-1/3 h-2 bg-zinc-700 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-2 bg-cyan-400"
-                      initial={{ width: "100%" }}
-                      animate={{ width: `${(timeLeft / 20) * 100}%` }}
-                      transition={{ duration: 0.5 }}
-                    />
-                  </div>
-                  <p className="text-sm text-zinc-400">{timeLeft}s</p>
-                </div>
-
-                {/* Challenge */}
-                <h2 className="text-xl font-bold text-cyan-400 mb-2">{currentChallenge.question}</h2>
-                
-                {currentChallenge.snippet.length > 0 && (
-                  <div className="bg-zinc-800 p-4 rounded-lg mb-4 font-mono">
-                    {currentChallenge.snippet.map((line, idx) => (
-                      <p key={idx}>{line}</p>
-                    ))}
-                  </div>
-                )}
-
-                {/* Options */}
-                <div className="flex flex-col gap-2 mb-4">
-                  {currentChallenge.options.map((opt, idx) => (
-                    <motion.button
-                      key={idx}
-                      className={`w-full text-left py-2 px-3 rounded-md transition-colors 
-                        ${
-                          selected === idx
-                            ? idx === currentChallenge.correctIdx
-                              ? "bg-green-500 text-white"
-                              : "bg-red-500 text-white"
-                            : "bg-zinc-700 hover:bg-cyan-500"
-                        }`}
-                      onClick={() => handleClick(idx)}
-                      disabled={selected !== null || showHint}
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                    >
-                      {opt}
-                    </motion.button>
-                  ))}
-                </div>
-
-                {/* Hint */}
-                {showHint && selected !== null && (
-                  <motion.p
-                    className="text-yellow-400 italic mb-4 font-mono"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    ❌ Wrong! Hint: {currentChallenge.hint}
-                  </motion.p>
-                )}
-
-                <p className="text-sm text-zinc-400 mt-2">
-                  Question {current + 1} of {challenges.length}
-                </p>
-              </>
-            ) : (
-              // End Game / Result Screen
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className="text-center"
+            {/* Header */}
+            <div className="flex justify-between items-center p-6 border-b border-white/10 bg-white/5">
+              <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                <span className="text-2xl">🎮</span> DevQuiz
+              </h2>
+              <button
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-red-500/20 text-zinc-400 hover:text-red-500 transition-all duration-300"
+                onClick={onClose}
               >
-                <motion.p
-                  className="text-2xl font-bold text-cyan-400 mb-4"
-                  initial={{ scale: 0.8 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  🎉 Game Over!
-                </motion.p>
-                <motion.p className="text-lg text-zinc-200 mb-6">
-                  Your final score: <span className="font-bold text-green-400">{score}</span> / {challenges.length}
-                </motion.p>
-                <motion.button
-                  className="bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-xl shadow-lg font-semibold transition-transform hover:scale-105"
-                  onClick={resetGame}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Play Again
-                </motion.button>
-              </motion.div>
-            )}
+                <FaTimes />
+              </button>
+            </div>
+
+            <div className="p-8">
+              {!finished ? (
+                <>
+                  {/* Progress & Timer */}
+                  <div className="flex justify-between items-center mb-8">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-medium text-zinc-400">
+                        Question
+                      </span>
+                      <span className="px-2 py-1 rounded-md bg-main/20 text-main font-bold text-sm">
+                        {current + 1}/{challenges.length}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-32 h-2 bg-zinc-800 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full bg-main"
+                          initial={{ width: "100%" }}
+                          animate={{ width: `${(timeLeft / 20) * 100}%` }}
+                          transition={{ duration: 1, ease: "linear" }}
+                        />
+                      </div>
+                      <span
+                        className={`font-mono font-bold ${
+                          timeLeft < 5 ? "text-red-400" : "text-zinc-400"
+                        }`}
+                      >
+                        {timeLeft}s
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Question */}
+                  <div className="mb-8">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-4 leading-snug">
+                      {currentChallenge.question}
+                    </h3>
+
+                    {currentChallenge.snippet.length > 0 && (
+                      <div className="bg-zinc-950/50 p-4 rounded-xl border border-white/5 font-mono text-sm text-main mb-6 overflow-x-auto">
+                        {currentChallenge.snippet.map((line, idx) => (
+                          <div key={idx} className="whitespace-pre">
+                            {line}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Options */}
+                  <div className="grid grid-cols-1 gap-3">
+                    {currentChallenge.options.map((opt, idx) => {
+                      let btnClass =
+                        "bg-zinc-800/50 hover:bg-zinc-800 border-zinc-700 hover:border-main/50 text-zinc-300";
+
+                      if (selected !== null) {
+                        if (idx === currentChallenge.correctIdx) {
+                          btnClass =
+                            "bg-green-500/20 border-green-500 text-green-400";
+                        } else if (selected === idx) {
+                          btnClass =
+                            "bg-red-500/20 border-red-500 text-red-400";
+                        } else {
+                          btnClass =
+                            "bg-zinc-800/20 border-zinc-800 text-zinc-600 opacity-50";
+                        }
+                      }
+
+                      return (
+                        <motion.button
+                          key={idx}
+                          className={`w-full text-left p-4 rounded-xl border transition-all duration-200 font-medium ${btnClass}`}
+                          onClick={() => handleClick(idx)}
+                          disabled={selected !== null || showHint}
+                          whileHover={
+                            selected === null ? { scale: 1.01, x: 4 } : {}
+                          }
+                          whileTap={selected === null ? { scale: 0.99 } : {}}
+                        >
+                          <span className="mr-3 opacity-50">
+                            {String.fromCharCode(65 + idx)}.
+                          </span>
+                          {opt}
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Hint */}
+                  <AnimatePresence>
+                    {showHint && selected !== null && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        className="mt-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-start gap-3"
+                      >
+                        <FaLightbulb className="text-amber-400 mt-1 shrink-0" />
+                        <p className="text-amber-200 text-sm">
+                          <span className="font-bold block mb-1">Hint:</span>
+                          {currentChallenge.hint}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </>
+              ) : (
+                // Result Screen
+                <div className="text-center py-8">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", bounce: 0.5 }}
+                    className="w-24 h-24 rounded-full bg-gradient-to-tr from-yellow-400 to-amber-600 mx-auto mb-6 flex items-center justify-center shadow-lg shadow-amber-500/20"
+                  >
+                    <FaTrophy className="text-4xl text-white" />
+                  </motion.div>
+
+                  <h3 className="text-3xl font-bold text-white mb-2">
+                    Quiz Completed!
+                  </h3>
+                  <p className="text-zinc-400 mb-8">Here's how you performed</p>
+
+                  <div className="grid grid-cols-2 gap-4 mb-8 max-w-xs mx-auto">
+                    <div className="bg-zinc-800/50 p-4 rounded-2xl border border-white/5">
+                      <p className="text-zinc-500 text-xs uppercase tracking-wider mb-1">
+                        Score
+                      </p>
+                      <p className="text-3xl font-bold text-white">{score}</p>
+                    </div>
+                    <div className="bg-zinc-800/50 p-4 rounded-2xl border border-white/5">
+                      <p className="text-zinc-500 text-xs uppercase tracking-wider mb-1">
+                        Accuracy
+                      </p>
+                      <p className="text-3xl font-bold text-main">
+                        {Math.round((score / challenges.length) * 100)}%
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center gap-4">
+                    <button
+                      onClick={onClose}
+                      className="px-6 py-3 rounded-xl font-semibold text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      Close
+                    </button>
+                    <button
+                      onClick={resetGame}
+                      className="flex items-center gap-2 px-8 py-3 rounded-xl font-semibold bg-white hover:bg-main text-black shadow-lg shadow-white/5 transition-all hover:scale-105 active:scale-95"
+                    >
+                      <FaRedo size={14} /> Play Again
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </motion.div>
         </motion.div>
       )}
