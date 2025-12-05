@@ -1,13 +1,47 @@
 import { motion } from "framer-motion";
+import { FaLayerGroup, FaDesktop, FaServer, FaCloud } from "react-icons/fa";
 import Hero from "../components/Hero";
 import Marquee from "../components/Marquee";
 import Content from "../components/Content";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const experiences = [
+    {
+      id: "01",
+      title: "Full Stack Development",
+      description:
+        "Building scalable and high-performance web applications using modern tech stacks.",
+      icon: <FaLayerGroup />,
+    },
+    {
+      id: "02",
+      title: "UI/UX & Frontend",
+      description:
+        "Creating immersive and responsive web experiences with robust frontend and backend integration.",
+      icon: <FaDesktop />,
+    },
+    {
+      id: "03",
+      title: "API Development",
+      description:
+        "Designing secure and efficient RESTful and GraphQL APIs for seamless data communication.",
+      icon: <FaServer />,
+    },
+    {
+      id: "04",
+      title: "Cloud Engineering",
+      description:
+        "Deploying and managing scalable cloud infrastructure using AWS and modern DevOps practices.",
+      icon: <FaCloud />,
+    },
+  ];
+
   return (
-    <main className="w-full bg-[#111111] text-white overflow-hidden">
-      <Hero />
+    <main className="w-full bg-[#111111] text-white">
+      <div className="sticky top-0 h-screen z-0">
+        <Hero />
+      </div>
 
       {/* About Section */}
       <section className="relative w-full py-20 lg:py-40 px-4 flex flex-col items-center justify-center z-30 bg-white text-black rounded-t-[3rem] lg:rounded-t-[5rem] -mt-10">
@@ -31,70 +65,44 @@ const Home = () => {
 
       <Marquee />
 
-      {/* Works Preview */}
-      <section className="w-full py-20 lg:py-40 px-4 bg-[#111111] text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-end mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold font-syne">
-              Selected Works
-            </h2>
-            <Link
-              to="/projects"
-              className="hidden md:block text-lg underline hover:text-main"
+      {/* Experience / Services Section */}
+      <section className="relative w-full py-20 lg:py-32 bg-[#111111] text-white z-30 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 mb-16">
+          <h2 className="text-4xl md:text-6xl font-bold font-syne mb-6">
+            My Experience
+          </h2>
+          <div className="w-full h-[1px] bg-zinc-800"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10">
+          {experiences.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="w-full bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl 
+                   hover:border-main/50 transition-colors duration-300 group"
             >
-              View All
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* Real Project Cards */}
-            <Link to="/projects" className="group cursor-pointer block">
-              <div className="w-full aspect-video bg-zinc-800 rounded-2xl overflow-hidden mb-4 relative">
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
-                  <span className="text-white text-xl font-bold">
-                    View Project
-                  </span>
+              <div className="flex justify-between items-start mb-12">
+                <div className="w-16 h-16 rounded-full bg-main/10 flex items-center justify-center text-main text-3xl group-hover:scale-110 transition-transform duration-300">
+                  {item.icon}
                 </div>
-                <img
-                  src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop"
-                  alt="SkillSwap Platform"
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                />
+                <span className="text-zinc-500 font-syne text-xl">
+                  {item.id}
+                </span>
               </div>
-              <h3 className="text-2xl font-bold mb-1 text-white group-hover:text-main transition-colors">
-                SkillSwap Platform
-              </h3>
-              <p className="text-zinc-400">Full Stack Development</p>
-            </Link>
 
-            <Link
-              to="/projects"
-              className="group cursor-pointer block md:mt-20"
-            >
-              <div className="w-full aspect-video bg-zinc-800 rounded-2xl overflow-hidden mb-4 relative">
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
-                  <span className="text-white text-xl font-bold">
-                    View Project
-                  </span>
-                </div>
-                <img
-                  src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069&auto=format&fit=crop"
-                  alt="Bus Management System"
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <h3 className="text-2xl font-bold mb-1 text-white group-hover:text-main transition-colors">
-                Bus Management System
+              <h3 className="text-3xl font-bold font-cabinetGrotesk mb-6 group-hover:text-main transition-colors duration-300">
+                {item.title}
               </h3>
-              <p className="text-zinc-400">Java Application</p>
-            </Link>
-          </div>
 
-          <div className="mt-10 md:hidden text-center">
-            <Link to="/projects" className="text-lg underline hover:text-main">
-              View All Projects
-            </Link>
-          </div>
+              <p className="text-zinc-400 font-syne leading-relaxed">
+                {item.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
