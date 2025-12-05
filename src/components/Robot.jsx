@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useSpring, useTransform, useMotionValue } from "framer-motion";
 
-const Robot = () => {
+const Robot = ({ onButtonClick }) => {
   const containerRef = useRef(null);
   const mouseX = useMotionValue(0);
+
   const mouseY = useMotionValue(0);
 
   // Smooth springs for the movement
@@ -143,12 +144,16 @@ const Robot = () => {
             stroke="#52525b"
             strokeWidth="2"
           />
-          <circle
+          {/* Interactive Button */}
+          <motion.circle
             cx="100"
             cy="155"
             r="6"
             fill="#10b981"
-            className="animate-pulse duration-1000"
+            className="animate-pulse duration-1000 cursor-pointer pointer-events-auto hover:brightness-125"
+            onClick={onButtonClick}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
           />
         </motion.g>
       </motion.svg>

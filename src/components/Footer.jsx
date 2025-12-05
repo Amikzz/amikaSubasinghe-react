@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaEnvelope,
+  FaArrowUp,
+} from "react-icons/fa";
 import Robot from "./Robot";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -33,6 +40,13 @@ const Footer = () => {
         <div className="w-full h-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
       </div>
 
+      {/* BIG BACKGROUND TEXT "AMIKA" */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
+        <h1 className="text-[13vw] md:text-[10vw] font-syne font-extrabold text-[#ffffff] opacity-[0.03] select-none tracking-tighter leading-none whitespace-nowrap">
+          AMIKA SUBASINGHE
+        </h1>
+      </div>
+
       {/* Main Content: Robot & Big Text */}
       <div className="flex-grow flex flex-col items-center justify-center relative z-10 w-full">
         {/* Intro Text */}
@@ -42,7 +56,7 @@ const Footer = () => {
 
         {/* Robot Container - Floating slightly above or intertwined */}
         <div className="relative z-20 mb-[-1vw] md:mb-[-0.5vw]">
-          <Robot />
+          <Robot onButtonClick={scrollToTop} />
         </div>
       </div>
 
@@ -85,7 +99,7 @@ const Footer = () => {
             onClick={scrollToTop}
             className="hover:text-main transition-colors"
           >
-            Works
+            Projects
           </Link>
           <Link
             to="/contact"
