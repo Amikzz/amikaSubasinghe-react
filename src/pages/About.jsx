@@ -50,7 +50,7 @@ const About = () => {
             <motion.img
               src={profilePic}
               alt="Amika Subasinghe"
-              className="relative w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-2 border-zinc-700 shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
+              className="relative w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-2 border-zinc-700 shadow-2xl transition-all duration-500"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
