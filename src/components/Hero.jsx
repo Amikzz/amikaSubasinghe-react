@@ -17,20 +17,15 @@ const container = {
 
 const letterAnimation = {
   hidden: {
-    y: 40,
+    y: 100,
     opacity: 0,
-    filter: "blur(10px)",
-    rotateX: 90,
   },
   show: {
     y: 0,
     opacity: 1,
-    filter: "blur(0px)",
-    rotateX: 0,
     transition: {
-      type: "spring",
-      damping: 20,
-      stiffness: 100,
+      ease: [0.23, 1, 0.32, 1],
+      duration: 1,
     },
   },
 };
