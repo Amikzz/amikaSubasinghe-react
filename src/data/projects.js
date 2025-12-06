@@ -85,10 +85,10 @@ export const projects = [
     licensed: true,
   },
   {
-    id: "stretctec-website",
-    title: "Stretctec Website",
+    id: "stretchtec-website",
+    title: "Stretchtec Website",
     description:
-      "A modern, responsive company website designed for Stretctec using Next.js. The site features smooth animations, an intuitive user interface, and a clean layout to showcase company products and services effectively.",
+      "A modern, responsive company website designed for Stretchtec using Next.js. The site features smooth animations, an intuitive user interface, and a clean layout to showcase company products and services effectively.",
     image: "/assets/stretchtec.jpg",
     screenshots: [
       "/assets/stretchtec1.png",
@@ -98,7 +98,7 @@ export const projects = [
     ],
     tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
     github: null,
-    demo: "https://stretctec.lk",
+    demo: "https://stretchtec.lk",
     licensed: true,
   },
   {
