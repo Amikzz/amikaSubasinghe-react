@@ -45,64 +45,64 @@ const ProjectDetail = () => {
             animate="visible"
             className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight mb-8 leading-none"
           >
-            <div className="overflow-hidden pb-2">
-              {" "}
-              {/* add padding-bottom to prevent clipping */}
+            <div className="overflow-hidden pb-4">
               <motion.span variants={reveal} className="block leading-tight">
                 {project.title}
               </motion.span>
             </div>
           </motion.h1>
 
-          <div className="flex flex-col md:flex-row justify-between items-start gap-8 mt-12 border-t border-zinc-800 pt-8">
-            <div className="overflow-hidden">
-              <motion.div
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="max-w-xl"
-              >
-                <h2 className="text-xl md:text-2xl font-medium mb-4 text-zinc-400">
-                  Overview
-                </h2>
-                <p className="text-lg md:text-xl leading-relaxed text-zinc-200">
-                  {project.description}
-                </p>
-              </motion.div>
-            </div>
+          <div className="mt-12 border-t border-zinc-800 pt-8">
+            <h2 className="text-xl md:text-2xl font-medium mb-8 text-zinc-400">
+              Overview
+            </h2>
+            <div className="flex flex-col md:flex-row justify-between items-start gap-8">
+              <div className="overflow-hidden md:w-2/3">
+                <motion.div
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  className="max-w-full"
+                >
+                  <p className="text-lg md:text-xl leading-relaxed text-zinc-200 text-justify">
+                    {project.description}
+                  </p>
+                </motion.div>
+              </div>
 
-            <div className="overflow-hidden">
-              <motion.div
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="flex flex-col gap-4"
-              >
-                {(project.demo || project.github) && (
-                  <div className="flex flex-wrap gap-4">
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full text-lg font-medium transition-transform hover:scale-105"
-                      >
-                        Live Site <FaExternalLinkAlt size={14} />
-                      </a>
-                    )}
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group flex items-center gap-2 border border-zinc-700 hover:border-white px-8 py-4 rounded-full text-lg font-medium transition-colors"
-                      >
-                        GitHub <FaGithub size={18} />
-                      </a>
-                    )}
-                  </div>
-                )}
-              </motion.div>
+              <div className="overflow-hidden md:w-1/3">
+                <motion.div
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                  className="flex flex-col gap-4"
+                >
+                  {(project.demo || project.github) && (
+                    <div className="flex flex-wrap gap-4">
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full text-lg font-medium transition-transform hover:scale-105"
+                        >
+                          Live Site <FaExternalLinkAlt size={14} />
+                        </a>
+                      )}
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group flex items-center gap-2 border border-zinc-700 hover:border-white px-8 py-4 rounded-full text-lg font-medium transition-colors"
+                        >
+                          GitHub <FaGithub size={18} />
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>
@@ -190,9 +190,9 @@ const ProjectDetail = () => {
           <p className="text-zinc-500 mb-6 text-xl">Next Project</p>
           <Link
             to={`/project/${nextProject.id}`}
-            className="group inline-block"
+            className="group inline-block overflow-visible" // Ensure letters aren’t clipped
           >
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold group-hover:text-zinc-400 transition-colors duration-300 font-syne">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold group-hover:text-zinc-400 transition-colors duration-300 font-syne leading-[1.05]">
               {nextProject.title}
             </h2>
             <div className="w-full h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 mt-4 origin-center"></div>

@@ -41,7 +41,7 @@ const Footer = () => {
       </div>
 
       {/* BIG BACKGROUND TEXT "AMIKA" */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden pb-4">
         <h1 className="text-[13vw] md:text-[10vw] font-syne font-extrabold text-[#ffffff] opacity-[0.03] select-none tracking-tighter leading-none whitespace-nowrap">
           AMIKA SUBASINGHE
         </h1>

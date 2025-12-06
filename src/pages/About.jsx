@@ -71,7 +71,7 @@ const About = () => {
           variants={containerVariants}
         >
           {/* Huge Title */}
-          <div className="overflow-hidden mb-8">
+          <div className="overflow-hidden mb-8 pb-4">
             <motion.h1
               className="text-[12vw] leading-[0.85] font-bold tracking-tighter text-white font-cabinetGrotesk uppercase"
               variants={textRevealVariants}
@@ -120,7 +120,7 @@ const About = () => {
 
             {/* Right: Text Content */}
             <div className="lg:col-span-8 flex flex-col justify-end">
-              <div className="overflow-hidden">
+              <div className="overflow-hidden pb-2">
                 <motion.p
                   className="text-3xl md:text-5xl font-light text-zinc-300 leading-[1.1] mb-12"
                   variants={textRevealVariants}
@@ -133,7 +133,7 @@ const About = () => {
                 </motion.p>
               </div>
 
-              <div className="overflow-hidden">
+              <div className="overflow-hidden pb-2">
                 <motion.div
                   variants={textRevealVariants}
                   className="space-y-6 text-zinc-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl"

@@ -237,7 +237,7 @@ const Hero = () => {
           </div>
 
           {/* Line 3: Description */}
-          <div className="overflow-hidden mt-8 md:mt-12">
+          <div className="overflow-hidden mt-8 md:mt-12 pb-2">
             <motion.div
               initial="hidden"
               animate="show"
