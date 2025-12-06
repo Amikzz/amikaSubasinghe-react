@@ -3,7 +3,7 @@ export const projects = [
     id: "personal-portfolio",
     title: "Personal Portfolio",
     description:
-      "My Personal Portfolio is a modern, fully responsive website built with React and Vite to showcase my projects, skills, and professional experience. The platform features smooth animations powered by Framer Motion, an optimized UI with Tailwind CSS, and seamless navigation.",
+      "My Personal Portfolio is a modern, production-ready web application built with React and Vite to present my projects, professional experience, and technical capabilities in a clean and engaging way. The platform uses a component-driven architecture for scalability, while Vite ensures extremely fast development and build performance. Tailwind CSS powers a fully responsive, utility-first design system that keeps the UI consistent and visually refined across all screen sizes. Smooth, GPU-accelerated animations created with Framer Motion enhance the user experience by providing seamless transitions and interactive visual feedback. The portfolio acts as a central hub for showcasing my software engineering work, reflecting industry-standard technologies and best practices to create a fast, polished, and future-oriented digital identity.",
     image: "/assets/portfolio.jpg",
     screenshots: [
       "/assets/portfolio1.png",
@@ -20,7 +20,7 @@ export const projects = [
     id: "invoice-management-system",
     title: "Invoice Management System",
     description:
-      "A customized invoice management system developed for Nisu Creations using Laravel and MySQL. It streamlines invoice and delivery note generation, tracks orders, and manages client interactions efficiently. The system provides dashboards and reports to monitor sales and financial transactions.",
+      "A fully customized Invoice Management System developed for Nisu Creations, engineered using Laravel and MySQL to streamline the company’s operational workflow. The system automates invoice creation, delivery note generation, order tracking, and client management while ensuring accuracy and consistency across all financial documents. Built with Laravel’s MVC architecture, it offers a scalable backend capable of handling real-time data operations and secure transaction records. The Blade templating engine enables clean, component-based UI development, while Tailwind CSS provides a responsive and modern interface optimized for day-to-day business use. The platform includes analytical dashboards, detailed financial reports, and user-friendly data entry forms, helping the business monitor sales performance, reduce manual workload, and maintain a reliable audit trail. Designed as a licensed solution, this system improves efficiency, transparency, and digital record-keeping within the organization.",
     image: "/assets/invoice.jpg",
     screenshots: [
       "/assets/invoice1.png",
@@ -37,7 +37,7 @@ export const projects = [
     id: "vehicle-management-system",
     title: "Vehicle Management System",
     description:
-      "A comprehensive vehicle management system developed for Rangiri Holdings using Laravel and MySQL. It manages service and maintenance records, monitors expenses, and provides interactive dashboards and reporting features for informed decision-making.",
+      "A robust and fully featured Vehicle Management System developed for Rangiri Holdings, designed to digitalize and centralize all vehicle-related operations. Built with Laravel and MySQL, the system manages service histories, maintenance schedules, fuel and repair expenses, and vehicle documentation with a high level of accuracy and traceability. It features dynamic dashboards powered by Chart.js to visualize cost trends, upcoming service requirements, and overall fleet health. The interface is implemented using Blade and Tailwind CSS, delivering a clean and responsive user experience optimized for administrative workflows. Additional functionality includes automated PDF exports for due-service reports, inline-editable tables for rapid data updates, detailed record tracking, and structured CRUD operations for vehicles, operators, and supervisors. This licensed system significantly enhances operational transparency, reduces manual paperwork, and supports data-driven decision-making for long-term fleet sustainability.",
     image: "/assets/vehicle.jpg",
     screenshots: [
       "/assets/vehicle1.png",
@@ -54,7 +54,7 @@ export const projects = [
     id: "rangiri-aqua-website",
     title: "Rangiri Aqua Website",
     description:
-      "A modern, responsive company website designed for Rangiri Aqua using HTML, CSS, and JavaScript. The site features smooth animations, an intuitive user interface, and a clean layout to showcase company products and services effectively.",
+      "A fully responsive and professionally crafted company website developed for Rangiri Aqua using HTML, CSS, and JavaScript. The platform presents the brand’s products and services through a clean, visually appealing layout supported by smooth animations and intuitive navigation. Built with a strong focus on performance and accessibility, the site uses handcrafted UI components, optimized assets, and modular JavaScript to ensure fast loading and seamless interaction across devices. The design emphasizes clarity, modern aesthetics, and user engagement, making it an effective digital presence for enhancing customer awareness and promoting the company’s offerings. As a licensed production-ready solution, the website strengthens the brand identity while delivering a polished browsing experience to its users.",
     image: "/assets/rangiri.jpg",
     screenshots: [
       "/assets/rangiri1.png",
@@ -71,7 +71,7 @@ export const projects = [
     id: "stretctec-erp-system",
     title: "Stretctec ERP System",
     description:
-      "An enterprise-grade system developed for Stretctec, a leading apparel raw material manufacturer. Built with Laravel and MySQL, it manages the entire production line and sample development process. The system streamlines customer inquiries, sample approvals, order tracking, and production workflows.",
+      "A large-scale, enterprise-grade ERP platform engineered for Stretchtec, a leading apparel ingredient manufacturer specializing in elastics, tapes, and cords. Developed using Laravel and MySQL, the system digitalizes the entire operational workflow—from customer inquiries and sample development to production scheduling, operator management, and delivery coordination. It provides structured modules to manage inquiries, sample status updates, approvals, raw material requirements, and customer decisions using clean, data-driven interfaces. The platform includes advanced inline-editable tables for rapid updates, dynamic dashboards powered by Chart.js for visualizing production metrics, cost trends, and overall system health, and detailed record-tracking features to ensure operational transparency. Built with Blade and Tailwind CSS, the UI delivers a responsive, efficient, and workflow-optimized experience for factory staff and management. As a licensed ERP solution, the system enhances productivity, improves communication across departments, reduces manual paperwork, and supports end-to-end visibility across Stretchtec’s production lifecycle.",
     image: "/assets/production.jpg",
     screenshots: [
       "/assets/production1.png",
@@ -88,7 +88,7 @@ export const projects = [
     id: "stretchtec-website",
     title: "Stretchtec Website",
     description:
-      "A modern, responsive company website designed for Stretchtec using Next.js. The site features smooth animations, an intuitive user interface, and a clean layout to showcase company products and services effectively.",
+      "A modern, mobile-first company website developed for Stretchtec using Next.js, designed to deliver a fast, responsive, and visually striking online presence. The platform showcases the company’s products and services through a clean, intuitive layout optimized for both desktop and mobile devices. Tailwind CSS enables a fully responsive, utility-first design system that ensures consistency and adaptability across different screen sizes, while Framer Motion introduces smooth, engaging animations to enhance user interaction. The site emphasizes performance, accessibility, and modern aesthetics, making it a polished digital representation of the brand. Built with a focus on scalability and maintainability, it leverages Next.js for server-side rendering, optimized routing, and seamless navigation, providing users with a fast, modern, and professional browsing experience.",
     image: "/assets/stretchtec.jpg",
     screenshots: [
       "/assets/stretchtec1.png",
@@ -105,7 +105,7 @@ export const projects = [
     id: "rangiri-website",
     title: "Rangiri Website",
     description:
-      "A modern, responsive company website designed for Rangiri Holdings using Next.js. The site features smooth animations, an intuitive user interface, and a clean layout to showcase company products and services effectively.",
+      "A modern, mobile-first website developed for Rangiri Holdings using Next.js, designed to present the full scope of the group’s business ecosystem. The platform showcases all subsidiaries, affiliated companies, and their products and services through a clean, organized, and visually engaging layout. Tailwind CSS ensures a fully responsive and consistent design across devices, while Framer Motion adds smooth animations that enhance navigation and user engagement. The site leverages Next.js for optimized routing, server-side rendering, and fast load times, providing a seamless browsing experience. Built as a production-ready platform, the website highlights Rangiri Holdings’ diverse portfolio, communicates the company’s brand identity effectively, and serves as a central hub for stakeholders, clients, and visitors to explore the group’s operations and achievements.",
     image: "/assets/rangiriweb.jpg",
     screenshots: [
       "/assets/rangiriweb1.png",
@@ -122,7 +122,7 @@ export const projects = [
     id: "actionpark-website",
     title: "Action Park Website",
     description:
-      "A modern, responsive company website designed for Action Park using React. The site features smooth animations, an intuitive user interface, and a clean layout to showcase company products and services effectively.",
+      "A dynamic, mobile-first website developed for Action Park using React, designed to provide an immersive and engaging digital experience for visitors. The platform showcases the park’s attractions, services, events, and safety information through a visually appealing, interactive, and easy-to-navigate interface. Tailwind CSS ensures a responsive and consistent design across all devices, while Framer Motion introduces smooth animations and transitions that enhance user engagement and interactivity. Built with React’s component-driven architecture, the site offers scalable, maintainable code and fast rendering, providing a seamless browsing experience. The Action Park website effectively communicates the brand’s energy and excitement, serves as a central hub for information and promotion, and creates a professional, modern online presence that appeals to customers and visitors alike.",
     image: "/assets/actionpark.jpg",
     screenshots: [
       "/assets/actionpark1.png",
