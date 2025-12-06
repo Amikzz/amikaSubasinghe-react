@@ -25,10 +25,6 @@ const ProjectDetail = () => {
   const nextProjectIndex = (projectIndex + 1) % projects.length;
   const nextProject = projects[nextProjectIndex];
 
-  // Parallax effect for hero image
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-
   useEffect(() => {
     if (!project) {
       navigate("/projects");
@@ -111,21 +107,26 @@ const ProjectDetail = () => {
           </div>
         </div>
 
-        {/* Hero Image */}
-        <motion.div
-          style={{
-            scale,
-            opacity: useTransform(scrollYProgress, [0, 0.5], [1, 0.8]),
-          }}
-          className="w-full aspect-video rounded-2xl overflow-hidden relative"
-        >
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-40"></div>
-        </motion.div>
+        {/* Screenshot Gallery */}
+        <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {project.screenshots &&
+            project.screenshots.map((shot, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className="rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800"
+              >
+                <img
+                  src={shot}
+                  alt={`${project.title} screenshot ${index + 1}`}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </motion.div>
+            ))}
+        </div>
       </section>
 
       {/* --- INFO / TECH --- */}
