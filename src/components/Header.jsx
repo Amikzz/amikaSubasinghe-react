@@ -160,7 +160,11 @@ const Header = () => {
                 key={link.path}
                 to={link.path}
                 className="text-4xl font-righteous text-white mix-blend-difference"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  if (location.pathname === link.path) {
+                    setIsOpen(false);
+                  }
+                }}
               >
                 {link.name}
               </NavLink>
