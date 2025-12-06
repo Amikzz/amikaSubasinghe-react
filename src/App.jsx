@@ -18,6 +18,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
+import ProjectDetail from "./pages/ProjectDetail";
 
 import CodePlayground from "./pages/Codeplayground";
 import PageTransition from "./components/PageTransition";
@@ -33,6 +34,7 @@ const AppWrapper = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/project/:id" element={<ProjectDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/codeplayground" element={<CodePlayground />} />
         <Route path="/contact" element={<Contact />} />
