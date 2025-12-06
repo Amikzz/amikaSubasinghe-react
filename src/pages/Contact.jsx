@@ -95,7 +95,7 @@ const Contact = () => {
 
   return (
     <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col items-center justify-start pt-32 px-6 md:px-12 lg:px-24 pb-20 relative overflow-hidden font-syne">
-      <div className="max-w-[1400px] w-full z-10 flex flex-col gap-16">
+      <div className="w-full z-10 flex flex-col gap-16">
         {/* Top: Title & Intro */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

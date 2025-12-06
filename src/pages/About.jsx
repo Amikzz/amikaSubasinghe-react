@@ -62,7 +62,7 @@ const About = () => {
       {/* Background Ambience Removed */}
 
       {/* Content Container - Hero */}
-      <div className="relative max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 z-10">
+      <div className="relative w-full px-6 md:px-12 lg:px-24 z-10">
         {/* HERO SECTION */}
         <motion.div
           className="flex flex-col mb-24"
@@ -83,9 +83,10 @@ const About = () => {
           {/* Intro Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-8">
             {/* Left: Profile Image & Actions */}
-            <div className="lg:col-span-4 flex flex-col gap-6">
+            {/* Left: Profile Image & Actions */}
+            <div className="lg:col-span-4 flex flex-col gap-6 w-full max-w-sm">
               <motion.div
-                className="relative aspect-square w-full max-w-sm rounded-2xl overflow-hidden group"
+                className="relative aspect-square w-full rounded-2xl overflow-hidden group"
                 variants={textRevealVariants}
               >
                 <motion.img
@@ -98,7 +99,7 @@ const About = () => {
               </motion.div>
 
               <motion.div
-                className="flex flex-wrap gap-4"
+                className="flex flex-wrap gap-4 w-full"
                 variants={textRevealVariants}
               >
                 <a
@@ -177,7 +178,7 @@ const About = () => {
       </div>
 
       {/* Content Container - Experience & Tech */}
-      <div className="relative max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 z-10">
+      <div className="relative w-full px-6 md:px-12 lg:px-24 z-10">
         {/* EXPERIENCE & EDUCATION LIST */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
           {/* Experience Column */}
