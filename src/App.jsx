@@ -11,6 +11,7 @@ import Header from "./components/Header";
 import Loader from "./components/Loader";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import Cursor from "./components/Cursor";
 
 // Pages
 import Home from "./pages/Home";
@@ -29,6 +30,7 @@ const AppWrapper = () => {
 
   return (
     <>
+      <Cursor />
       <Header /> {/* Fixed navbar across pages */}
       <PageTransition />
       <Routes>

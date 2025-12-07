@@ -25,6 +25,18 @@
   --color-thr: var(--color-thr);
 }
 
+/* Hide default cursor on desktop */
+@media (pointer: fine) {
+  body,
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    cursor: none !important;
+  }
+}
+
 /* Base */
 html {
   scroll-behavior: smooth;
