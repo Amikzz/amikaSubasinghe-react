@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaCrown } from "react-icons/fa6";
 
 const Loader = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -15,13 +16,14 @@ const Loader = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#111111] text-white overflow-hidden"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#111111] text-white overflow-hidden"
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
             transition: { duration: 0.8, ease: "easeInOut" },
           }}
         >
+          {/* Main Hello Text */}
           <motion.div
             className="relative z-50 text-6xl md:text-8xl lg:text-9xl font-righteous text-center"
             initial={{
@@ -37,6 +39,27 @@ const Loader = () => {
             }}
           >
             Hello!
+          </motion.div>
+
+          {/* Bottom Branding */}
+          <motion.div
+            className="absolute bottom-12 flex flex-col items-center gap-2 z-50 text-gray-400"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.8, delay: 0.5, ease: "easeOut" },
+            }}
+            exit={{
+              opacity: 0,
+              y: 20,
+              transition: { duration: 0.5 },
+            }}
+          >
+            <FaCrown className="text-xl text-[#00aaff]" />
+            <span className="text-s font-megrim tracking-[0.2em] font-bold">
+              LOAD AMIKA
+            </span>
           </motion.div>
 
           {/* Background Curve Effect (Simplified) */}
