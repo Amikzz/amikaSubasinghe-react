@@ -79,7 +79,7 @@ const Badges = () => {
               </div>
 
               {/* Label */}
-              <h3 className="mt-6 text-lg font-syne text-zinc-400 group-hover:text-white transition-colors">
+              <h3 className="mt-6 text-lg font-syne text-zinc-400 group-hover:text-white text-center transition-colors">
                 {badge.name}
               </h3>
             </motion.div>
