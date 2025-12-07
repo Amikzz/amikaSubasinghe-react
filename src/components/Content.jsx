@@ -115,30 +115,35 @@ const Content = () => {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="w-full bg-[#111111] text-white py-32 px-6 md:px-12 relative overflow-hidden font-syne">
+    <section className="w-full bg-[#111111] text-white py-20 md:py-32 px-6 md:px-12 relative overflow-hidden font-syne">
       {/* Background Effects */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-900/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-violet-900/5 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10" ref={containerRef}>
+      {/* Background Title "JOURNEY" */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0 select-none opacity-5">
+        <h1 className="text-[15vw] font-bold text-white font-cabinetGrotesk leading-none tracking-tighter">
+          JOURNEY
+        </h1>
+      </div>
+
+      <div
+        className="max-w-6xl mx-auto relative z-10 flex flex-col items-center"
+        ref={containerRef}
+      >
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-32"
+          className="text-center mb-16 relative z-10"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 font-cabinetGrotesk">
-            My{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-main to-white">
-              Journey
-            </span>
+          <h2 className="text-4xl md:text-7xl font-bold font-cabinetGrotesk text-white mb-6 leading-none">
+            WHAT A <br />
+            <span className="font-syne italic font-light">JOURNEY</span>
           </h2>
-          <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
-            A timeline of my academic and professional milestones.
-          </p>
         </motion.div>
 
         <div className="relative">

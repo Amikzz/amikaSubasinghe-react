@@ -21,22 +21,25 @@ const badges = [
 
 const Badges = () => {
   return (
-    <section className="w-full bg-[#111111] py-20 px-6 md:px-12 relative overflow-hidden">
+    <section className="w-full bg-[#111111] py-20 md:py-32 px-6 md:px-12 -mt-1 relative overflow-hidden">
+      {/* Background Title "BADGES" */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0 select-none opacity-5">
+        <h1 className="text-[15vw] font-bold text-white font-cabinetGrotesk leading-none tracking-tighter">
+          BADGES
+        </h1>
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-16 relative z-10"
         >
-          <h2 className="text-4xl md:text-6xl font-bold font-cabinetGrotesk text-white mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-main to-white">
-              Badges
-            </span>{" "}
-            & Achievements
+          <h2 className="text-4xl md:text-7xl font-bold font-cabinetGrotesk text-white mb-6 leading-none">
+            HEY THERE <br />
+            <span className="font-syne italic font-light">ACHIEVEMENTS</span>
           </h2>
-          <div className="w-24 h-1 bg-main mx-auto rounded-full" />
         </motion.div>
 
         {/* Badges Grid */}

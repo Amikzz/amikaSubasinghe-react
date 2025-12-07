@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import Marquee from "../components/Marquee";
 import Content from "../components/Content";
 import Badges from "../components/Badges";
+import SelectedProjects from "../components/SelectedProjects";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -109,6 +110,9 @@ const Home = () => {
 
       {/* Experience / Timeline */}
       <Content />
+
+      {/* Selected Projects */}
+      <SelectedProjects />
 
       {/* Badges Section */}
       <Badges />
