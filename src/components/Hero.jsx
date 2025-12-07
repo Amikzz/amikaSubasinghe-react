@@ -129,9 +129,12 @@ const SocialLinks = () => {
   return (
     <div className="flex z-50 w-full flex-col gap-6 lg:gap-5 xl:gap-8">
       {[
-        { icon: <FaLinkedin />, href: "#" },
-        { icon: <FaWhatsapp />, href: "#" },
-        { icon: <FaGithub />, href: "#" },
+        {
+          icon: <FaLinkedin />,
+          href: "https://linkedin.com/in/amikasubasinghe",
+        },
+        { icon: <FaWhatsapp />, href: "https://wa.me/94787564524" },
+        { icon: <FaGithub />, href: "https://github.com/Amikzz" },
       ].map((item, idx) => {
         const ref = useRef(null);
 
@@ -140,6 +143,8 @@ const SocialLinks = () => {
             key={idx}
             ref={ref}
             href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
             style={getWiggleStyle(ref)}
             className="text-white hover:text-main transition-colors text-2xl"
           >

@@ -18,7 +18,7 @@ const Footer = () => {
     { icon: <FaGithub />, url: "https://github.com/Amikzz", label: "GitHub" },
     {
       icon: <FaLinkedin />,
-      url: "https://linkedin.com/in/amika-subasinghe-a52b6a1a9",
+      url: "https://linkedin.com/in/amikasubasinghe",
       label: "LinkedIn",
     },
     {
