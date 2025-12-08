@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
 import { projects } from "../data/projects";
+import SEO from "../components/SEO";
 
 // Text Reveal Animation Variant
 const reveal = {
@@ -36,6 +37,12 @@ const ProjectDetail = () => {
 
   return (
     <div className="bg-[#111111] text-white min-h-screen font-cabinet overflow-hidden">
+      <SEO
+        title={project.title}
+        description={project.description}
+        keywords={project.tech.join(", ")}
+        image={project.image}
+      />
       {/* --- HERO SECTION --- */}
       <section className="relative pt-32 pb-12 lg:pt-48 lg:pb-24 px-6 md:px-12 lg:px-24 max-w-[1600px] mx-auto">
         {/* Title */}

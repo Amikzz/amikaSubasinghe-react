@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SEO from "../components/SEO";
 
 const sections = [
   {
@@ -92,6 +93,10 @@ const sections = [
 const Privacy = () => {
   return (
     <div className="flex flex-col min-h-screen bg-black text-zinc-100">
+      <SEO
+        title="Privacy Policy"
+        description="Privacy Policy for Amika Subasinghe's personal portfolio website. Learn how your data is handled."
+      />
       {/* Main Privacy Content */}
       <main className="flex-1 px-6 md:px-20 pt-36 pb-12 space-y-12 max-w-5xl mx-auto">
         <motion.h1
@@ -108,7 +113,9 @@ const Privacy = () => {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="text-zinc-400 mb-12 text-center md:text-left text-lg"
         >
-          Your privacy is important. This policy outlines how I handle your personal information and how your data is collected, used, and protected.
+          Your privacy is important. This policy outlines how I handle your
+          personal information and how your data is collected, used, and
+          protected.
         </motion.p>
 
         {/* Sections */}
@@ -121,16 +128,23 @@ const Privacy = () => {
             transition={{ delay: index * 0.2, duration: 0.6 }}
             className="space-y-4"
           >
-            <h2 className="text-3xl font-semibold text-cyan-400">{section.title}</h2>
+            <h2 className="text-3xl font-semibold text-cyan-400">
+              {section.title}
+            </h2>
             {section.content.map((paragraph, idx) =>
               Array.isArray(paragraph) ? (
-                <ul key={idx} className="list-disc list-inside text-zinc-400 space-y-1">
+                <ul
+                  key={idx}
+                  className="list-disc list-inside text-zinc-400 space-y-1"
+                >
                   {paragraph.map((li, i) => (
                     <li key={i}>{li}</li>
                   ))}
                 </ul>
               ) : (
-                <p key={idx} className="text-zinc-400 text-lg">{paragraph}</p>
+                <p key={idx} className="text-zinc-400 text-lg">
+                  {paragraph}
+                </p>
               )
             )}
           </motion.section>

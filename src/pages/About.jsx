@@ -12,6 +12,7 @@ import cvFile from "/assets/Amika Indusara Lelwala Subasinghe.pdf";
 import Game from "../components/Game";
 import ScrollPath from "../components/ScrollPath";
 import Techstack from "../components/Techstack";
+import SEO from "../components/SEO";
 
 const About = () => {
   const [isGameOpen, setIsGameOpen] = useState(false);
@@ -57,6 +58,10 @@ const About = () => {
 
   return (
     <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col pt-32 pb-20 relative overflow-hidden font-syne">
+      <SEO
+        title="About Me"
+        description="Learn more about Amika Subasinghe, a Software Engineer and undergraduate at Staffordshire University, passionate about full-stack development and creative coding."
+      />
       {/* Background Ambience */}
       <ScrollPath strokeColor="#3b82f6" />
       {/* Background Ambience Removed */}

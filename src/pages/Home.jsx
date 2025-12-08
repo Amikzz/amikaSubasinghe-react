@@ -6,6 +6,7 @@ import Content from "../components/Content";
 import Badges from "../components/Badges";
 import SelectedProjects from "../components/SelectedProjects";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
 
 const Home = () => {
   const experiences = [
@@ -41,6 +42,11 @@ const Home = () => {
 
   return (
     <main className="w-full bg-[#111111] text-white">
+      <SEO
+        title="Software Engineer & Full-Stack Developer"
+        description="Amika Subasinghe is a Full Stack Developer specializing in building scalable web applications with modern technologies like React, Node.js, and AWS."
+        keywords="Full Stack Developer, Software Engineer, React, Node.js, Web Development, Cloud Engineering"
+      />
       <div className="sticky top-0 h-screen z-0">
         <Hero />
       </div>

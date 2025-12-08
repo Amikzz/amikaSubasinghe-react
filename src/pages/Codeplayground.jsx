@@ -11,6 +11,7 @@ import {
   FaTerminal,
   FaLightbulb,
 } from "react-icons/fa";
+import SEO from "../components/SEO";
 
 const defaultCode = {
   html: "<h1>Hello World!</h1>\n<p>Welcome to my playground.</p>",
@@ -103,6 +104,10 @@ const SecureCodePlayground = () => {
 
   return (
     <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col pt-32 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden font-syne">
+      <SEO
+        title="Code Playground"
+        description="A real-time HTML, CSS, and JavaScript code editor and playground. Experiment and see results instantly."
+      />
       <div className="w-full z-10">
         {/* Header Section */}
         <motion.div

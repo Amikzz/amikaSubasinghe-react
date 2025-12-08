@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import { FaArrowRight } from "react-icons/fa";
+import SEO from "../components/SEO";
 
 const ProjectListItem = ({ project, index }) => {
   return (
@@ -71,6 +72,10 @@ const ProjectListItem = ({ project, index }) => {
 const Projects = () => {
   return (
     <main className="w-full min-h-screen bg-[#111111] text-white pt-32 pb-20 relative font-syne cursor-default">
+      <SEO
+        title="Selected Projects"
+        description="Explore a collection of my web development projects, featuring full-stack applications, UI/UX designs, and API integrations."
+      />
       {/* --- HEADER --- */}
       <div className="px-6 md:px-12 lg:px-24 mb-20 lg:mb-32">
         <motion.div
