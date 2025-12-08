@@ -25,7 +25,7 @@
   --color-thr: var(--color-thr);
 }
 
-/* Hide default cursor on desktop */
+/* Hide default cursor only on desktop/fine pointers */
 @media (pointer: fine) {
   body,
   a,
@@ -34,6 +34,13 @@
   select,
   textarea {
     cursor: none !important;
+  }
+}
+
+/* Hide custom cursor on touch devices or small screens */
+@media (pointer: coarse), (max-width: 1024px) {
+  .custom-cursor {
+    display: none !important;
   }
 }
 

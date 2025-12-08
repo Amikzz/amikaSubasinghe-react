@@ -52,7 +52,7 @@ const Cursor = () => {
     <>
       {/* Main Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        className="custom-cursor fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
         style={{
           x: mouseX,
           y: mouseY,
@@ -63,7 +63,7 @@ const Cursor = () => {
 
       {/* Fluid Follower */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9998] mix-blend-difference border border-white"
+        className="custom-cursor fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9998] mix-blend-difference border border-white"
         style={{
           x: cursorX,
           y: cursorY,
