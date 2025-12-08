@@ -12,9 +12,9 @@ const SEO = ({
   const siteTitle =
     "Amika Subasinghe | Software Engineer & Full-Stack Developer";
   const defaultDescription =
-    "Amika Subasinghe is a Software Engineer specializing in full-stack development, modern web technologies, and cloud engineering.";
+    "Amika Subasinghe, a Full Stack Developer and Software Engineer from Sri Lanka, builds scalable and high-performance web and mobile applications using modern technologies like React, Node.js, Laravel, Flutter, and AWS. Explore his portfolio showcasing projects in web development, API integration, cloud engineering, and responsive UI/UX design.";
   const siteUrl = "https://amikasubasinghe.com.lk";
-  const defaultImage = `${siteUrl}/og-image.png`;
+  const defaultImage = `${siteUrl}/logo.png`;
 
   const metaTitle = title ? `${title} | Amika Subasinghe` : siteTitle;
   const metaDescription = description || defaultDescription;
@@ -28,6 +28,28 @@ const SEO = ({
       ? url
       : `${siteUrl}${url}`
     : siteUrl;
+
+  const defaultSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Amika Subasinghe",
+    url: siteUrl,
+    image: defaultImage,
+    sameAs: [
+      "https://github.com/Start-sys",
+      "https://www.linkedin.com/in/amikasubasinghe/",
+      "https://www.facebook.com/amika.subasinghe.3",
+      "https://www.instagram.com/amika_subasinghe/",
+    ],
+    jobTitle: "Software Engineer",
+    worksFor: {
+      "@type": "Organization",
+      name: "Freelance / Self-Employed",
+    },
+    description: defaultDescription,
+  };
+
+  const finalSchema = schema || defaultSchema;
 
   return (
     <Helmet>
@@ -52,9 +74,7 @@ const SEO = ({
       <meta name="twitter:image" content={metaImage} />
 
       {/* Schema.org JSON-LD */}
-      {schema && (
-        <script type="application/ld+json">{JSON.stringify(schema)}</script>
-      )}
+      <script type="application/ld+json">{JSON.stringify(finalSchema)}</script>
     </Helmet>
   );
 };
