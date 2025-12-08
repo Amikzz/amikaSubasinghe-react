@@ -43,10 +43,10 @@ const Home = () => {
   return (
     <main className="w-full bg-[#111111] text-white">
       <SEO
-        title="Software Engineer & Full-Stack Developer"
-        description="Amika Subasinghe is a Full Stack Developer specializing in building scalable web applications with modern technologies like React, Node.js, and AWS."
-        keywords="Full Stack Developer, Software Engineer, React, Node.js, Web Development, Cloud Engineering"
+        description="Amika Subasinghe, a Full Stack Developer and Software Engineer from Sri Lanka, builds scalable and high-performance web and mobile applications using modern technologies like React, Node.js, Laravel, Flutter, and AWS. Explore his portfolio showcasing projects in web development, API integration, cloud engineering, and responsive UI/UX design."
+        keywords="Amika Subasinghe, Full Stack Developer Sri Lanka, Software Engineer, Web Developer, Mobile App Developer, C#, PHP, Laravel, Flutter, React, Node.js, JavaScript, HTML, CSS, MySQL, SQL Server, REST API, API Development, Object-Oriented Programming, CRUD Applications, Cloud Computing, AWS, Git, Agile, Scrum, Frontend Development, Backend Development, UI/UX Design, Responsive Design, Jetstream, Blade, Tailwind CSS, Alpine.js, System Architecture, Project Management, Portfolio, Software Projects"
       />
+
       <div className="sticky top-0 h-screen z-0">
         <Hero />
       </div>
