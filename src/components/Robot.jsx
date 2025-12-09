@@ -22,13 +22,37 @@ const Robot = ({ onButtonClick }) => {
   const headY = useTransform(smoothY, [0, window.innerHeight], [-10, 10]);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
+    const checkMobile = () => window.innerWidth < 768;
+    const isMobile = checkMobile();
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    if (!isMobile) {
+      // Desktop: Follow Mouse
+      const handleMouseMove = (e) => {
+        mouseX.set(e.clientX);
+        mouseY.set(e.clientY);
+      };
+      window.addEventListener("mousemove", handleMouseMove);
+      return () => window.removeEventListener("mousemove", handleMouseMove);
+    } else {
+      // Mobile: Auto Dance
+      const startTime = Date.now();
+      const interval = setInterval(() => {
+        const elapsed = (Date.now() - startTime) / 1000;
+        // Circular / Figure-8 motion
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        const radius = 100;
+
+        // Rhythmic movement
+        const x = cx + Math.sin(elapsed * 2) * radius;
+        const y = cy + Math.cos(elapsed * 3) * (radius * 0.5);
+
+        mouseX.set(x);
+        mouseY.set(y);
+      }, 16); // ~60fps
+
+      return () => clearInterval(interval);
+    }
   }, [mouseX, mouseY]);
 
   return (
