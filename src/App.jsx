@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,6 +13,7 @@ import Loader from "./components/Loader";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import Cursor from "./components/Cursor";
+import { LoadingProvider, useLoading } from "./context/LoadingContext";
 
 // Pages
 import Home from "./pages/Home";
@@ -48,22 +50,44 @@ const AppWrapper = () => {
   );
 };
 
-const App = () => {
+const AppContent = () => {
   const [loading, setLoading] = useState(true);
+  const { isVideoLoaded } = useLoading();
+  const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000);
+    // Minimum load time for branding (2s)
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) return <Loader />;
+  useEffect(() => {
+    // Hide loader only when BOTH time has passed AND video is loaded
+    if (!loading && isVideoLoaded) {
+      setShowLoader(false);
+    }
+  }, [loading, isVideoLoaded]);
 
   return (
-    <Router>
-      <ScrollToTop />
-      <AppWrapper />
-    </Router>
+    <>
+      <AnimatePresence mode="wait">
+        {showLoader && <Loader key="loader" />}
+      </AnimatePresence>
+
+      <Router>
+        <ScrollToTop />
+        <AppWrapper />
+      </Router>
+    </>
   );
 };
+
+const App = () => (
+  <LoadingProvider>
+    <AppContent />
+  </LoadingProvider>
+);
 
 export default App;

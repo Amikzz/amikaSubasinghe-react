@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
 import bgVideo from "../assets/background.mp4";
 
+import { useLoading } from "../context/LoadingContext";
+
 // --- Variants Defined Outside Component ---
 const container = {
   hidden: { opacity: 0 },
@@ -157,6 +159,8 @@ const SocialLinks = () => {
 };
 
 const Hero = () => {
+  const { setIsVideoLoaded } = useLoading();
+
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden z-20">
       {/* Video Background */}
@@ -165,6 +169,7 @@ const Hero = () => {
         loop
         muted
         playsInline
+        onLoadedData={() => setIsVideoLoaded(true)}
         className="absolute top-0 left-0 w-full h-full object-cover -z-20"
       >
         <source src={bgVideo} type="video/mp4" />
