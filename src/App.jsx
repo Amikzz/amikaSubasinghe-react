@@ -51,6 +51,7 @@ const AppWrapper = () => {
 };
 
 const AppContent = () => {
+  const location = useLocation();
   const [loading, setLoading] = useState(true);
   const { isVideoLoaded } = useLoading();
   const [showLoader, setShowLoader] = useState(true);
@@ -64,11 +65,17 @@ const AppContent = () => {
   }, []);
 
   useEffect(() => {
-    // Hide loader only when BOTH time has passed AND video is loaded
-    if (!loading && isVideoLoaded) {
+    const isHome = location.pathname === "/";
+    // Hide loader only when BOTH time has passed AND video is loaded (only strictly required for home)
+    if (!loading) {
+      if (isHome && !isVideoLoaded) {
+        // If on home page and video not loaded, keep showing loader
+        return;
+      }
+      // Otherwise (not home, or home+video loaded), hide loader
       setShowLoader(false);
     }
-  }, [loading, isVideoLoaded]);
+  }, [loading, isVideoLoaded, location.pathname]);
 
   return (
     <>
@@ -76,17 +83,17 @@ const AppContent = () => {
         {showLoader && <Loader key="loader" />}
       </AnimatePresence>
 
-      <Router>
-        <ScrollToTop />
-        <AppWrapper />
-      </Router>
+      <ScrollToTop />
+      <AppWrapper />
     </>
   );
 };
 
 const App = () => (
   <LoadingProvider>
-    <AppContent />
+    <Router>
+      <AppContent />
+    </Router>
   </LoadingProvider>
 );
 
