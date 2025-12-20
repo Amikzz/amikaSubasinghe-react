@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Set up Node
+      # 2. Setup Node
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -24,11 +24,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # 4. Build project
+      # 4. Build project (creates dist/)
       - name: Build project
         run: npm run build
 
-      # 5. Copy files to EC2
+      # 5. Deploy dist contents to EC2
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v0.1.7
         with:
@@ -37,7 +37,8 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           port: 22
           script: |
-            sudo mv /home/${{ secrets.EC2_USER }}/amikaSubasinghe-react/dist /usr/share/nginx/html/myapp
+            sudo rm -rf /usr/share/nginx/html/myapp/*
+            sudo cp -r dist/* /usr/share/nginx/html/myapp/
             sudo chown -R nginx:nginx /usr/share/nginx/html/myapp
             sudo chmod -R 755 /usr/share/nginx/html/myapp
             sudo systemctl restart nginx
