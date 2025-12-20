@@ -60,7 +60,7 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-3xl md:text-5xl lg:text-7xl font-bold font-cabinetGrotesk leading-normal mb-10"
           >
-            I'm Amika - A King.
+            I'm Amika - A King. The best of the best.
           </motion.h2>
           <Link to="/about">
             <button className="px-8 py-4 rounded-full border border-black text-black text-lg font-medium hover:bg-black hover:text-white transition-all duration-300">
