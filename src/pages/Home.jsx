@@ -60,7 +60,10 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-3xl md:text-5xl lg:text-7xl font-bold font-cabinetGrotesk leading-normal mb-10"
           >
-            I'm Amika - A King. The best of the best.
+            I am a Full Stack Developer and Software Engineer from Sri Lanka. I
+            excel in building scalable and high-performance web and mobile
+            applications using modern technologies like React, Node.js, Laravel,
+            Flutter, and AWS.
           </motion.h2>
           <Link to="/about">
             <button className="px-8 py-4 rounded-full border border-black text-black text-lg font-medium hover:bg-black hover:text-white transition-all duration-300">
