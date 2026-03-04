@@ -43,9 +43,14 @@ const Home = () => {
   return (
     <main className="w-full bg-[#111111] text-white">
       <SEO
+        title="Portfolio"
         description="Amika Subasinghe, a Full Stack Developer and Software Engineer from Sri Lanka, builds scalable and high-performance web and mobile applications using modern technologies like React, Node.js, Laravel, Flutter, and AWS. Explore his portfolio showcasing projects in web development, API integration, cloud engineering, and responsive UI/UX design."
         keywords="Amika Subasinghe, Full Stack Developer Sri Lanka, Software Engineer, Web Developer, Mobile App Developer, C#, PHP, Laravel, Flutter, React, Node.js, JavaScript, HTML, CSS, MySQL, SQL Server, REST API, API Development, Object-Oriented Programming, CRUD Applications, Cloud Computing, AWS, Git, Agile, Scrum, Frontend Development, Backend Development, UI/UX Design, Responsive Design, Jetstream, Blade, Tailwind CSS, Alpine.js, System Architecture, Project Management, Portfolio, Software Projects"
       />
+
+      <h1 className="sr-only">
+        Amika Subasinghe - Software Engineer & Full-Stack Developer
+      </h1>
 
       <div className="sticky top-0 h-screen z-0">
         <Hero />
@@ -60,10 +65,10 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-3xl md:text-5xl lg:text-7xl font-bold font-cabinetGrotesk leading-normal mb-10"
           >
-            I am a Full Stack Developer and Software Engineer from Sri Lanka. I
-            excel in building scalable and high-performance web and mobile
-            applications using modern technologies like React, Node.js, Laravel,
-            Flutter, and AWS.
+            I am a Full Stack Developer and Software Engineer from Sri Lanka,
+            specializing in building scalable, high-performance web and mobile
+            applications using modern technologies including React, Node.js,
+            Laravel, Flutter, and AWS.
           </motion.h2>
           <Link to="/about">
             <button className="px-8 py-4 rounded-full border border-black text-black text-lg font-medium hover:bg-black hover:text-white transition-all duration-300">

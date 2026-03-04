@@ -31,22 +31,36 @@ const SEO = ({
 
   const defaultSchema = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Amika Subasinghe",
-    url: siteUrl,
-    image: defaultImage,
-    sameAs: [
-      "https://github.com/Start-sys",
-      "https://www.linkedin.com/in/amikasubasinghe/",
-      "https://www.facebook.com/amika.subasinghe.3",
-      "https://www.instagram.com/amika_subasinghe/",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${siteUrl}/#person`,
+        name: "Amika Subasinghe",
+        url: siteUrl,
+        image: defaultImage,
+        sameAs: [
+          "https://github.com/Start-sys",
+          "https://www.linkedin.com/in/amikasubasinghe/",
+          "https://www.facebook.com/amika.subasinghe.3",
+          "https://www.instagram.com/amika_subasinghe/",
+        ],
+        jobTitle: "Software Engineer",
+        worksFor: {
+          "@type": "Organization",
+          name: "Freelance / Self-Employed",
+        },
+        description: defaultDescription,
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        url: siteUrl,
+        name: "Amika Subasinghe",
+        publisher: {
+          "@id": `${siteUrl}/#person`,
+        },
+      },
     ],
-    jobTitle: "Software Engineer",
-    worksFor: {
-      "@type": "Organization",
-      name: "Freelance / Self-Employed",
-    },
-    description: defaultDescription,
   };
 
   const finalSchema = schema || defaultSchema;

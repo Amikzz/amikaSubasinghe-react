@@ -105,7 +105,10 @@ const Header = () => {
         </NavLink>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 justify-end w-full mix-blend-difference">
+        <nav
+          aria-label="Main Navigation"
+          className="hidden md:flex items-center gap-8 justify-end w-full mix-blend-difference"
+        >
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
@@ -124,7 +127,7 @@ const Header = () => {
           >
             {isPlaying ? <FaVolumeUp size={20} /> : <FaVolumeMute size={20} />}
           </button>
-        </div>
+        </nav>
 
         {/* Mobile Controls (Menu + Music) */}
         <div className="md:hidden z-50 flex items-center gap-6">
@@ -148,7 +151,8 @@ const Header = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <motion.nav
+            aria-label="Mobile Navigation"
             initial={{ opacity: 0, y: "-100%" }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
@@ -169,7 +173,7 @@ const Header = () => {
                 {link.name}
               </NavLink>
             ))}
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
     </header>
