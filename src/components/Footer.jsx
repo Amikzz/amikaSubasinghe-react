@@ -34,15 +34,15 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-[#111111] text-white pt-16 pb-8 relative overflow-hidden font-syne flex flex-col justify-between min-h-[50vh]">
+    <footer className="w-full bg-white dark:bg-[#111111] text-zinc-900 dark:text-white pt-16 pb-8 relative overflow-hidden font-syne flex flex-col justify-between min-h-[50vh]">
       {/* Decorative Grid/Lines (Optional subtle background) */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
-        <div className="w-full h-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div className="w-full h-full bg-[radial-gradient(#000000_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
       </div>
 
       {/* BIG BACKGROUND TEXT "AMIKA" */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden pb-4">
-        <h1 className="text-[13vw] md:text-[10vw] font-syne font-extrabold text-[#ffffff] opacity-[0.03] select-none tracking-tighter leading-none whitespace-nowrap">
+        <h1 className="text-[13vw] md:text-[10vw] font-syne font-extrabold text-[#000000] dark:text-[#ffffff] opacity-[0.03] select-none tracking-tighter leading-none whitespace-nowrap">
           AMIKA SUBASINGHE
         </h1>
       </div>
@@ -70,7 +70,7 @@ const Footer = () => {
               href={social.url}
               target="_blank"
               rel="noreferrer"
-              className="text-2xl text-zinc-500 hover:text-white transition-colors duration-300 transform hover:scale-110"
+              className="text-2xl text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300 transform hover:scale-110"
               aria-label={social.label}
             >
               {social.icon}

@@ -41,7 +41,7 @@ const Home = () => {
   ];
 
   return (
-    <main className="w-full bg-[#111111] text-white">
+    <main className="w-full bg-white dark:bg-[#111111] text-zinc-900 dark:text-white">
       <SEO
         title="Portfolio"
         description="Amika Subasinghe, a Full Stack Developer and Software Engineer from Sri Lanka, builds scalable and high-performance web and mobile applications using modern technologies like React, Node.js, Laravel, Flutter, and AWS. Explore his portfolio showcasing projects in web development, API integration, cloud engineering, and responsive UI/UX design."
@@ -57,7 +57,7 @@ const Home = () => {
       </div>
 
       {/* About Section */}
-      <section className="relative w-full py-20 lg:py-40 px-4 flex flex-col items-center justify-center z-30 bg-[#111111] text-white rounded-t-[3rem] lg:rounded-t-[5rem] -mt-10 overflow-hidden">
+      <section className="relative w-full py-20 lg:py-40 px-4 flex flex-col items-center justify-center z-30 bg-white dark:bg-[#111111] text-zinc-900 dark:text-white rounded-t-[3rem] lg:rounded-t-[5rem] -mt-10 overflow-hidden">
         {/* Ambient Glowing Orbs */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
           <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white/5 rounded-full blur-[100px]" />
@@ -71,10 +71,12 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="font-cabinetGrotesk font-bold uppercase tracking-tighter leading-[0.85] text-[11vw] sm:text-[9vw] md:text-[8vw] lg:text-[7.5vw] text-zinc-400 text-center mix-blend-lighten"
           >
-            BUILDING <span className="text-white">SCALABLE</span> APPS,{" "}
-            ENGINEERED FOR <span className="text-main">PERFORMANCE</span>,{" "}
-            MASTERING THE <span className="text-white">FULL STACK</span> FROM{" "}
-            <span className="text-main">SRI LANKA</span> TO THE WORLD.
+            BUILDING{" "}
+            <span className="text-zinc-900 dark:text-white">SCALABLE</span>{" "}
+            APPS, ENGINEERED FOR <span className="text-main">PERFORMANCE</span>,{" "}
+            MASTERING THE{" "}
+            <span className="text-zinc-900 dark:text-white">FULL STACK</span>{" "}
+            FROM <span className="text-main">SRI LANKA</span> TO THE WORLD.
           </motion.h2>
 
           <motion.p
@@ -85,11 +87,26 @@ const Home = () => {
           >
             I specialize in crafting high-performance web and mobile
             applications utilizing modern technologies including{" "}
-            <span className="text-white font-medium">React</span>,{" "}
-            <span className="text-white font-medium">Node.js</span>,{" "}
-            <span className="text-white font-medium">Laravel</span>,{" "}
-            <span className="text-white font-medium">Flutter</span>, and{" "}
-            <span className="text-white font-medium">AWS</span>.
+            <span className="text-zinc-900 dark:text-white font-medium">
+              React
+            </span>
+            ,{" "}
+            <span className="text-zinc-900 dark:text-white font-medium">
+              Node.js
+            </span>
+            ,{" "}
+            <span className="text-zinc-900 dark:text-white font-medium">
+              Laravel
+            </span>
+            ,{" "}
+            <span className="text-zinc-900 dark:text-white font-medium">
+              Flutter
+            </span>
+            , and{" "}
+            <span className="text-zinc-900 dark:text-white font-medium">
+              AWS
+            </span>
+            .
           </motion.p>
 
           <motion.div
@@ -113,12 +130,12 @@ const Home = () => {
       <Marquee />
 
       {/* Experience / Services Section */}
-      <section className="relative w-full py-20 lg:py-32 bg-[#111111] text-white z-30 overflow-hidden">
+      <section className="relative w-full py-20 lg:py-32 bg-white dark:bg-[#111111] text-zinc-900 dark:text-white z-30 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 mb-16">
           <h2 className="text-4xl md:text-6xl font-bold font-syne mb-6">
             My Experience
           </h2>
-          <div className="w-full h-[1px] bg-zinc-800"></div>
+          <div className="w-full h-[1px] bg-zinc-300 dark:bg-zinc-800"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -129,7 +146,7 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="w-full bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl 
+              className="w-full bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 p-8 rounded-2xl 
                    hover:border-main/50 transition-colors duration-300 group"
             >
               <div className="flex justify-between items-start mb-12">

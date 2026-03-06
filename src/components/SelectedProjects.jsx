@@ -10,10 +10,10 @@ const SelectedProjects = () => {
   const selectedProjects = projects.slice(0, 5);
 
   return (
-    <section className="w-full bg-[#111111] py-20 md:py-32 -mt-1 overflow-hidden relative font-syne z-30">
+    <section className="w-full bg-white dark:bg-[#111111] py-20 md:py-32 -mt-1 overflow-hidden relative font-syne z-30">
       {/* Background Title "PROJECTS" */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0 select-none opacity-5">
-        <h1 className="text-[15vw] font-bold text-white font-cabinetGrotesk leading-none tracking-tighter">
+        <h1 className="text-[15vw] font-bold text-zinc-900 dark:text-white font-cabinetGrotesk leading-none tracking-tighter">
           PROJECTS
         </h1>
       </div>
@@ -21,7 +21,7 @@ const SelectedProjects = () => {
       <div className="max-w-[95rem] mx-auto px-4 relative z-10 flex flex-col items-center">
         {/* Header */}
         <div className="text-center mb-16 relative z-20">
-          <h2 className="text-4xl md:text-7xl font-bold font-cabinetGrotesk text-white mb-6 leading-none">
+          <h2 className="text-4xl md:text-7xl font-bold font-cabinetGrotesk text-zinc-900 dark:text-white mb-6 leading-none">
             WHAT UP <br />
             <span className="font-syne italic font-light">PROJECTS</span>
           </h2>
@@ -64,8 +64,8 @@ const SelectedProjects = () => {
                       filter: isHovered
                         ? "brightness(1)"
                         : window.innerWidth < 768
-                        ? "brightness(0.7)"
-                        : "brightness(0.5) grayscale(50%)", // Brighter on mobile by default
+                          ? "brightness(0.7)"
+                          : "brightness(0.5) grayscale(50%)", // Brighter on mobile by default
                     }}
                   />
 
@@ -177,7 +177,7 @@ const SelectedProjects = () => {
         {/* View All Button */}
         <div className="mt-20">
           <Link to="/projects">
-            <button className="px-8 py-4 rounded-full border border-white/20 text-white text-lg font-medium hover:bg-white hover:text-black transition-all duration-300 font-syne group">
+            <button className="px-8 py-4 rounded-full border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white text-lg font-medium hover:bg-zinc-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 font-syne group">
               View All Projects
               <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
                 →

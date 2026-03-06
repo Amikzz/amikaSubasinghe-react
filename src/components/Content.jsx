@@ -63,12 +63,12 @@ const TimelineItem = ({ item, index }) => {
         <div className="relative group">
           <div className="absolute inset-0 bg-main/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-          <div className="relative bg-[#1a1a1a] p-8 rounded-2xl border border-white/5 hover:border-main/30 transition-all duration-300">
+          <div className="relative bg-zinc-100 dark:bg-[#1a1a1a] p-8 rounded-2xl border border-black/5 dark:border-white/5 hover:border-main/30 transition-all duration-300">
             <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-main to-white mb-4 block font-cabinetGrotesk">
               {item.year}
             </span>
 
-            <h3 className="text-xl font-bold text-white mb-3 font-syne group-hover:text-main transition-colors">
+            <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-3 font-syne group-hover:text-main transition-colors">
               {item.title}
             </h3>
 
@@ -81,7 +81,7 @@ const TimelineItem = ({ item, index }) => {
 
       {/* DOT - Always Centered */}
       <div className="absolute md:static left-4 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center mt-6 md:mt-0">
-        <div className="w-4 h-4 bg-[#111111] border-2 border-main rounded-full z-20 relative">
+        <div className="w-4 h-4 bg-white dark:bg-[#111111] border-2 border-main rounded-full z-20 relative">
           <div className="absolute inset-0 bg-main blur-md opacity-50" />
         </div>
 
@@ -115,7 +115,7 @@ const Content = () => {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="w-full bg-[#111111] text-white py-20 md:py-32 px-6 md:px-12 relative overflow-hidden font-syne">
+    <section className="w-full bg-zinc-50 dark:bg-[#111111] text-zinc-900 dark:text-white py-20 md:py-32 px-6 md:px-12 relative overflow-hidden font-syne">
       {/* Background Effects */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-900/5 rounded-full blur-[120px]" />
@@ -140,7 +140,7 @@ const Content = () => {
           viewport={{ once: true }}
           className="text-center mb-16 relative z-10"
         >
-          <h2 className="text-4xl md:text-7xl font-bold font-cabinetGrotesk text-white mb-6 leading-none">
+          <h2 className="text-4xl md:text-7xl font-bold font-cabinetGrotesk text-zinc-900 dark:text-white mb-6 leading-none">
             WHAT A <br />
             <span className="font-syne italic font-light">JOURNEY</span>
           </h2>
@@ -153,7 +153,7 @@ const Content = () => {
               absolute 
               left-4 md:left-1/2 
               top-0 bottom-0 
-              w-[2px] bg-zinc-800
+              w-[2px] bg-zinc-300 dark:bg-zinc-800
               transform md:-translate-x-1/2
             `}
           >

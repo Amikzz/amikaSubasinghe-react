@@ -172,7 +172,7 @@ const SocialLinks = () => {
           href={item.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-white hover:text-main transition-transform duration-150 ease-out text-2xl inline-block"
+          className="text-zinc-900 dark:text-white hover:text-main dark:hover:text-main transition-transform duration-150 ease-out text-2xl inline-block"
         >
           {item.icon}
         </a>
@@ -199,7 +199,7 @@ const Hero = () => {
       </video>
 
       {/* Dark Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black/80 -z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-white/90 dark:bg-black/80 -z-10"></div>
 
       {/* Social Links & Lines */}
       <div className="z-50 flex-col flex lg:h-[80vh] h-[85vh] px-5 lg:px-9 pt-[5rem] lg:-mt-3 xl:mt-10 py-5 lg:py-10 items-center left-0 top-0 absolute justify-end lg:justify-between">
@@ -234,7 +234,7 @@ const Hero = () => {
                   transition: { staggerChildren: 0.05, delayChildren: 0.1 },
                 },
               }}
-              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-white tracking-tighter"
+              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-zinc-900 dark:text-white tracking-tighter"
             >
               {"SOFTWARE".split("").map((char, index) => (
                 <InteractiveLetter
@@ -257,7 +257,7 @@ const Hero = () => {
                   transition: { staggerChildren: 0.05, delayChildren: 0.3 },
                 },
               }}
-              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-zinc-500 tracking-tighter hover:text-white transition-colors duration-500"
+              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-zinc-400 dark:text-zinc-500 tracking-tighter hover:text-zinc-900 dark:hover:text-white transition-colors duration-500"
             >
               {"ENGINEER".split("").map((char, index) => (
                 <InteractiveLetter
@@ -318,7 +318,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="absolute hidden lg:block -rotate-90 top-[40%] -right-[6.5%] transform -translate-y-1/2 text-white font-syne tracking-wider pr-5">
+      <div className="absolute hidden lg:block -rotate-90 top-[40%] -right-[6.5%] transform -translate-y-1/2 text-zinc-900 dark:text-white font-syne tracking-wider pr-5">
         <span>AMIKA SUBASINGHE</span>
       </div>
 
@@ -326,7 +326,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 1, ease: "easeOut" }}
-        className="absolute bottom-[10%] z-[100] flex flex-col items-center text-white"
+        className="absolute bottom-[10%] z-[100] flex flex-col items-center text-zinc-900 dark:text-white"
       >
         {/* Small label */}
         <span className="font-syne text-sm lg:text-base mb-3 tracking-[0.2em]">
@@ -337,9 +337,9 @@ const Hero = () => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.6, repeat: Infinity }}
-          className="h-10 w-6 border-2 border-white rounded-full flex items-start justify-center p-1"
+          className="h-10 w-6 border-2 border-zinc-900 dark:border-white rounded-full flex items-start justify-center p-1"
         >
-          <div className="h-2 w-1 bg-white rounded-full"></div>
+          <div className="h-2 w-1 bg-zinc-900 dark:bg-white rounded-full"></div>
         </motion.div>
       </motion.div>
     </div>

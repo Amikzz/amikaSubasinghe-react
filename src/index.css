@@ -1,13 +1,26 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode in Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  /* Modern Dark Theme Palette from Reference */
-  --color-bg: #111111;
+  /* Modern Dark Theme Palette from Reference (used as default/dark fallback before js loads) */
+  --color-bg: #ffffff; /* Light theme bg */
   --color-main: #00aaff; /* Blue Accent */
-  --color-sec: #ffffff;
-  --color-thr: #1a1a1a; /* Darker surface */
+  --color-sec: #000000; /* Light theme text */
+  --color-thr: #f4f4f5; /* Light theme surface (zinc-100) */
 
   /* Glassmorphism */
+  --glass-bg: rgba(0, 0, 0, 0.05);
+  --glass-border: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --color-bg: #111111;
+  --color-main: #00aaff;
+  --color-sec: #ffffff;
+  --color-thr: #1a1a1a;
+
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
 }
@@ -50,7 +63,7 @@ html {
 }
 
 body {
-  @apply bg-[#111111] text-white antialiased selection:bg-[#d4f534] selection:text-black;
+  @apply bg-white text-zinc-900 dark:bg-[#111111] dark:text-white antialiased selection:bg-[#d4f534] selection:text-black;
   font-family: var(--font-syne);
   overflow-x: hidden;
 }

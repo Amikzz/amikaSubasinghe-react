@@ -5,7 +5,7 @@ import Robot from "./Robot";
 const Loader = () => {
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#111111] text-white overflow-hidden"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white text-zinc-900 dark:bg-[#111111] dark:text-white overflow-hidden"
       initial={{ y: 0 }}
       exit={{
         y: "-100%",
@@ -41,7 +41,7 @@ const Loader = () => {
 
       {/* Bottom Branding */}
       <motion.div
-        className="absolute bottom-12 flex flex-col items-center gap-2 z-50 text-gray-400"
+        className="absolute bottom-12 flex flex-col items-center gap-2 z-50 text-zinc-500 dark:text-zinc-400"
         initial={{ opacity: 0, y: 20 }}
         animate={{
           opacity: 1,

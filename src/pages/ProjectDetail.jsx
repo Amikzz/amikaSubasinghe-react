@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
 import { projects } from "../data/projects";
 import SEO from "../components/SEO";
@@ -17,7 +17,6 @@ const reveal = {
 const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { scrollYProgress } = useScroll();
 
   const projectIndex = projects.findIndex((p) => p.id === id);
   const project = projects[projectIndex];
@@ -36,7 +35,7 @@ const ProjectDetail = () => {
   if (!project) return null;
 
   return (
-    <div className="bg-[#111111] text-white min-h-screen font-cabinet overflow-hidden">
+    <div className="bg-white dark:bg-[#111111] text-zinc-900 dark:text-white min-h-screen font-cabinet overflow-hidden">
       <SEO
         title={project.title}
         description={project.description}
@@ -59,8 +58,8 @@ const ProjectDetail = () => {
             </div>
           </motion.h1>
 
-          <div className="mt-12 border-t border-zinc-800 pt-8">
-            <h2 className="text-xl md:text-2xl font-medium mb-8 text-zinc-400">
+          <div className="mt-12 border-t border-zinc-200 dark:border-zinc-800 pt-8">
+            <h2 className="text-xl md:text-2xl font-medium mb-8 text-zinc-500 dark:text-zinc-400">
               Overview
             </h2>
             <div className="flex flex-col md:flex-row justify-between items-start gap-8">
@@ -71,7 +70,7 @@ const ProjectDetail = () => {
                   transition={{ delay: 0.3, duration: 0.6 }}
                   className="max-w-full"
                 >
-                  <p className="text-lg md:text-xl leading-relaxed text-zinc-200 text-justify">
+                  <p className="text-lg md:text-xl leading-relaxed text-zinc-600 dark:text-zinc-200 text-justify">
                     {project.description}
                   </p>
                 </motion.div>
@@ -91,7 +90,7 @@ const ProjectDetail = () => {
                           href={project.demo}
                           target="_blank"
                           rel="noreferrer"
-                          className="group flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full text-lg font-medium transition-transform hover:scale-105"
+                          className="group flex items-center gap-2 bg-zinc-900 text-white dark:bg-white dark:text-black px-8 py-4 rounded-full text-lg font-medium transition-transform hover:scale-105"
                         >
                           Live Site <FaExternalLinkAlt size={14} />
                         </a>
@@ -101,7 +100,7 @@ const ProjectDetail = () => {
                           href={project.github}
                           target="_blank"
                           rel="noreferrer"
-                          className="group flex items-center gap-2 border border-zinc-700 hover:border-white px-8 py-4 rounded-full text-lg font-medium transition-colors"
+                          className="group flex items-center gap-2 border border-zinc-300 dark:border-zinc-700 hover:border-zinc-900 dark:hover:border-white px-8 py-4 rounded-full text-lg font-medium transition-colors"
                         >
                           GitHub <FaGithub size={18} />
                         </a>
@@ -124,7 +123,7 @@ const ProjectDetail = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800"
+                className="rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800"
               >
                 <img
                   src={shot}
@@ -157,7 +156,7 @@ const ProjectDetail = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="px-6 py-3 border border-zinc-800 rounded-full text-zinc-300 text-sm md:text-base hover:border-zinc-600 transition-colors cursor-default"
+                  className="px-6 py-3 border border-zinc-300 dark:border-zinc-800 rounded-full text-zinc-600 dark:text-zinc-300 text-sm md:text-base hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors cursor-default"
                 >
                   {tech}
                 </motion.span>
@@ -179,7 +178,7 @@ const ProjectDetail = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-lg text-zinc-400 leading-relaxed"
+              className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed"
             >
               This project highlights modern web development practices.
               {project.licensed
@@ -192,17 +191,17 @@ const ProjectDetail = () => {
       </section>
 
       {/* --- NEXT PROJECT NAV --- */}
-      <section className="py-32 border-t border-zinc-900">
+      <section className="py-32 border-t border-zinc-200 dark:border-zinc-900">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 text-center">
           <p className="text-zinc-500 mb-6 text-xl">Next Project</p>
           <Link
             to={`/project/${nextProject.id}`}
             className="group inline-block overflow-visible" // Ensure letters aren’t clipped
           >
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold group-hover:text-zinc-400 transition-colors duration-300 font-syne leading-[1.05]">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold group-hover:text-zinc-500 dark:group-hover:text-zinc-400 transition-colors duration-300 font-syne leading-[1.05]">
               {nextProject.title}
             </h2>
-            <div className="w-full h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 mt-4 origin-center"></div>
+            <div className="w-full h-1 bg-zinc-900 dark:bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 mt-4 origin-center"></div>
           </Link>
         </div>
       </section>

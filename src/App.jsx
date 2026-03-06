@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import Cursor from "./components/Cursor";
 import { LoadingProvider, useLoading } from "./context/LoadingContext";
+import { ThemeProvider } from "./context/ThemeContext";
 
 import PageTransition from "./components/PageTransition";
 
@@ -92,11 +93,13 @@ const AppContent = () => {
 };
 
 const App = () => (
-  <LoadingProvider>
-    <Router>
-      <AppContent />
-    </Router>
-  </LoadingProvider>
+  <ThemeProvider>
+    <LoadingProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </LoadingProvider>
+  </ThemeProvider>
 );
 
 export default App;

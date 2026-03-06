@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaLinkedin,
@@ -16,7 +16,6 @@ import SEO from "../components/SEO";
 
 const About = () => {
   const [isGameOpen, setIsGameOpen] = useState(false);
-  const [loaded, setLoaded] = useState(false);
 
   // Animation Variants
   const textRevealVariants = {
@@ -57,7 +56,7 @@ const About = () => {
   };
 
   return (
-    <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col pt-32 pb-20 relative overflow-hidden font-syne">
+    <main className="w-full min-h-screen bg-white dark:bg-[#111111] text-zinc-900 dark:text-white flex flex-col pt-32 pb-20 relative overflow-hidden font-syne">
       <SEO
         title="About Me"
         description="Learn more about Amika Subasinghe, a Software Engineer and undergraduate at Staffordshire University, passionate about full-stack development and creative coding."
@@ -78,7 +77,7 @@ const About = () => {
           {/* Huge Title */}
           <div className="overflow-hidden mb-8 pb-4">
             <motion.h1
-              className="text-[12vw] leading-[0.85] font-bold tracking-tighter text-white font-cabinetGrotesk uppercase"
+              className="text-[12vw] leading-[0.85] font-bold tracking-tighter text-zinc-900 dark:text-white font-cabinetGrotesk uppercase"
               variants={textRevealVariants}
             >
               About Me
@@ -98,7 +97,6 @@ const About = () => {
                   src={profilePic}
                   alt="Amika Subasinghe"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                  onLoad={() => setLoaded(true)}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
               </motion.div>
@@ -110,13 +108,13 @@ const About = () => {
                 <a
                   href={cvFile}
                   download
-                  className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-white text-black rounded-lg font-bold hover:bg-main transition-colors"
+                  className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-zinc-900 text-white dark:bg-white dark:text-black rounded-lg font-bold hover:bg-main dark:hover:bg-main transition-colors"
                 >
                   <FaDownload size={14} /> Download CV
                 </a>
                 <button
                   onClick={() => setIsGameOpen(true)}
-                  className="flex-none flex items-center justify-center w-14 h-14 bg-[#1a1a1a] text-main border border-zinc-800 rounded-lg hover:border-main transition-colors"
+                  className="flex-none flex items-center justify-center w-14 h-14 bg-white dark:bg-[#1a1a1a] text-main border border-zinc-200 dark:border-zinc-800 rounded-lg hover:border-main transition-colors"
                 >
                   <FaGamepad size={20} />
                 </button>
@@ -127,11 +125,11 @@ const About = () => {
             <div className="lg:col-span-8 flex flex-col justify-end">
               <div className="overflow-hidden pb-2">
                 <motion.p
-                  className="text-3xl md:text-5xl font-light text-zinc-300 leading-[1.1] mb-12"
+                  className="text-3xl md:text-5xl font-light text-zinc-700 dark:text-zinc-300 leading-[1.1] mb-12"
                   variants={textRevealVariants}
                 >
                   I'm{" "}
-                  <span className="text-white font-semibold">
+                  <span className="text-zinc-900 dark:text-white font-semibold">
                     Amika Subasinghe
                   </span>
                   , a full-stack developer & AI enthusiast based in Sri Lanka.
@@ -141,7 +139,7 @@ const About = () => {
               <div className="overflow-hidden pb-2">
                 <motion.div
                   variants={textRevealVariants}
-                  className="space-y-6 text-zinc-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl"
+                  className="space-y-6 text-zinc-600 dark:text-zinc-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl"
                 >
                   <p>
                     Currently an undergraduate at Staffordshire University, I
@@ -162,7 +160,7 @@ const About = () => {
       </div>
 
       {/* MARQUEE SECTION - Full Width */}
-      <div className="w-full overflow-hidden py-12 border-y border-white/5 bg-black/20 backdrop-blur-sm mb-24 z-10 relative">
+      <div className="w-full overflow-hidden py-12 border-y border-black/5 dark:border-white/5 bg-black/5 dark:bg-black/20 backdrop-blur-sm mb-24 z-10 relative">
         <motion.div
           className="flex whitespace-nowrap"
           variants={marqueeVariants}
@@ -199,9 +197,9 @@ const About = () => {
 
             <div className="space-y-0">
               {/* Item 1 */}
-              <div className="group border-t border-zinc-800 py-6 hover:bg-zinc-900/30 transition-colors px-2">
+              <div className="group border-t border-zinc-200 dark:border-zinc-800 py-6 hover:bg-zinc-100 dark:hover:bg-zinc-900/30 transition-colors px-2">
                 <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-2">
-                  <h3 className="text-xl font-bold text-white group-hover:text-main transition-colors">
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-main transition-colors">
                     Junior Software Developer
                   </h3>
                   <span className="text-sm font-mono text-zinc-500">
@@ -209,17 +207,19 @@ const About = () => {
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <p className="text-zinc-400">Rangiri Holdings</p>
-                  <span className="text-xs border border-zinc-800 px-2 py-1 rounded text-zinc-500">
+                  <p className="text-zinc-600 dark:text-zinc-400">
+                    Rangiri Holdings
+                  </p>
+                  <span className="text-xs border border-zinc-300 dark:border-zinc-800 px-2 py-1 rounded text-zinc-500">
                     React / Laravel
                   </span>
                 </div>
               </div>
 
               {/* Item 2 */}
-              <div className="group border-t border-zinc-800 py-6 hover:bg-zinc-900/30 transition-colors px-2">
+              <div className="group border-t border-zinc-200 dark:border-zinc-800 py-6 hover:bg-zinc-100 dark:hover:bg-zinc-900/30 transition-colors px-2">
                 <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-2">
-                  <h3 className="text-xl font-bold text-white group-hover:text-main transition-colors">
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-main transition-colors">
                     Trainee Developer
                   </h3>
                   <span className="text-sm font-mono text-zinc-500">
@@ -227,8 +227,10 @@ const About = () => {
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <p className="text-zinc-400">Rangiri Holdings</p>
-                  <span className="text-xs border border-zinc-800 px-2 py-1 rounded text-zinc-500">
+                  <p className="text-zinc-600 dark:text-zinc-400">
+                    Rangiri Holdings
+                  </p>
+                  <span className="text-xs border border-zinc-300 dark:border-zinc-800 px-2 py-1 rounded text-zinc-500">
                     ERP Systems
                   </span>
                 </div>
@@ -249,50 +251,54 @@ const About = () => {
 
             <div className="space-y-0">
               {/* Item 1 */}
-              <div className="group border-t border-zinc-800 py-6 hover:bg-zinc-900/30 transition-colors px-2">
+              <div className="group border-t border-zinc-200 dark:border-zinc-800 py-6 hover:bg-zinc-100 dark:hover:bg-zinc-900/30 transition-colors px-2">
                 <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-2">
-                  <h3 className="text-xl font-bold text-white group-hover:text-white transition-colors">
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white transition-colors">
                     BEng. Software Engineering
                   </h3>
                   <span className="text-sm font-mono text-zinc-500">
                     2023 - Present
                   </span>
                 </div>
-                <p className="text-zinc-400">Staffordshire University</p>
+                <p className="text-zinc-600 dark:text-zinc-400">
+                  Staffordshire University
+                </p>
               </div>
 
               {/* Item 2 */}
-              <div className="group border-t border-zinc-800 py-6 hover:bg-zinc-900/30 transition-colors px-2">
+              <div className="group border-t border-zinc-200 dark:border-zinc-800 py-6 hover:bg-zinc-100 dark:hover:bg-zinc-900/30 transition-colors px-2">
                 <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-2">
-                  <h3 className="text-xl font-bold text-white group-hover:text-white transition-colors">
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white transition-colors">
                     Trainee Full Stack Dev
                   </h3>
                   <span className="text-sm font-mono text-zinc-500">
                     2025 - Present
                   </span>
                 </div>
-                <p className="text-zinc-400">University of Moratuwa</p>
+                <p className="text-zinc-600 dark:text-zinc-400">
+                  University of Moratuwa
+                </p>
               </div>
 
               {/* Item 3 */}
-              <div className="group border-t border-zinc-800 py-6 hover:bg-zinc-900/30 transition-colors px-2">
+              <div className="group border-t border-zinc-200 dark:border-zinc-800 py-6 hover:bg-zinc-100 dark:hover:bg-zinc-900/30 transition-colors px-2">
                 <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-2">
-                  <h3 className="text-xl font-bold text-white group-hover:text-white transition-colors">
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white transition-colors">
                     CIMA Professional
                   </h3>
                   <span className="text-sm font-mono text-zinc-500">
                     2023 - Present
                   </span>
                 </div>
-                <p className="text-zinc-400">CIMA</p>
+                <p className="text-zinc-600 dark:text-zinc-400">CIMA</p>
               </div>
             </div>
           </motion.div>
         </div>
 
         {/* TECH STACK */}
-        <div className="mb-24 relative z-10 bg-zinc-900/40 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/5">
-          <h2 className="text-3xl font-bold mb-12 text-center font-cabinetGrotesk text-white/40 uppercase tracking-widest">
+        <div className="mb-24 relative z-10 bg-zinc-100/40 dark:bg-zinc-900/40 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-black/5 dark:border-white/5">
+          <h2 className="text-3xl font-bold mb-12 text-center font-cabinetGrotesk text-zinc-400 dark:text-white/40 uppercase tracking-widest">
             Technical Toolkit
           </h2>
           <Techstack />

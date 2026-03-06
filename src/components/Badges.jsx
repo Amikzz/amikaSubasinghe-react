@@ -21,10 +21,10 @@ const badges = [
 
 const Badges = () => {
   return (
-    <section className="w-full bg-[#111111] py-20 md:py-32 px-6 md:px-12 -mt-1 relative overflow-hidden">
+    <section className="w-full bg-white dark:bg-[#111111] py-20 md:py-32 px-6 md:px-12 -mt-1 relative overflow-hidden">
       {/* Background Title "BADGES" */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0 select-none opacity-5">
-        <h1 className="text-[15vw] font-bold text-white font-cabinetGrotesk leading-none tracking-tighter">
+        <h1 className="text-[15vw] font-bold text-zinc-900 dark:text-white font-cabinetGrotesk leading-none tracking-tighter">
           BADGES
         </h1>
       </div>
@@ -36,7 +36,7 @@ const Badges = () => {
           viewport={{ once: true }}
           className="text-center mb-16 relative z-10"
         >
-          <h2 className="text-4xl md:text-7xl font-bold font-cabinetGrotesk text-white mb-6 leading-none">
+          <h2 className="text-4xl md:text-7xl font-bold font-cabinetGrotesk text-zinc-900 dark:text-white mb-6 leading-none">
             HEY THERE <br />
             <span className="font-syne italic font-light">ACHIEVEMENTS</span>
           </h2>
@@ -58,7 +58,7 @@ const Badges = () => {
               <div className="absolute inset-0 bg-main/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-75" />
 
               {/* Badge Container */}
-              <div className="relative w-40 h-40 md:w-48 md:h-48 bg-zinc-900/50 border border-white/10 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:border-main/50 transition-colors duration-300">
+              <div className="relative w-40 h-40 md:w-48 md:h-48 bg-zinc-100/50 dark:bg-zinc-900/50 border border-black/10 dark:border-white/10 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:border-main/50 transition-colors duration-300">
                 <img
                   src={badge.image}
                   alt={badge.name}
@@ -74,12 +74,12 @@ const Badges = () => {
                     ease: "easeInOut",
                     delay: index * 0.5,
                   }}
-                  className="absolute inset-0 rounded-full border border-white/5"
+                  className="absolute inset-0 rounded-full border border-black/5 dark:border-white/5"
                 />
               </div>
 
               {/* Label */}
-              <h3 className="mt-6 text-lg font-syne text-zinc-400 group-hover:text-white text-center transition-colors">
+              <h3 className="mt-6 text-lg font-syne text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white text-center transition-colors">
                 {badge.name}
               </h3>
             </motion.div>

@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { RiMenu4Line, RiCloseLine } from "react-icons/ri";
-import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
+import { FaVolumeUp, FaVolumeMute, FaMoon, FaSun } from "react-icons/fa";
+import { useTheme } from "../context/ThemeContext";
 import musicFile from "../assets/backgroundmusic.mp3";
 
 const RotatedText = ({ text }) => {
@@ -30,6 +31,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -113,35 +115,54 @@ const Header = () => {
             <NavLink
               key={link.path}
               to={link.path}
-              className="text-lg font-medium overflow-hidden text-white mix-blend-difference"
+              className="text-lg font-medium overflow-hidden text-zinc-900 dark:text-white mix-blend-difference"
             >
               <RotatedText text={link.name} />
             </NavLink>
           ))}
 
+          {/* Theme Toggle (Desktop) */}
+          <button
+            onClick={toggleTheme}
+            className="ml-2 text-zinc-900 dark:text-white hover:text-main dark:hover:text-main transition-colors mix-blend-difference opacity-80 hover:opacity-100"
+            title={
+              theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"
+            }
+          >
+            {theme === "light" ? <FaMoon size={20} /> : <FaSun size={20} />}
+          </button>
+
           {/* Music Toggle (Desktop) */}
           <button
             onClick={togglePlay}
-            className="ml-4 text-white hover:text-main transition-colors mix-blend-difference opacity-80 hover:opacity-100"
+            className="ml-4 text-zinc-900 dark:text-white hover:text-main dark:hover:text-main transition-colors mix-blend-difference opacity-80 hover:opacity-100"
             title={isPlaying ? "Mute" : "Unmute"}
           >
             {isPlaying ? <FaVolumeUp size={20} /> : <FaVolumeMute size={20} />}
           </button>
         </nav>
 
-        {/* Mobile Controls (Menu + Music) */}
+        {/* Mobile Controls (Menu + Music + Theme) */}
         <div className="md:hidden z-50 flex items-center gap-6">
+          {/* Theme Toggle (Mobile) */}
+          <button
+            onClick={toggleTheme}
+            className="text-zinc-900 dark:text-white mix-blend-difference"
+          >
+            {theme === "light" ? <FaMoon size={20} /> : <FaSun size={20} />}
+          </button>
+
           {/* Music Toggle (Mobile) */}
           <button
             onClick={togglePlay}
-            className="text-white mix-blend-difference"
+            className="text-zinc-900 dark:text-white mix-blend-difference"
           >
             {isPlaying ? <FaVolumeUp size={20} /> : <FaVolumeMute size={20} />}
           </button>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white mix-blend-difference"
+            className="text-zinc-900 dark:text-white mix-blend-difference"
           >
             {isOpen ? "Close" : "Menu"}
           </button>
@@ -157,13 +178,13 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 bg-[#111] z-40 flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 bg-white dark:bg-[#111] z-40 flex flex-col items-center justify-center gap-8"
           >
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
-                className="text-4xl font-righteous text-white mix-blend-difference"
+                className="text-4xl font-righteous text-zinc-900 dark:text-white mix-blend-difference"
                 onClick={() => {
                   if (location.pathname === link.path) {
                     setIsOpen(false);

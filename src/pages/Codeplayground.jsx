@@ -30,7 +30,7 @@ const escapeHTML = (str) =>
         '"': "&quot;",
         "'": "&#39;",
         "`": "&#96;",
-      }[match])
+      })[match],
   );
 
 const SecureCodePlayground = () => {
@@ -103,7 +103,7 @@ const SecureCodePlayground = () => {
   };
 
   return (
-    <main className="w-full min-h-screen bg-[#111111] text-white flex flex-col pt-32 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden font-syne">
+    <main className="w-full min-h-screen bg-white dark:bg-[#111111] text-zinc-900 dark:text-white flex flex-col pt-32 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden font-syne">
       <SEO
         title="Code Playground"
         description="A real-time HTML, CSS, and JavaScript code editor and playground. Experiment and see results instantly."
@@ -116,12 +116,12 @@ const SecureCodePlayground = () => {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 font-cabinetGrotesk tracking-tighter uppercase leading-[0.9]">
+          <h1 className="text-6xl md:text-8xl font-bold text-zinc-900 dark:text-white mb-6 font-cabinetGrotesk tracking-tighter uppercase leading-[0.9]">
             Code <br />
             <span className="text-zinc-600">Playground.</span>
           </h1>
-          <div className="w-full h-[1px] bg-zinc-800 mt-12 mb-6" />
-          <p className="text-zinc-400 text-lg max-w-2xl font-light">
+          <div className="w-full h-[1px] bg-zinc-200 dark:bg-zinc-800 mt-12 mb-6" />
+          <p className="text-zinc-600 dark:text-zinc-400 text-lg max-w-2xl font-light">
             A secure, sandbox environment to experiment with HTML, CSS, and
             JavaScript. Write code, run it instantly, and see the results live.
           </p>
@@ -154,17 +154,19 @@ const SecureCodePlayground = () => {
               <motion.div
                 key={type}
                 layout
-                className={`bg-[#0a0a0a] rounded-xl overflow-hidden border ${
-                  expanded[type] ? "border-main/50" : "border-zinc-800"
+                className={`bg-zinc-50 dark:bg-[#0a0a0a] rounded-xl overflow-hidden border ${
+                  expanded[type]
+                    ? "border-main/50"
+                    : "border-zinc-200 dark:border-zinc-800"
                 } transition-colors duration-300`}
               >
                 <button
                   onClick={() => toggleExpand(type)}
-                  className="w-full flex items-center justify-between p-4 bg-zinc-900/30 hover:bg-zinc-900/50 transition-colors"
+                  className="w-full flex items-center justify-between p-4 bg-zinc-100 dark:bg-zinc-900/30 hover:bg-zinc-200 dark:hover:bg-zinc-900/50 transition-colors"
                 >
                   <div className="flex items-center gap-3">
                     {icon}
-                    <span className="font-mono font-bold text-sm text-zinc-300">
+                    <span className="font-mono font-bold text-sm text-zinc-700 dark:text-zinc-300">
                       {type}
                     </span>
                   </div>
@@ -181,9 +183,9 @@ const SecureCodePlayground = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="relative border-t border-zinc-800"
+                      className="relative border-t border-zinc-200 dark:border-zinc-800"
                     >
-                      <div className="absolute left-0 top-0 bottom-0 w-10 bg-zinc-950 border-r border-zinc-800/50 flex flex-col items-end py-4 pr-2 text-zinc-700 font-mono text-xs select-none">
+                      <div className="absolute left-0 top-0 bottom-0 w-10 bg-zinc-200 dark:bg-zinc-950 border-r border-zinc-300 dark:border-zinc-800/50 flex flex-col items-end py-4 pr-2 text-zinc-600 dark:text-zinc-700 font-mono text-xs select-none">
                         {code.split("\n").map((_, i) => (
                           <div key={i} className="leading-6">
                             {i + 1}
@@ -193,7 +195,7 @@ const SecureCodePlayground = () => {
                       <textarea
                         value={code}
                         onChange={(e) => setCode(e.target.value)}
-                        className="w-full h-64 bg-[#0a0a0a] text-zinc-300 font-mono text-sm p-4 pl-12 resize-y outline-none leading-6 focus:bg-zinc-900/20 transition-colors"
+                        className="w-full h-64 bg-zinc-50 dark:bg-[#0a0a0a] text-zinc-800 dark:text-zinc-300 font-mono text-sm p-4 pl-12 resize-y outline-none leading-6 focus:bg-white dark:focus:bg-zinc-900/20 transition-colors"
                         spellCheck="false"
                       />
                     </motion.div>
@@ -206,7 +208,7 @@ const SecureCodePlayground = () => {
               onClick={runCode}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full py-4 bg-white hover:bg-zinc-200 text-black rounded-xl font-bold flex items-center justify-center gap-2 transition-all mt-4"
+              className="w-full py-4 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-200 dark:text-black rounded-xl font-bold flex items-center justify-center gap-2 transition-all mt-4"
             >
               {isRunning ? (
                 <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
@@ -221,8 +223,8 @@ const SecureCodePlayground = () => {
           {/* Output Column */}
           <div className="flex flex-col gap-4 h-full">
             {/* Preview */}
-            <div className="flex-1 bg-[#1a1a1a] rounded-2xl overflow-hidden border border-zinc-800 flex flex-col min-h-[500px]">
-              <div className="p-3 bg-zinc-900/50 border-b border-zinc-800 flex items-center gap-2">
+            <div className="flex-1 bg-zinc-100 dark:bg-[#1a1a1a] rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 flex flex-col min-h-[500px]">
+              <div className="p-3 bg-zinc-200 dark:bg-zinc-900/50 border-b border-zinc-300 dark:border-zinc-800 flex items-center gap-2">
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-zinc-700" />
                   <div className="w-3 h-3 rounded-full bg-zinc-700" />
@@ -241,14 +243,14 @@ const SecureCodePlayground = () => {
             </div>
 
             {/* Console */}
-            <div className="h-48 bg-[#0a0a0a] rounded-xl overflow-hidden border border-zinc-800 flex flex-col">
-              <div className="p-3 bg-zinc-900/50 border-b border-zinc-800 flex items-center gap-2">
+            <div className="h-48 bg-zinc-50 dark:bg-[#0a0a0a] rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 flex flex-col">
+              <div className="p-3 bg-zinc-100 dark:bg-zinc-900/50 border-b border-zinc-200 dark:border-zinc-800 flex items-center gap-2">
                 <FaTerminal className="text-zinc-500" size={12} />
                 <span className="text-xs text-zinc-500 font-mono">Console</span>
               </div>
-              <div className="flex-1 p-4 overflow-y-auto font-mono text-xs space-y-1 text-zinc-400">
+              <div className="flex-1 p-4 overflow-y-auto font-mono text-xs space-y-1 text-zinc-600 dark:text-zinc-400">
                 {consoleOutput.length === 0 ? (
-                  <span className="text-zinc-700 italic">
+                  <span className="text-zinc-500 dark:text-zinc-700 italic">
                     // Console output will appear here...
                   </span>
                 ) : (
@@ -256,7 +258,9 @@ const SecureCodePlayground = () => {
                     <div
                       key={i}
                       className={`flex gap-2 ${
-                        log.type === "error" ? "text-red-400" : "text-zinc-300"
+                        log.type === "error"
+                          ? "text-red-500 dark:text-red-400"
+                          : "text-zinc-800 dark:text-zinc-300"
                       }`}
                     >
                       <span className="text-zinc-700 select-none">&gt;</span>
@@ -282,12 +286,12 @@ const SecureCodePlayground = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* HTML */}
-            <div className="group border-t border-zinc-800 pt-6">
-              <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <div className="group border-t border-zinc-200 dark:border-zinc-800 pt-6">
+              <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 flex items-center gap-2">
                 <FaHtml5 className="text-zinc-500 group-hover:text-orange-500 transition-colors" />{" "}
                 HTML
               </h3>
-              <ul className="space-y-2 text-zinc-400 text-sm">
+              <ul className="space-y-2 text-zinc-600 dark:text-zinc-400 text-sm">
                 <li className="flex items-center gap-2">
                   <span className="w-1 h-1 bg-zinc-700 rounded-full" /> Use
                   semantic tags
@@ -304,12 +308,12 @@ const SecureCodePlayground = () => {
             </div>
 
             {/* CSS */}
-            <div className="group border-t border-zinc-800 pt-6">
-              <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <div className="group border-t border-zinc-200 dark:border-zinc-800 pt-6">
+              <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 flex items-center gap-2">
                 <FaCss3Alt className="text-zinc-500 group-hover:text-blue-500 transition-colors" />{" "}
                 CSS
               </h3>
-              <ul className="space-y-2 text-zinc-400 text-sm">
+              <ul className="space-y-2 text-zinc-600 dark:text-zinc-400 text-sm">
                 <li className="flex items-center gap-2">
                   <span className="w-1 h-1 bg-zinc-700 rounded-full" /> Use
                   Flexbox & Grid
@@ -326,12 +330,12 @@ const SecureCodePlayground = () => {
             </div>
 
             {/* JS */}
-            <div className="group border-t border-zinc-800 pt-6">
-              <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <div className="group border-t border-zinc-200 dark:border-zinc-800 pt-6">
+              <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 flex items-center gap-2">
                 <FaJs className="text-zinc-500 group-hover:text-yellow-400 transition-colors" />{" "}
                 JavaScript
               </h3>
-              <ul className="space-y-2 text-zinc-400 text-sm">
+              <ul className="space-y-2 text-zinc-600 dark:text-zinc-400 text-sm">
                 <li className="flex items-center gap-2">
                   <span className="w-1 h-1 bg-zinc-700 rounded-full" /> Use
                   const & let
