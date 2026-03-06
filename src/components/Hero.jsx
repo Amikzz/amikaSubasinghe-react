@@ -234,7 +234,7 @@ const Hero = () => {
                   transition: { staggerChildren: 0.05, delayChildren: 0.1 },
                 },
               }}
-              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-zinc-900 dark:text-white tracking-tighter"
+              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-white tracking-tighter"
             >
               {"SOFTWARE".split("").map((char, index) => (
                 <InteractiveLetter
@@ -257,7 +257,7 @@ const Hero = () => {
                   transition: { staggerChildren: 0.05, delayChildren: 0.3 },
                 },
               }}
-              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-zinc-400 dark:text-zinc-500 tracking-tighter hover:text-zinc-900 dark:hover:text-white transition-colors duration-500"
+              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-zinc-400 tracking-tighter hover:text-white transition-colors duration-500"
             >
               {"ENGINEER".split("").map((char, index) => (
                 <InteractiveLetter

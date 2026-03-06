@@ -80,7 +80,7 @@ const Robot = ({ onButtonClick }) => {
             y1="50"
             x2="100"
             y2="30"
-            stroke="#52525b"
+            className="stroke-zinc-400 dark:stroke-zinc-600"
             strokeWidth="4"
             strokeLinecap="round"
           />
@@ -88,8 +88,7 @@ const Robot = ({ onButtonClick }) => {
             cx="100"
             cy="25"
             r="5"
-            fill="#f43f5e"
-            className="animate-pulse"
+            className="fill-rose-500 animate-pulse"
           />
 
           {/* Head Shape */}
@@ -99,8 +98,7 @@ const Robot = ({ onButtonClick }) => {
             width="80"
             height="70"
             rx="15"
-            fill="#27272a" // zinc-800
-            stroke="#52525b" // zinc-600
+            className="fill-zinc-200 dark:fill-zinc-800 stroke-zinc-400 dark:stroke-zinc-600"
             strokeWidth="3"
           />
 
@@ -111,8 +109,7 @@ const Robot = ({ onButtonClick }) => {
             width="60"
             height="40"
             rx="8"
-            fill="#000000"
-            opacity="0.8"
+            className="fill-zinc-800 dark:fill-black opacity-80"
           />
 
           {/* Eyes Container */}
@@ -122,7 +119,7 @@ const Robot = ({ onButtonClick }) => {
               cx="-15"
               cy="0"
               r="6"
-              fill="#3b82f6" // blue-500
+              className="fill-blue-500"
               style={{ x: eyeX, y: eyeY }}
             />
             {/* Right Eye */}
@@ -130,7 +127,7 @@ const Robot = ({ onButtonClick }) => {
               cx="15"
               cy="0"
               r="6"
-              fill="#3b82f6"
+              className="fill-blue-500"
               style={{ x: eyeX, y: eyeY }}
             />
           </g>
@@ -138,7 +135,7 @@ const Robot = ({ onButtonClick }) => {
           {/* Mouth */}
           <motion.path
             d="M 90 95 Q 100 100 110 95"
-            stroke="#3b82f6"
+            className="stroke-blue-500"
             strokeWidth="2"
             fill="none"
             strokeLinecap="round"
@@ -153,8 +150,7 @@ const Robot = ({ onButtonClick }) => {
         >
           <path
             d="M 70 130 Q 100 120 130 130 L 130 180 Q 100 190 70 180 Z"
-            fill="#3f3f46" // zinc-700
-            stroke="#52525b"
+            className="fill-zinc-300 dark:fill-zinc-700 stroke-zinc-400 dark:stroke-zinc-600"
             strokeWidth="3"
             strokeLinejoin="round"
           />
@@ -164,8 +160,7 @@ const Robot = ({ onButtonClick }) => {
             cx="100"
             cy="155"
             r="12"
-            fill="#27272a"
-            stroke="#52525b"
+            className="fill-zinc-200 dark:fill-zinc-800 stroke-zinc-400 dark:stroke-zinc-600"
             strokeWidth="2"
           />
           {/* Interactive Button */}
@@ -173,8 +168,7 @@ const Robot = ({ onButtonClick }) => {
             cx="100"
             cy="155"
             r="6"
-            fill="#10b981"
-            className="animate-pulse duration-1000 cursor-pointer pointer-events-auto hover:brightness-125"
+            className="fill-emerald-500 animate-pulse duration-1000 cursor-pointer pointer-events-auto hover:brightness-125"
             onClick={onButtonClick}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}

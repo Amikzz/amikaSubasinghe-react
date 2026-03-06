@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { RiMenu4Line, RiCloseLine } from "react-icons/ri";
 import { FaVolumeUp, FaVolumeMute, FaMoon, FaSun } from "react-icons/fa";
@@ -29,7 +29,6 @@ const RotatedText = ({ text }) => {
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
 
@@ -101,7 +100,7 @@ const Header = () => {
               e.target.nextSibling.style.display = "block";
             }}
           />
-          <span className="hidden font-bold text-xl mix-blend-difference">
+          <span className="hidden font-bold text-xl mix-blend-difference text-white">
             A.
           </span>
         </NavLink>
@@ -115,7 +114,7 @@ const Header = () => {
             <NavLink
               key={link.path}
               to={link.path}
-              className="text-lg font-medium overflow-hidden text-zinc-900 dark:text-white mix-blend-difference"
+              className="text-lg font-medium overflow-hidden text-white mix-blend-difference"
             >
               <RotatedText text={link.name} />
             </NavLink>
@@ -124,7 +123,7 @@ const Header = () => {
           {/* Theme Toggle (Desktop) */}
           <button
             onClick={toggleTheme}
-            className="ml-2 text-zinc-900 dark:text-white hover:text-main dark:hover:text-main transition-colors mix-blend-difference opacity-80 hover:opacity-100"
+            className="ml-2 text-white hover:text-main transition-colors mix-blend-difference opacity-80 hover:opacity-100"
             title={
               theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"
             }
@@ -135,7 +134,7 @@ const Header = () => {
           {/* Music Toggle (Desktop) */}
           <button
             onClick={togglePlay}
-            className="ml-4 text-zinc-900 dark:text-white hover:text-main dark:hover:text-main transition-colors mix-blend-difference opacity-80 hover:opacity-100"
+            className="ml-4 text-white hover:text-main transition-colors mix-blend-difference opacity-80 hover:opacity-100"
             title={isPlaying ? "Mute" : "Unmute"}
           >
             {isPlaying ? <FaVolumeUp size={20} /> : <FaVolumeMute size={20} />}
@@ -147,7 +146,7 @@ const Header = () => {
           {/* Theme Toggle (Mobile) */}
           <button
             onClick={toggleTheme}
-            className="text-zinc-900 dark:text-white mix-blend-difference"
+            className="text-white mix-blend-difference"
           >
             {theme === "light" ? <FaMoon size={20} /> : <FaSun size={20} />}
           </button>
@@ -155,14 +154,14 @@ const Header = () => {
           {/* Music Toggle (Mobile) */}
           <button
             onClick={togglePlay}
-            className="text-zinc-900 dark:text-white mix-blend-difference"
+            className="text-white mix-blend-difference"
           >
             {isPlaying ? <FaVolumeUp size={20} /> : <FaVolumeMute size={20} />}
           </button>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-zinc-900 dark:text-white mix-blend-difference"
+            className="text-white mix-blend-difference"
           >
             {isOpen ? "Close" : "Menu"}
           </button>
@@ -184,7 +183,7 @@ const Header = () => {
               <NavLink
                 key={link.path}
                 to={link.path}
-                className="text-4xl font-righteous text-zinc-900 dark:text-white mix-blend-difference"
+                className="text-4xl font-righteous text-white mix-blend-difference"
                 onClick={() => {
                   if (location.pathname === link.path) {
                     setIsOpen(false);
