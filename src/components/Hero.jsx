@@ -74,17 +74,20 @@ const AnimatedText = ({ text, className, variants = letterAnimation }) => (
 );
 
 // --- Interactive Letter Component ---
-const InteractiveLetter = ({ char, variants, hoverColor = "#3b82f6" }) => (
+const InteractiveLetter = ({
+  char,
+  variants,
+  hoverClass = "hover:text-main",
+}) => (
   <motion.span
     variants={variants}
     whileHover={{
-      scale: 1.2,
+      scale: 1.15,
       y: -10,
       rotate: Math.random() * 10 - 5,
-      color: hoverColor,
       transition: { duration: 0.2 },
     }}
-    style={{ display: "inline-block", cursor: "default" }}
+    className={`inline-block cursor-default transition-colors duration-300 ${hoverClass}`}
   >
     {char === " " ? "\u00A0" : char}
   </motion.span>
@@ -213,12 +216,12 @@ const Hero = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col justify-center items-center z-50 mix-blend-difference">
+      <div className="flex flex-col justify-center items-center z-50">
         <div className="pb-4">
           <AnimatedText
             text="Hi! I’m Amika"
             variants={letterAnimationFade}
-            className="font-syne text-xl md:text-2xl lg:text-3xl text-zinc-400 tracking-widest uppercase mb-4"
+            className="font-syne text-xl md:text-2xl lg:text-3xl text-zinc-900 dark:text-zinc-400 tracking-widest uppercase mb-4"
           />
         </div>
 
@@ -234,7 +237,7 @@ const Hero = () => {
                   transition: { staggerChildren: 0.05, delayChildren: 0.1 },
                 },
               }}
-              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-white tracking-tighter"
+              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-zinc-900 dark:text-white tracking-tighter drop-shadow-sm transition-colors duration-500"
             >
               {"SOFTWARE".split("").map((char, index) => (
                 <InteractiveLetter
@@ -257,7 +260,7 @@ const Hero = () => {
                   transition: { staggerChildren: 0.05, delayChildren: 0.3 },
                 },
               }}
-              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-zinc-400 tracking-tighter hover:text-white transition-colors duration-500"
+              className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-zinc-900 dark:text-white tracking-tighter drop-shadow-sm transition-colors duration-500"
             >
               {"ENGINEER".split("").map((char, index) => (
                 <InteractiveLetter
@@ -280,7 +283,7 @@ const Hero = () => {
                   transition: { staggerChildren: 0.1, delayChildren: 0.5 },
                 },
               }}
-              className="flex flex-col md:flex-row items-center justify-center font-syne text-sm md:text-xl text-zinc-400 tracking-wide gap-y-4 md:gap-y-0"
+              className="flex flex-col md:flex-row items-center justify-center font-syne text-sm md:text-xl text-zinc-900 dark:text-zinc-400 tracking-wide gap-y-4 md:gap-y-0"
             >
               {["FULL-STACK DEVELOPER", "CREATIVE CODER", "AI ENTHUSIAST"].map(
                 (role, i, arr) => (
@@ -299,14 +302,14 @@ const Hero = () => {
                           key={index}
                           char={char}
                           variants={letterAnimationFade}
-                          hoverColor="#ffffff"
+                          hoverClass="hover:text-main"
                         />
                       ))}
                     </motion.div>
                     {i < arr.length - 1 && (
                       <motion.span
                         variants={letterAnimationFade}
-                        className="hidden md:inline-block mx-4 text-zinc-400"
+                        className="hidden md:inline-block mx-4 text-zinc-900 dark:text-zinc-400"
                       >
                         •
                       </motion.span>

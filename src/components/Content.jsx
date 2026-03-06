@@ -115,7 +115,7 @@ const Content = () => {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="w-full bg-zinc-50 dark:bg-[#111111] text-zinc-900 dark:text-white py-20 md:py-32 px-6 md:px-12 relative overflow-hidden font-syne">
+    <section className="w-full bg-white dark:bg-[#111111] text-zinc-900 dark:text-white py-20 md:py-32 px-6 md:px-12 relative overflow-hidden font-syne">
       {/* Background Effects */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-900/5 rounded-full blur-[120px]" />
