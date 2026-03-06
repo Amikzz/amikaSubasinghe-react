@@ -127,6 +127,9 @@ const Header = () => {
             title={
               theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"
             }
+            aria-label={
+              theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"
+            }
           >
             {theme === "light" ? <FaMoon size={20} /> : <FaSun size={20} />}
           </button>
@@ -136,6 +139,7 @@ const Header = () => {
             onClick={togglePlay}
             className="ml-4 text-white hover:text-main transition-colors mix-blend-difference opacity-80 hover:opacity-100"
             title={isPlaying ? "Mute" : "Unmute"}
+            aria-label={isPlaying ? "Mute music" : "Play music"}
           >
             {isPlaying ? <FaVolumeUp size={20} /> : <FaVolumeMute size={20} />}
           </button>
@@ -147,6 +151,9 @@ const Header = () => {
           <button
             onClick={toggleTheme}
             className="text-white mix-blend-difference"
+            aria-label={
+              theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"
+            }
           >
             {theme === "light" ? <FaMoon size={20} /> : <FaSun size={20} />}
           </button>
@@ -155,6 +162,7 @@ const Header = () => {
           <button
             onClick={togglePlay}
             className="text-white mix-blend-difference"
+            aria-label={isPlaying ? "Mute music" : "Play music"}
           >
             {isPlaying ? <FaVolumeUp size={20} /> : <FaVolumeMute size={20} />}
           </button>
@@ -162,6 +170,9 @@ const Header = () => {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-white mix-blend-difference"
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? "Close" : "Menu"}
           </button>
@@ -172,6 +183,7 @@ const Header = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.nav
+            id="mobile-menu"
             aria-label="Mobile Navigation"
             initial={{ opacity: 0, y: "-100%" }}
             animate={{ opacity: 1, y: 0 }}
