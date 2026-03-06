@@ -4,22 +4,30 @@ import { motion, useSpring, useTransform, useMotionValue } from "framer-motion";
 const Robot = ({ onButtonClick }) => {
   const containerRef = useRef(null);
   const mouseX = useMotionValue(0);
-
   const mouseY = useMotionValue(0);
+
+  // Safe window dimensions — avoid reading window.innerWidth at module level (forced reflow)
+  const [dims, setDims] = useState({ w: 1024, h: 768 });
+  useEffect(() => {
+    const update = () =>
+      setDims({ w: window.innerWidth, h: window.innerHeight });
+    update();
+    window.addEventListener("resize", update, { passive: true });
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   // Smooth springs for the movement
   const smoothX = useSpring(mouseX, { stiffness: 100, damping: 20 });
   const smoothY = useSpring(mouseY, { stiffness: 100, damping: 20 });
 
   // Map mouse position to eye movement range
-  // Assuming the robot is centered, we want limited movement (e.g., -10px to 10px)
-  const eyeX = useTransform(smoothX, [0, window.innerWidth], [-8, 8]);
-  const eyeY = useTransform(smoothY, [0, window.innerHeight], [-8, 8]);
+  const eyeX = useTransform(smoothX, [0, dims.w], [-8, 8]);
+  const eyeY = useTransform(smoothY, [0, dims.h], [-8, 8]);
 
   // Head slight rotation/tilt
-  const headRotate = useTransform(smoothX, [0, window.innerWidth], [-10, 10]);
-  const headX = useTransform(smoothX, [0, window.innerWidth], [-15, 15]);
-  const headY = useTransform(smoothY, [0, window.innerHeight], [-10, 10]);
+  const headRotate = useTransform(smoothX, [0, dims.w], [-10, 10]);
+  const headX = useTransform(smoothX, [0, dims.w], [-15, 15]);
+  const headY = useTransform(smoothY, [0, dims.h], [-10, 10]);
 
   useEffect(() => {
     const checkMobile = () => window.innerWidth < 768;
@@ -38,22 +46,20 @@ const Robot = ({ onButtonClick }) => {
       const startTime = Date.now();
       const interval = setInterval(() => {
         const elapsed = (Date.now() - startTime) / 1000;
-        // Circular / Figure-8 motion
-        const cx = window.innerWidth / 2;
-        const cy = window.innerHeight / 2;
+        const cx = dims.w / 2;
+        const cy = dims.h / 2;
         const radius = 100;
 
-        // Rhythmic movement
         const x = cx + Math.sin(elapsed * 2) * radius;
         const y = cy + Math.cos(elapsed * 3) * (radius * 0.5);
 
         mouseX.set(x);
         mouseY.set(y);
-      }, 16); // ~60fps
+      }, 16);
 
       return () => clearInterval(interval);
     }
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, dims]);
 
   return (
     <div

@@ -13,24 +13,18 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    // Check local storage first
+    // Sync with the inline <head> script that already applied the class
     const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      return savedTheme;
-    }
-    // Fallback to dark theme as default for this project
+    if (savedTheme) return savedTheme;
+    // Default dark (matches inline script)
     return "dark";
   });
 
   useEffect(() => {
-    const root = window.document.documentElement;
-
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-
+    const root = document.documentElement;
+    // Toggle class — inline script already set the initial state,
+    // so this only fires on subsequent theme changes (no FOUC)
+    root.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
 

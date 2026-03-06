@@ -8,6 +8,16 @@
     <link rel="icon" href="/icon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Apply saved theme BEFORE first paint to prevent CLS from FOUC -->
+    <script>
+      (function () {
+        var theme = localStorage.getItem("theme");
+        if (theme === "dark" || !theme) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+
     <!-- Google Fonts (Combined & Non-Blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,40 +25,41 @@
     <link rel="dns-prefetch" href="https://files.bpcontent.cloud" />
     <link rel="dns-prefetch" href="https://webchat.botpress.cloud" />
 
+    <!-- Primary fonts (swap ok) -->
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Megrim&family=Outfit:wght@100..900&family=Righteous&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@100..900&family=Righteous&display=swap"
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Megrim&family=Outfit:wght@100..900&family=Righteous&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@100..900&family=Righteous&display=swap"
       media="print"
       onload="this.media = 'all'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Megrim&family=Outfit:wght@100..900&family=Righteous&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@100..900&family=Righteous&display=swap"
       />
     </noscript>
 
-    <!-- Google Material Symbols (Non-Blocking) -->
+    <!-- Decorative fonts (optional — no late swap shift) -->
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Megrim&family=Material+Symbols+Rounded&display=optional"
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Megrim&family=Material+Symbols+Rounded&display=optional"
       media="print"
       onload="this.media = 'all'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Megrim&family=Material+Symbols+Rounded&display=optional"
       />
     </noscript>
 

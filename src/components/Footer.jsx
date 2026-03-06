@@ -7,7 +7,6 @@ import {
   FaArrowUp,
 } from "react-icons/fa";
 import Robot from "./Robot";
-import { motion } from "framer-motion";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -34,7 +33,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-white dark:bg-[#111111] text-zinc-900 dark:text-white pt-16 pb-8 relative overflow-hidden font-syne flex flex-col justify-between min-h-[50vh]">
+    <footer
+      className="w-full bg-white dark:bg-[#111111] text-zinc-900 dark:text-white pt-16 pb-8 relative overflow-hidden font-syne flex flex-col justify-between min-h-[50vh]"
+      style={{ contain: "layout style" }}
+    >
       {/* Decorative Grid/Lines (Optional subtle background) */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <div className="w-full h-full bg-[radial-gradient(#000000_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
