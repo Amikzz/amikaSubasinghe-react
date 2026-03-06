@@ -5,7 +5,7 @@ import Robot from "./Robot";
 const Loader = () => {
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white text-zinc-900 dark:bg-[#111111] dark:text-white overflow-hidden"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-zinc-50 dark:bg-[#111111] overflow-hidden"
       initial={{ y: 0 }}
       exit={{
         y: "-100%",
@@ -14,7 +14,7 @@ const Loader = () => {
     >
       {/* Main Hello Text */}
       <motion.div
-        className="relative z-50 text-6xl md:text-8xl lg:text-9xl font-righteous text-center mb-8"
+        className="relative z-50 text-6xl md:text-8xl lg:text-9xl font-righteous text-center mb-8 drop-shadow-sm text-transparent bg-clip-text bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-300"
         initial={{
           clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",
         }}
@@ -41,7 +41,7 @@ const Loader = () => {
 
       {/* Bottom Branding */}
       <motion.div
-        className="absolute bottom-12 flex flex-col items-center gap-2 z-50 text-zinc-500 dark:text-zinc-400"
+        className="absolute bottom-12 flex flex-col items-center gap-2 z-50 text-zinc-500 dark:text-zinc-500"
         initial={{ opacity: 0, y: 20 }}
         animate={{
           opacity: 1,
@@ -49,8 +49,8 @@ const Loader = () => {
           transition: { duration: 0.8, delay: 0.5, ease: "easeOut" },
         }}
       >
-        <FaCrown className="text-xl text-[#00aaff]" />
-        <span className="text-s font-megrim tracking-[0.2em] font-bold">
+        <FaCrown className="text-xl text-main" />
+        <span className="text-sm font-megrim tracking-[0.2em] font-bold">
           LOAD AMIKA
         </span>
       </motion.div>

@@ -199,7 +199,7 @@ const Hero = () => {
       </video>
 
       {/* Dark Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-white/90 dark:bg-black/80 -z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-white/50 dark:bg-black/80 -z-10 backdrop-blur-[2px] dark:backdrop-blur-none" />
 
       {/* Social Links & Lines */}
       <div className="z-50 flex-col flex lg:h-[80vh] h-[85vh] px-5 lg:px-9 pt-[5rem] lg:-mt-3 xl:mt-10 py-5 lg:py-10 items-center left-0 top-0 absolute justify-end lg:justify-between">

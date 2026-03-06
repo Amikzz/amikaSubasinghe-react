@@ -44,7 +44,7 @@ const PageTransition = () => {
   return (
     <motion.div
       key={location.pathname}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#111111] text-white"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-[#111111] text-zinc-900 dark:text-white"
       initial={{ y: "0%" }}
       animate={{
         y: "-100%",
