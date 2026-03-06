@@ -4,19 +4,19 @@ const badges = [
   {
     id: 1,
     name: "GEN AI Practitioner",
-    image: "/assets/Badge1.png",
+    image: "/assets/Badge1.webp",
   },
   {
     id: 2,
     name: "Cloud Practitioner",
-    image: "/assets/Badge2.png",
+    image: "/assets/Badge2.webp",
   },
   {
     id: 3,
     name: "Well Architected Proficient",
-    image: "/assets/Badge3.png",
+    image: "/assets/Badge3.webp",
   },
-  { id: 4, name: "Postman Student Expert", image: "/assets/Badge4.png" },
+  { id: 4, name: "Postman Student Expert", image: "/assets/Badge4.webp" },
 ];
 
 const Badges = () => {

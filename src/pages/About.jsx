@@ -7,7 +7,7 @@ import {
   FaDownload,
   FaGamepad,
 } from "react-icons/fa";
-import profilePic from "/assets/profile.jpg";
+import profilePic from "/assets/profile.webp";
 import cvFile from "/assets/Amika Indusara Lelwala Subasinghe.pdf";
 import Game from "../components/Game";
 import ScrollPath from "../components/ScrollPath";

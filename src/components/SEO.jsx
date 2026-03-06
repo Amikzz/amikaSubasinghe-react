@@ -14,7 +14,7 @@ const SEO = ({
   const defaultDescription =
     "Amika Subasinghe, a Full Stack Developer and Software Engineer from Sri Lanka, builds scalable and high-performance web and mobile applications using modern technologies like React, Node.js, Laravel, Flutter, and AWS. Explore his portfolio showcasing projects in web development, API integration, cloud engineering, and responsive UI/UX design.";
   const siteUrl = "https://amikasubasinghe.com.lk";
-  const defaultImage = `${siteUrl}/logo.png`;
+  const defaultImage = `${siteUrl}/logo.webp`;
 
   const metaTitle = title ? `${title} | Amika Subasinghe` : siteTitle;
   const metaDescription = description || defaultDescription;

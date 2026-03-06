@@ -109,7 +109,7 @@ const techStacks = {
     },
     {
       name: "Ubuntu",
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UbuntuCoF.svg/1024px-UbuntuCoF.svg.png",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UbuntuCoF.svg/1024px-UbuntuCoF.svg.webp",
     },
     {
       name: "Debian",
@@ -121,7 +121,7 @@ const techStacks = {
     },
     {
       name: "macOS",
-      src: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Finder_Icon_macOS_Big_Sur.png",
+      src: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Finder_Icon_macOS_Big_Sur.webp",
     },
     {
       name: "Android",

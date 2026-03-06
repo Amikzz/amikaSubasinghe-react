@@ -91,7 +91,7 @@ const Header = () => {
         {/* Logo */}
         <NavLink to="/" className="z-50 mix-blend-difference">
           <img
-            src="/icon.png"
+            src="/icon.webp"
             alt="Logo"
             className="w-[1.7rem] lg:w-[1.9rem] cursor-pointer mix-blend-difference"
             onError={(e) => {
