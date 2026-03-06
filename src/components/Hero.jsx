@@ -90,70 +90,93 @@ const InteractiveLetter = ({ char, variants, hoverColor = "#3b82f6" }) => (
   </motion.span>
 );
 
-// --- Extracted SocialLinks Component to Isolate Mouse Logic ---
 const SocialLinks = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [links] = useState([
+    {
+      icon: <FaLinkedin />,
+      href: "https://linkedin.com/in/amikasubasinghe",
+    },
+    { icon: <FaWhatsapp />, href: "https://wa.me/94787564524" },
+    { icon: <FaGithub />, href: "https://github.com/Amikzz" },
+  ]);
+
+  const refs = useRef([]);
 
   useEffect(() => {
+    let iconCenters = [];
+
+    const calculateCenters = () => {
+      iconCenters = refs.current.map((ref) => {
+        if (!ref) return null;
+        const rect = ref.getBoundingClientRect();
+        return {
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height / 2,
+        };
+      });
+    };
+
+    // Delay calculation slightly to ensure DOM is fully laid out
+    setTimeout(calculateCenters, 100);
+    window.addEventListener("resize", calculateCenters);
+
+    let animationFrameId;
+
     const handleMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
+      animationFrameId = requestAnimationFrame(() => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        const maxDistance = 120;
+
+        refs.current.forEach((ref, idx) => {
+          if (!ref || !iconCenters[idx]) return;
+
+          const center = iconCenters[idx];
+          const dx = mouseX - center.x;
+          const dy = mouseY - center.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance > maxDistance) {
+            ref.style.transform = "";
+            return;
+          }
+
+          const intensity = (maxDistance - distance) / maxDistance;
+
+          ref.style.transform = `
+            rotate(${Math.sin(distance) * 10 * intensity}deg)
+            translateY(${Math.cos(distance) * 4 * intensity}px)
+            scale(${1 + intensity * 0.15})
+          `;
+        });
+      });
     };
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
+
+    window.addEventListener("mousemove", handleMove, { passive: true });
+
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+      window.removeEventListener("resize", calculateCenters);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
   }, []);
-
-  const getWiggleStyle = (ref) => {
-    if (!ref.current) return {};
-
-    const rect = ref.current.getBoundingClientRect();
-    const iconX = rect.left + rect.width / 2;
-    const iconY = rect.top + rect.height / 2;
-
-    const dx = mousePos.x - iconX;
-    const dy = mousePos.y - iconY;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-
-    const maxDistance = 120; // wiggle radius
-    if (distance > maxDistance) return {};
-
-    const intensity = (maxDistance - distance) / maxDistance; // 0 → 1
-
-    return {
-      transform: `
-      rotate(${Math.sin(distance) * 10 * intensity}deg)
-      translateY(${Math.cos(distance) * 4 * intensity}px)
-      scale(${1 + intensity * 0.15})
-    `,
-      transition: "transform 0.12s ease-out",
-    };
-  };
 
   return (
     <div className="flex z-50 w-full flex-col gap-6 lg:gap-5 xl:gap-8">
-      {[
-        {
-          icon: <FaLinkedin />,
-          href: "https://linkedin.com/in/amikasubasinghe",
-        },
-        { icon: <FaWhatsapp />, href: "https://wa.me/94787564524" },
-        { icon: <FaGithub />, href: "https://github.com/Amikzz" },
-      ].map((item, idx) => {
-        const ref = useRef(null);
-
-        return (
-          <a
-            key={idx}
-            ref={ref}
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={getWiggleStyle(ref)}
-            className="text-white hover:text-main transition-colors text-2xl"
-          >
-            {item.icon}
-          </a>
-        );
-      })}
+      {links.map((item, idx) => (
+        <a
+          key={idx}
+          ref={(el) => (refs.current[idx] = el)}
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white hover:text-main transition-transform duration-150 ease-out text-2xl inline-block"
+        >
+          {item.icon}
+        </a>
+      ))}
     </div>
   );
 };
@@ -289,7 +312,7 @@ const Hero = () => {
                       </motion.span>
                     )}
                   </React.Fragment>
-                )
+                ),
               )}
             </motion.div>
           </div>
