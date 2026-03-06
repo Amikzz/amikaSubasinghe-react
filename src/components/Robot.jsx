@@ -58,10 +58,12 @@ const Robot = ({ onButtonClick }) => {
   return (
     <div
       ref={containerRef}
-      className="w-48 h-48 md:w-64 md:h-64 flex items-center justify-center relative select-none pointer-events-none"
+      className="w-full h-full flex items-center justify-center relative select-none pointer-events-none"
     >
       <motion.svg
         viewBox="0 0 200 200"
+        width="200"
+        height="200"
         className="w-full h-full drop-shadow-2xl"
         initial="rest"
         whileHover="hover"

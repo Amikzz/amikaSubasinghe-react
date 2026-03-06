@@ -252,6 +252,8 @@ const Techstack = () => {
                       <img
                         src={item.src}
                         alt={item.name}
+                        width="48"
+                        height="48"
                         className="w-full h-full object-contain relative z-10 drop-shadow-lg"
                         loading="lazy"
                       />

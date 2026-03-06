@@ -13,4 +13,7 @@ export default defineConfig({
     compression({ algorithm: "gzip" }),
     compression({ algorithm: "brotliCompress" }),
   ],
+  build: {
+    cssMinify: "lightningcss",
+  },
 });

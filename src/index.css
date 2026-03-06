@@ -3,6 +3,25 @@
 /* Enable class-based dark mode in Tailwind v4 */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Font fallback with size-adjust to prevent CLS when web fonts load */
+@font-face {
+  font-family: "Outfit Fallback";
+  src: local("Arial");
+  size-adjust: 105%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Righteous Fallback";
+  src: local("Arial");
+  size-adjust: 108%;
+  ascent-override: 88%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
 :root {
   /* Modern Dark Theme Palette from Reference (used as default/dark fallback before js loads) */
   --color-bg: #ffffff; /* Light theme bg */
@@ -26,10 +45,11 @@
 }
 
 @theme {
-  --font-righteous: "Righteous", system-ui, sans-serif;
+  --font-righteous: "Righteous", "Righteous Fallback", system-ui, sans-serif;
   --font-megrim: "Megrim", system-ui, sans-serif;
-  --font-syne: "Outfit", system-ui, sans-serif;
-  --font-cabinet: "Outfit", system-ui, sans-serif;
+  --font-syne: "Outfit", "Outfit Fallback", system-ui, sans-serif;
+  --font-cabinet: "Outfit", "Outfit Fallback", system-ui, sans-serif;
+  --font-cabinetGrotesk: "Outfit", "Outfit Fallback", system-ui, sans-serif;
 
   --color-background: var(--color-bg);
   --color-main: var(--color-main);

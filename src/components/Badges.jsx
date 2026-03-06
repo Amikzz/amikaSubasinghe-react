@@ -65,6 +65,9 @@ const Badges = () => {
                 <img
                   src={badge.image}
                   alt={badge.name}
+                  width="192"
+                  height="192"
+                  loading="lazy"
                   className="w-full h-full object-contain p-4 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
                 />
 

@@ -124,8 +124,10 @@ const SocialLinks = () => {
       });
     };
 
-    // Delay calculation slightly to ensure DOM is fully laid out
-    setTimeout(calculateCenters, 100);
+    // Use requestAnimationFrame to avoid forced synchronous reflow
+    requestAnimationFrame(() => {
+      requestAnimationFrame(calculateCenters);
+    });
     window.addEventListener("resize", calculateCenters);
 
     let animationFrameId;

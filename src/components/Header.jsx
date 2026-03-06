@@ -94,6 +94,8 @@ const Header = () => {
           <img
             src="/icon.webp"
             alt="Logo"
+            width="27"
+            height="27"
             className="w-[1.7rem] lg:w-[1.9rem] cursor-pointer mix-blend-difference"
             onError={(e) => {
               e.target.style.display = "none";

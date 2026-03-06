@@ -41,7 +41,10 @@ const Footer = () => {
       </div>
 
       {/* BIG BACKGROUND TEXT "AMIKA" */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden pb-4">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden pb-4"
+      >
         <h1 className="text-[13vw] md:text-[10vw] font-syne font-extrabold text-[#000000] dark:text-[#ffffff] opacity-[0.03] select-none tracking-tighter leading-none whitespace-nowrap">
           AMIKA SUBASINGHE
         </h1>
@@ -54,8 +57,8 @@ const Footer = () => {
           Work the Problem
         </h2>
 
-        {/* Robot Container - Floating slightly above or intertwined */}
-        <div className="relative z-20 mb-[-1vw] md:mb-[-0.5vw]">
+        {/* Robot Container - Fixed dimensions to prevent CLS */}
+        <div className="relative z-20 mb-[-1vw] md:mb-[-0.5vw] w-48 h-48 md:w-64 md:h-64">
           <Robot onButtonClick={scrollToTop} />
         </div>
       </div>
