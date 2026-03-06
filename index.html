@@ -60,14 +60,13 @@
 
         const injectScript = document.createElement("script");
         injectScript.src = "https://cdn.botpress.cloud/webchat/v3.2/inject.js";
-        injectScript.defer = true;
+        injectScript.onload = () => {
+          const configScript = document.createElement("script");
+          configScript.src =
+            "https://files.bpcontent.cloud/2025/08/17/04/20250817042253-QIIF5PKR.js";
+          document.head.appendChild(configScript);
+        };
         document.head.appendChild(injectScript);
-
-        const configScript = document.createElement("script");
-        configScript.src =
-          "https://files.bpcontent.cloud/2025/08/17/04/20250817042253-QIIF5PKR.js";
-        configScript.defer = true;
-        document.head.appendChild(configScript);
       };
 
       // Load on user interaction or after an 8s delay as fallback
