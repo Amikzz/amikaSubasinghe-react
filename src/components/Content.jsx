@@ -33,6 +33,12 @@ const timelineData = [
     description:
       "Promoted to a full-time role, leading key projects and system optimizations.",
   },
+  {
+    year: "2026",
+    title: "Associate Software Engineer",
+    description:
+      "Joined Asipiya Soft Solutions, as an Associate Software Engineer.",
+  },
 ];
 
 const TimelineItem = ({ item, index }) => {
