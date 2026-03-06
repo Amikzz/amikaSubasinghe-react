@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
 import {
   BrowserRouter as Router,
@@ -15,16 +15,16 @@ import ScrollToTop from "./components/ScrollToTop";
 import Cursor from "./components/Cursor";
 import { LoadingProvider, useLoading } from "./context/LoadingContext";
 
-// Pages
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
-import Privacy from "./pages/Privacy";
-import ProjectDetail from "./pages/ProjectDetail";
-
-import CodePlayground from "./pages/Codeplayground";
 import PageTransition from "./components/PageTransition";
+
+// Lazy-loaded route components for Code Splitting
+const Home = lazy(() => import("./pages/Home"));
+const Projects = lazy(() => import("./pages/Projects"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const About = lazy(() => import("./pages/About"));
+const CodePlayground = lazy(() => import("./pages/Codeplayground"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Privacy = lazy(() => import("./pages/Privacy"));
 
 // Wrapper to handle location-based logic for Footer
 const AppWrapper = () => {
@@ -35,15 +35,17 @@ const AppWrapper = () => {
       <Cursor />
       <Header /> {/* Fixed navbar across pages */}
       <PageTransition />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/project/:id" element={<ProjectDetail />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/codeplayground" element={<CodePlayground />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/privacy" element={<Privacy />} />
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/project/:id" element={<ProjectDetail />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/codeplayground" element={<CodePlayground />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
+        </Routes>
+      </Suspense>
       {/* Footer is hidden only on Privacy page */}
       {location.pathname !== "/privacy" && <Footer />}
     </>
