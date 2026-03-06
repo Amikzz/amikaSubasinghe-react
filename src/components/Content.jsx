@@ -129,7 +129,10 @@ const Content = () => {
       </div>
 
       {/* Background Title "JOURNEY" */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0 select-none opacity-5">
+      <div
+        aria-hidden="true"
+        className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0 select-none opacity-5"
+      >
         <h1 className="text-[15vw] font-bold text-zinc-900 dark:text-white font-cabinetGrotesk leading-none tracking-tighter">
           JOURNEY
         </h1>

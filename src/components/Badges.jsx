@@ -23,7 +23,10 @@ const Badges = () => {
   return (
     <section className="w-full bg-white dark:bg-[#111111] py-20 md:py-32 px-6 md:px-12 -mt-1 relative overflow-hidden">
       {/* Background Title "BADGES" */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0 select-none opacity-5">
+      <div
+        aria-hidden="true"
+        className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0 select-none opacity-5"
+      >
         <h1 className="text-[15vw] font-bold text-zinc-900 dark:text-white font-cabinetGrotesk leading-none tracking-tighter">
           BADGES
         </h1>

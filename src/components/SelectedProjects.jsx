@@ -12,7 +12,10 @@ const SelectedProjects = () => {
   return (
     <section className="w-full bg-white dark:bg-[#111111] py-20 md:py-32 -mt-1 overflow-hidden relative font-syne z-30">
       {/* Background Title "PROJECTS" */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0 select-none opacity-5">
+      <div
+        aria-hidden="true"
+        className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0 select-none opacity-5"
+      >
         <h1 className="text-[15vw] font-bold text-zinc-900 dark:text-white font-cabinetGrotesk leading-none tracking-tighter">
           PROJECTS
         </h1>

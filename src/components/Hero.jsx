@@ -98,9 +98,14 @@ const SocialLinks = () => {
     {
       icon: <FaLinkedin />,
       href: "https://linkedin.com/in/amikasubasinghe",
+      label: "LinkedIn",
     },
-    { icon: <FaWhatsapp />, href: "https://wa.me/94787564524" },
-    { icon: <FaGithub />, href: "https://github.com/Amikzz" },
+    {
+      icon: <FaWhatsapp />,
+      href: "https://wa.me/94787564524",
+      label: "WhatsApp",
+    },
+    { icon: <FaGithub />, href: "https://github.com/Amikzz", label: "GitHub" },
   ]);
 
   const refs = useRef([]);
@@ -176,6 +181,7 @@ const SocialLinks = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="text-zinc-900 dark:text-white hover:text-main dark:hover:text-main transition-transform duration-150 ease-out text-2xl inline-block"
+          aria-label={item.label}
         >
           {item.icon}
         </a>
