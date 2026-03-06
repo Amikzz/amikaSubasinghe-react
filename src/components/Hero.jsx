@@ -231,7 +231,7 @@ const Hero = () => {
               variants={{
                 hidden: {},
                 show: {
-                  transition: { staggerChildren: 0.05, delayChildren: 0.8 },
+                  transition: { staggerChildren: 0.05, delayChildren: 0.1 },
                 },
               }}
               className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-white tracking-tighter"
@@ -254,7 +254,7 @@ const Hero = () => {
               variants={{
                 hidden: {},
                 show: {
-                  transition: { staggerChildren: 0.05, delayChildren: 1.2 },
+                  transition: { staggerChildren: 0.05, delayChildren: 0.3 },
                 },
               }}
               className="flex flex-wrap justify-center font-cabinetGrotesk font-bold text-[12vw] sm:text-[10vw] xl:text-[8vw] text-zinc-500 tracking-tighter hover:text-white transition-colors duration-500"
@@ -277,7 +277,7 @@ const Hero = () => {
               variants={{
                 hidden: {},
                 show: {
-                  transition: { staggerChildren: 0.1, delayChildren: 2 },
+                  transition: { staggerChildren: 0.1, delayChildren: 0.5 },
                 },
               }}
               className="flex flex-col md:flex-row items-center justify-center font-syne text-sm md:text-xl text-zinc-400 tracking-wide gap-y-4 md:gap-y-0"
@@ -325,7 +325,7 @@ const Hero = () => {
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2.5, duration: 1, ease: "easeOut" }}
+        transition={{ delay: 1.5, duration: 1, ease: "easeOut" }}
         className="absolute bottom-[10%] z-[100] flex flex-col items-center text-white"
       >
         {/* Small label */}
