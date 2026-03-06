@@ -64,7 +64,7 @@ const TimelineItem = ({ item, index }) => {
           <div className="absolute inset-0 bg-main/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
           <div className="relative bg-zinc-100 dark:bg-[#1a1a1a] p-8 rounded-2xl border border-black/5 dark:border-white/5 hover:border-main/30 transition-all duration-300">
-            <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-main to-white mb-4 block font-cabinetGrotesk">
+            <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-main to-zinc-500 dark:to-white mb-4 block font-cabinetGrotesk">
               {item.year}
             </span>
 
