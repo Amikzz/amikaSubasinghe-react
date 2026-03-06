@@ -57,24 +57,56 @@ const Home = () => {
       </div>
 
       {/* About Section */}
-      <section className="relative w-full py-20 lg:py-40 px-4 flex flex-col items-center justify-center z-30 bg-white text-black rounded-t-[3rem] lg:rounded-t-[5rem] -mt-10">
-        <div className="max-w-6xl mx-auto text-center">
+      <section className="relative w-full py-20 lg:py-40 px-4 flex flex-col items-center justify-center z-30 bg-[#111111] text-white rounded-t-[3rem] lg:rounded-t-[5rem] -mt-10 overflow-hidden">
+        {/* Ambient Glowing Orbs */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white/5 rounded-full blur-[100px]" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-main/10 rounded-full blur-[100px]" />
+        </div>
+
+        <div className="max-w-[95vw] lg:max-w-[85vw] mx-auto text-center relative z-10 flex flex-col items-center">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-5xl lg:text-7xl font-bold font-cabinetGrotesk leading-normal mb-10"
+            className="font-cabinetGrotesk font-bold uppercase tracking-tighter leading-[0.85] text-[11vw] sm:text-[9vw] md:text-[8vw] lg:text-[7.5vw] text-zinc-400 text-center mix-blend-lighten"
           >
-            I am a Full Stack Developer and Software Engineer from Sri Lanka,
-            specializing in building scalable, high-performance web and mobile
-            applications using modern technologies including React, Node.js,
-            Laravel, Flutter, and AWS.
+            BUILDING <span className="text-white">SCALABLE</span> APPS,{" "}
+            ENGINEERED FOR <span className="text-main">PERFORMANCE</span>,{" "}
+            MASTERING THE <span className="text-white">FULL STACK</span> FROM{" "}
+            <span className="text-main">SRI LANKA</span> TO THE WORLD.
           </motion.h2>
-          <Link to="/about">
-            <button className="px-8 py-4 rounded-full border border-black text-black text-lg font-medium hover:bg-black hover:text-white transition-all duration-300">
-              About Me
-            </button>
-          </Link>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-12 max-w-3xl text-zinc-400 font-syne text-lg md:text-2xl md:leading-relaxed"
+          >
+            I specialize in crafting high-performance web and mobile
+            applications utilizing modern technologies including{" "}
+            <span className="text-white font-medium">React</span>,{" "}
+            <span className="text-white font-medium">Node.js</span>,{" "}
+            <span className="text-white font-medium">Laravel</span>,{" "}
+            <span className="text-white font-medium">Flutter</span>, and{" "}
+            <span className="text-white font-medium">AWS</span>.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-14"
+          >
+            <Link to="/about">
+              <button className="px-10 py-5 rounded-full bg-main text-white text-xl font-bold font-cabinetGrotesk hover:bg-white hover:text-black transition-all duration-300 uppercase tracking-widest flex items-center justify-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(0,170,255,0.3)] lg:cursor-pointer">
+                About Me
+                <span className="text-2xl leading-none relative -top-[2px]">
+                  &rarr;
+                </span>
+              </button>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
